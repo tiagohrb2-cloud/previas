@@ -1,32 +1,50 @@
 <!DOCTYPE html><html lang="pt-BR"><head>
-<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><title>Frango e Cia</title>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Bitter:wght@400;600&display=swap" rel="stylesheet"><title>Frango e Cia</title>
 <style>
-:root{--smoke:#231915;--ember:#E8691C;--mustard:#F2B705;--kraft:#E4C9A0;--cream:#F7EBD6;--ink:#231915}
-*{box-sizing:border-box}body{margin:0;background:var(--smoke);color:var(--cream);font-family:"TeX Gyre Bonum",serif}
-.pv{background:var(--mustard);color:var(--smoke);font:700 14px "TeX Gyre Heros";text-align:center;padding:8px}
+:root{color-scheme:only light;--smoke:#231915;--ember:#E8691C;--mustard:#F2B705;--kraft:#E4C9A0;--cream:#F7EBD6;--ink:#231915}
+*{box-sizing:border-box}body{margin:0;background:var(--smoke);color:var(--cream);font-family:Bitter,Georgia,serif}
+.pv{background:var(--mustard);color:var(--smoke);font:700 14px Oswald,sans-serif;text-align:center;padding:8px}
 nav{display:flex;justify-content:space-between;align-items:center;padding:24px 60px;border-bottom:2px solid #3a2b23}
-.logo{font:700 34px "TeX Gyre Heros Cn";letter-spacing:1px;color:var(--cream)}
+.logo{font:700 34px Oswald,sans-serif;letter-spacing:1px;color:var(--cream)}
 .logo b{color:var(--ember)}
-nav span{font:700 18px "TeX Gyre Heros Cn";color:var(--mustard);letter-spacing:.5px}
+nav span{font:700 18px Oswald,sans-serif;color:var(--mustard);letter-spacing:.5px}
 .hero{position:relative;padding:64px 60px 70px;overflow:hidden}
 .flames{position:absolute;right:-40px;top:0;bottom:0;width:560px;background:repeating-linear-gradient(115deg,var(--ember) 0 34px,#c4480c 34px 52px,var(--mustard) 52px 66px,transparent 66px 110px);opacity:.9;clip-path:polygon(30% 0,100% 0,100% 100%,0 100%)}
-h1{position:relative;font:700 128px/0.86 "TeX Gyre Heros Cn";margin:0;color:var(--cream);text-transform:uppercase;max-width:760px}
+h1{position:relative;font:700 128px/0.86 Oswald,sans-serif;margin:0;color:var(--cream);text-transform:uppercase;max-width:760px}
 .hero p{position:relative;font-size:22px;line-height:1.5;max-width:560px;margin:28px 0 36px;color:var(--kraft)}
-.call{position:relative;display:inline-block;background:var(--ember);color:#fff;font:700 26px "TeX Gyre Heros Cn";padding:16px 30px;letter-spacing:.5px}
+.call{position:relative;display:inline-block;background:var(--ember);color:#fff;font:700 26px Oswald,sans-serif;padding:16px 30px;letter-spacing:.5px}
 .board{background:var(--cream);color:var(--ink);padding:56px 60px;display:grid;grid-template-columns:1fr 1fr;gap:20px 80px}
-.board h2{grid-column:1/-1;font:700 60px "TeX Gyre Heros Cn";margin:0 0 10px;text-transform:uppercase;color:var(--ink)}
+.board h2{grid-column:1/-1;font:700 60px Oswald,sans-serif;margin:0 0 10px;text-transform:uppercase;color:var(--ink)}
 .row{display:flex;align-items:baseline;gap:10px;font-size:23px;padding:8px 0}
 .row .dots{flex:1;border-bottom:3px dotted #b99a6e;transform:translateY(-6px)}
-.row small{font:700 17px "TeX Gyre Heros Cn";color:var(--ember);letter-spacing:.4px}
-.foot{display:flex;justify-content:space-between;align-items:center;padding:40px 60px;font:700 26px "TeX Gyre Heros Cn";color:var(--cream)}
+.row small{font:700 17px Oswald,sans-serif;color:var(--ember);letter-spacing:.4px}
+.foot{display:flex;justify-content:space-between;align-items:center;padding:40px 60px;font:700 26px Oswald,sans-serif;color:var(--cream)}
 .foot span{color:var(--mustard)}
+
+a{text-decoration:none}.call{min-height:48px}
+@media (max-width:760px){
+ nav{padding:16px 20px;flex-direction:column;align-items:flex-start;gap:4px}
+ .logo{font-size:28px}nav span{font-size:15px}
+ .hero{padding:40px 20px 48px}
+ .flames{width:100%;right:-55%;opacity:.35}
+ h1{font-size:58px;line-height:.92}
+ .hero p{font-size:18px}
+ .call{font-size:20px;padding:14px 20px}
+ .board{grid-template-columns:1fr;padding:40px 20px;gap:4px}
+ .board h2{font-size:42px}.row{font-size:19px}
+ .foot{flex-direction:column;align-items:flex-start;gap:8px;padding:32px 20px;font-size:20px}
+}
 </style></head><body>
 <div class="pv">Prévia – proposta da Vetra Studio para o Frango e Cia</div>
 <nav><div class="logo">FRANGO <b>&amp;</b> CIA</div><span>Rua Antônio Blanco, 20A · São Carlos</span></nav>
 <div class="hero"><div class="flames"></div>
  <h1>Frango assado, costela e cerveja gelada</h1>
  <p>Saiu da brasa agora. Liga, encomenda e passa pra buscar, ou senta, pede uma artesanal e fica.</p>
- <span class="call">Ligar e pedir: (16) 3361-2276</span></div>
+ <a class="call" href="tel:+551633612276">Ligar e pedir: (16) 3361-2276</a></div>
 <div class="board"><h2>Cardápio</h2>
  <div class="row">Frango assado<span class="dots"></span><small>o da casa</small></div>
  <div class="row">Costelinha de porco<span class="dots"></span><small>na brasa</small></div>

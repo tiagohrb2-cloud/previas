@@ -1,15 +1,19 @@
 <!DOCTYPE html><html lang="pt-BR"><head>
-<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><title>Clínica Estética Skin Care</title>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet"><title>Clínica Estética Skin Care</title>
 <style>
-:root{--porcelain:#F1F3F1;--sage:#B9C6B4;--plum:#3E2A3A;--quartz:#E7CFCB;--gold:#A88B5E;--ink:#2a1f29}
-*{box-sizing:border-box}body{margin:0;background:var(--porcelain);color:var(--ink);font-family:Inter,sans-serif;font-weight:400}
+:root{color-scheme:only light;--porcelain:#F1F3F1;--sage:#B9C6B4;--plum:#3E2A3A;--quartz:#E7CFCB;--gold:#A88B5E;--ink:#2a1f29}
+*{box-sizing:border-box}body{margin:0;background:var(--porcelain);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-weight:400}
 .pv{background:var(--plum);color:#f3e9ee;font:500 13px Inter;text-align:center;padding:8px}
 nav{display:flex;justify-content:space-between;align-items:baseline;padding:30px 80px}
-.logo{font:400 30px "TeX Gyre Pagella";letter-spacing:.5px;color:var(--plum)}
+.logo{font:400 30px "Cormorant Garamond",serif;letter-spacing:.5px;color:var(--plum)}
 .logo em{font-style:italic;color:var(--gold)}
 nav a{font:400 15px Inter;color:var(--plum);margin-left:34px}
 .hero{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:30px 80px 70px;align-items:center}
-h1{font:400 70px/1.04 "TeX Gyre Pagella";margin:0;color:var(--plum);letter-spacing:-.5px}
+h1{font:400 70px/1.04 "Cormorant Garamond",serif;margin:0;color:var(--plum);letter-spacing:-.5px}
 .hero p{font-size:19px;line-height:1.7;max-width:470px;color:#5a4a58;margin:28px 0 36px}
 .btn{display:inline-block;border:1.5px solid var(--plum);color:var(--plum);padding:16px 34px;border-radius:999px;font:500 16px Inter}
 .btn.fill{background:var(--plum);color:#fff;margin-right:14px}
@@ -17,31 +21,44 @@ h1{font:400 70px/1.04 "TeX Gyre Pagella";margin:0;color:var(--plum);letter-spaci
 .arch::after{content:"";position:absolute;left:50%;top:18%;width:58%;height:58%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.75),rgba(255,255,255,0) 70%)}
 .arch .line{position:absolute;left:12%;right:12%;bottom:60px;height:1px;background:var(--gold)}
 .menu{background:#fff;margin:0 80px;padding:64px 72px;display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
-.menu h2{font:400 46px/1.1 "TeX Gyre Pagella";margin:0;color:var(--plum)}
+.menu h2{font:400 46px/1.1 "Cormorant Garamond",serif;margin:0;color:var(--plum)}
 .menu .intro{font-size:16px;line-height:1.7;color:#6b5b69;margin-top:18px}
-.item{display:grid;grid-template-columns:1fr auto;gap:8px 20px;padding:22px 0;border-bottom:1px solid #e6dfe3}
+.item{display:grid;grid-template-columns:1fr;gap:8px 20px;padding:22px 0;border-bottom:1px solid #e6dfe3}
 .item:first-child{padding-top:0}
-.item h3{font:400 26px "TeX Gyre Pagella";margin:0;color:var(--plum)}
+.item h3{font:400 26px "Cormorant Garamond",serif;margin:0;color:var(--plum)}
 .item span{font:500 14px Inter;color:var(--gold);align-self:center}
 .item p{grid-column:1/-1;margin:0;font-size:15px;line-height:1.6;color:#6b5b69}
 footer{display:flex;justify-content:space-between;padding:56px 80px;font-size:16px;color:var(--plum);align-items:center}
-footer b{font:400 24px "TeX Gyre Pagella"}
+footer b{font:400 24px "Cormorant Garamond",serif}
+
+a{text-decoration:none}.btn{min-height:48px}.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (max-width:760px){
+ nav{padding:20px}nav a{margin-left:18px;font-size:14px}
+ .hero{grid-template-columns:1fr;gap:34px;padding:16px 20px 44px}
+ h1{font-size:46px}.hero p{font-size:17px;margin:18px 0 26px}
+ .btn{padding:14px 24px;font-size:15px;margin-bottom:10px}
+ .arch{height:340px;max-width:300px;margin:0 auto;width:100%;border-radius:150px 150px 14px 14px}
+ .menu{margin:0;padding:40px 20px;grid-template-columns:1fr;gap:20px}
+ .menu h2{font-size:36px}.item h3{font-size:24px}
+ footer{flex-direction:column;align-items:flex-start;gap:18px;padding:36px 20px}
+ footer b{font-size:21px}
+}
 </style></head><body>
 <div class="pv">Prévia – proposta da Vetra Studio para a Clínica Estética Skin Care</div>
-<nav><div class="logo">Skin <em>Care</em></div><div><a>Tratamentos</a><a>A clínica</a><a>Agendar</a></div></nav>
+<nav><div class="logo">Skin <em>Care</em></div><div><a href="#trat">Tratamentos</a><a href="https://wa.me/5516981377685">Agendar</a></div></nav>
 <div class="hero">
  <div><h1>Pele cuidada, no seu tempo.</h1>
  <p>Limpeza de pele, peeling de diamante e hidratação facial em uma sala tranquila no centro de Araraquara. Você chega, conversa e sai sabendo o que a sua pele precisa.</p>
- <span class="btn fill">Agendar avaliação</span><span class="btn">Ver tratamentos</span></div>
- <div class="arch"><div class="line"></div></div>
+ <a class="btn fill" href="https://wa.me/5516981377685?text=Oi!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o">Agendar avaliação</a><a class="btn" href="#trat">Ver tratamentos</a></div>
+ <div class="arch"><svg viewBox="0 0 200 260" aria-hidden="true" style="position:absolute;inset:14% 18% 18%;z-index:1"><g fill="none" stroke="#3E2A3A" stroke-width="1.6" stroke-linecap="round" opacity=".55"><path d="M100 250V60"/><path d="M100 200c-30-8-52-30-58-62 28 4 50 24 58 62Z"/><path d="M100 170c30-8 52-30 58-62-28 4-50 24-58 62Z"/><path d="M100 130c-24-8-40-26-44-52 22 4 38 22 44 52Z"/><path d="M100 104c22-8 36-24 40-48-20 4-34 20-40 48Z"/><path d="M100 62c-8-14-8-30 0-44 8 14 8 30 0 44Z"/></g></svg><div class="line"></div></div>
 </div>
-<div class="menu">
+<div class="menu" id="trat">
  <div><h2>Tratamentos faciais</h2><p class="intro">Cada sessão começa com uma avaliação da pele. Os valores são combinados na clínica, de acordo com o protocolo indicado.</p></div>
  <div>
-  <div class="item"><h3>Limpeza de pele</h3><span>sessão</span><p>Remove impurezas e cravos e deixa a pele pronta para os outros cuidados.</p></div>
-  <div class="item"><h3>Peeling de diamante</h3><span>sessão</span><p>Esfoliação que renova a camada mais superficial e deixa a textura mais uniforme.</p></div>
-  <div class="item"><h3>Hidratação facial</h3><span>sessão</span><p>Devolve água e conforto à pele que anda ressecada ou sem brilho.</p></div>
+  <div class="item"><h3>Limpeza de pele</h3><p>Remove impurezas e cravos e deixa a pele pronta para os outros cuidados.</p></div>
+  <div class="item"><h3>Peeling de diamante</h3><p>Esfoliação que renova a camada mais superficial e deixa a textura mais uniforme.</p></div>
+  <div class="item"><h3>Hidratação facial</h3><p>Devolve água e conforto à pele que anda ressecada ou sem brilho.</p></div>
  </div>
 </div>
-<footer><div><b>Rua Armando de Salles Oliveira, 239, sala 5</b><br>Centro · Araraquara/SP</div><div>WhatsApp (16) 98137-7685</div></footer>
+<footer><div><b>Rua Armando de Salles Oliveira, 239, sala 5</b><br>Centro · Araraquara/SP</div><a class="btn fill" href="https://wa.me/5516981377685">WhatsApp (16) 98137-7685</a></footer>
 </body></html>
