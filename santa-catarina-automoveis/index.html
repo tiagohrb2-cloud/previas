@@ -150,7 +150,7 @@ dialog{overflow-x:hidden}
 .pf{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;overflow:hidden;background:#000}
 .pf.on{opacity:1}
 .pf img{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:contain!important;opacity:1!important;transform:none!important}
-.pf .bgb{transform:scale(1.9)!important;filter:blur(18px) brightness(.55) saturate(1.1)!important}
+.pf .bgb{object-fit:cover!important;transform:scale(1.9)!important;filter:blur(18px) brightness(.55) saturate(1.1)!important}
 .pf .fg{clip-path:inset(0 21.9%)}
 .thumbs .pf{position:relative;display:block;width:100%;height:100%;opacity:1}
 /* passos */
@@ -238,7 +238,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 @media (max-width:859px){
  dialog{width:100%;max-width:100%;height:100svh;max-height:100svh;margin:0;border:0;border-radius:0;overflow-y:auto;overscroll-behavior:contain}
- .gal .view{aspect-ratio:auto;height:min(58svh,100vw)}
+ .gal .view{aspect-ratio:4/3;height:auto}
  .x{position:fixed;top:max(12px,env(safe-area-inset-top))}
  .info{padding:20px 18px calc(24px + env(safe-area-inset-bottom))}
  .info h3{font-size:34px}
