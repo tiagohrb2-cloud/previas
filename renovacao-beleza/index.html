@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="only dark">
+<meta name="theme-color" content="#18110e">
+<title>Renovação &amp; Beleza · Espaço de beleza em São José do Rio Preto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:only dark;--esp:#18110e;--esp2:#231915;--champ:#e2c48d;--champ2:#c9a465;--pearl:#f6efe6;--rose:#d9a19a;--muted:#c3b3a2;--line:rgba(246,239,230,.14)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--esp);color:var(--pearl);font:400 17px/1.65 Manrope,system-ui,sans-serif;overflow-x:hidden}
+::selection{background:var(--champ);color:var(--esp)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.pv{position:relative;z-index:30;background:var(--champ);color:#20160f;font:600 12px/1.35 Manrope,sans-serif;text-align:center;padding:7px 12px}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.bod{font-family:"Bodoni Moda",Didot,Georgia,serif;font-weight:500;letter-spacing:-.01em}
+
+header{position:absolute;left:0;right:0;z-index:20}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{font:500 22px/1 "Bodoni Moda",Georgia,serif;letter-spacing:.04em}
+.brand b{color:var(--champ);font-weight:500;font-style:italic}
+.bar nav{display:none;gap:28px;font-weight:500;font-size:16px}
+.bar nav a:hover{color:var(--champ)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:-6% 0 0 0;z-index:-2;will-change:transform;overflow:hidden}
+.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:46% 52%;transform:scale(1.55);filter:saturate(.75) contrast(1.12) brightness(.72) sepia(.32)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+ radial-gradient(80% 60% at 75% 25%,rgba(226,196,141,.22),transparent 65%),
+ linear-gradient(180deg,rgba(24,17,14,.6) 0%,rgba(24,17,14,.1) 28%,rgba(24,17,14,.5) 58%,var(--esp) 95%)}
+.grain{position:absolute;inset:0;z-index:-1;opacity:.14;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero .wrap{padding:120px 0 80px}
+.rating{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(226,196,141,.45);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600;background:rgba(24,17,14,.55)}
+.rating .st{color:var(--champ);letter-spacing:1px}
+.hero h1{font:500 clamp(52px,min(14vw,14vh),148px)/.98 "Bodoni Moda",Georgia,serif;letter-spacing:-.02em;margin:18px 0 0;max-width:11ch}
+.hero h1 em{color:var(--champ)}
+.hero p.lead{max-width:36ch;font-size:clamp(17px,2.2vw,20px);color:#eadfce;margin:18px 0 28px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:4px;font-weight:700;font-size:16px;letter-spacing:.01em;transition:transform .2s,background .2s,color .2s}
+.btn.gold{background:var(--champ);color:#1b120c}
+.btn.gold:hover{background:var(--pearl)}
+.btn.line{border:1.5px solid rgba(246,239,230,.45)}
+.btn.line:hover{border-color:var(--champ);color:var(--champ)}
+.btn:active{transform:scale(.97)}
+a:focus-visible{outline:3px solid var(--champ);outline-offset:3px}
+
+/* wavy strands divider (do logo) */
+.strands{display:block;width:100%;height:70px;color:var(--champ)}
+
+/* services ribbon */
+.svc{padding:70px 0 40px}
+.svc h2,.story h2,.visit h2{font:500 clamp(42px,9vw,88px)/1 "Bodoni Moda",Georgia,serif;letter-spacing:-.02em;margin:0;max-width:14ch}
+.svc h2 em,.story h2 em,.visit h2 em{color:var(--champ)}
+.svc .sub{color:var(--muted);max-width:52ch;margin:18px 0 0}
+.groups{display:grid;gap:34px;margin-top:44px}
+.group h3{font:600 16px Manrope,sans-serif;color:var(--champ);margin:0 0 6px;letter-spacing:.02em}
+.group ul{list-style:none;margin:0;padding:0}
+.group li{font:500 clamp(24px,4.6vw,32px)/1.25 "Bodoni Moda",Georgia,serif;padding:10px 0;border-bottom:1px solid var(--line)}
+.free{display:inline-flex;align-items:center;gap:10px;margin-top:36px;padding:12px 18px;border-radius:4px;background:var(--esp2);border:1px solid var(--line);font-weight:600}
+.free i{width:10px;height:10px;border-radius:50%;background:var(--rose);display:inline-block}
+
+/* story */
+.story{padding:80px 0 60px}
+.steps{display:grid;gap:64px;margin-top:48px}
+.step{display:grid;gap:22px;align-items:center}
+.ph{position:relative;overflow:hidden;border-radius:4px;background:var(--esp2)}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(24,17,14,.55));pointer-events:none}
+.crop img{position:absolute;max-width:none;width:var(--w);left:var(--x);top:var(--y);filter:saturate(.85) contrast(1.08) brightness(.9) sepia(.15)}
+.step .n{font:italic 500 56px/1 "Bodoni Moda",Georgia,serif;color:var(--champ)}
+.step h3{font:500 clamp(30px,6vw,44px)/1.08 "Bodoni Moda",Georgia,serif;margin:4px 0 10px}
+.step p{margin:0;color:var(--muted);max-width:42ch}
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .in .reveal,.js .reveal.in{opacity:1;transform:none}
+
+/* quote band */
+.quote{padding:90px 0;text-align:center;background:linear-gradient(180deg,var(--esp) 0%,var(--esp2) 30%,var(--esp2) 70%,var(--esp) 100%)}
+.quote blockquote{margin:0 auto;max-width:18ch;font:italic 500 clamp(40px,8.5vw,92px)/1.05 "Bodoni Moda",Georgia,serif}
+.quote blockquote span{color:var(--champ)}
+.quote cite{display:block;margin-top:22px;font:500 16px Manrope,sans-serif;color:var(--muted);font-style:normal}
+
+/* visit */
+.visit{padding:80px 0 120px}
+.vgrid{display:grid;gap:22px;margin-top:36px}
+.card{border:1px solid var(--line);border-radius:4px;padding:26px;background:var(--esp2)}
+.card h3{margin:0 0 14px;font:600 16px Manrope,sans-serif;color:var(--champ)}
+.big{font:500 26px/1.3 "Bodoni Moda",Georgia,serif;margin:0 0 6px}
+.muted{color:var(--muted);margin:0}
+.hours{list-style:none;margin:0;padding:0}
+.hours li{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line)}
+.hours li.off{color:var(--muted)}
+.hours li.today{color:var(--champ);font-weight:700}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.storefront{aspect-ratio:4/3}
+footer{border-top:1px solid var(--line);padding:28px 0 120px;color:var(--muted);font-size:14px}
+footer .wrap{display:grid;gap:6px}
+
+.dock{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;display:flex;gap:10px;transform:translateY(150%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.dock.show{transform:none}
+.dock a{flex:1}
+.dock .btn.line{background:rgba(24,17,14,.9)}
+
+@media (min-width:820px){
+ .bar nav{display:flex}
+ .groups{grid-template-columns:repeat(3,1fr);gap:48px}
+ .step{grid-template-columns:1.1fr .9fr;gap:64px}
+ .step:nth-child(even) .ph{order:2}
+ .vgrid{grid-template-columns:1.2fr 1fr 1fr}
+ .dock{display:none}
+ footer{padding-bottom:40px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="pv">Prévia – proposta da Vetra Studio para o Renovação &amp; Beleza · fotos de clientes no Google, usadas só nesta prévia</div>
+
+<header><div class="wrap bar">
+ <a class="brand" href="#">RENOVAÇÃO <b>&amp;</b> BELEZA</a>
+ <nav><a href="#servicos">Serviços</a><a href="#como">Como funciona</a><a href="#visite">Horários</a></nav>
+</div></header>
+
+<section class="hero">
+ <div class="bg" id="heroBg"><img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RgeZR7vYE7yu_fGnYexCZizz0NRR-I6je3jwC_wwWLxvM4X7uWlXw8Fo3kvU0GP9mz7NIoIdSzii9K77CNPnsRrLUP4OQRiH8LsdiOuQneO13HLG1tr64s-mrpMhPoFEL6Fff_=w2400-k-no" alt="Entrada do salão Renovação &amp; Beleza com porta de vidro" referrerpolicy="no-referrer" fetchpriority="high"></div>
+ <div class="grain"></div>
+ <div class="wrap">
+  <span class="rating reveal"><span class="st">★★★★★</span> 5,0 no Google · 6 avaliações</span>
+  <h1 class="reveal">Cabelo cuidado, <em>sem formol.</em></h1>
+  <p class="lead reveal">Mechas, progressiva, mega hair e sobrancelha no Solo Sagrado, em São José do Rio Preto. Marca o seu horário pelo WhatsApp.</p>
+  <div class="ctas reveal">
+   <a class="btn gold" href="https://wa.me/5517992642956"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4.1-4.9-4.3-.1-.2-1.2-1.5-1.2-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Agendar: (17) 99264-2956</a>
+   <a class="btn line" href="#servicos">Ver serviços</a>
+  </div>
+ </div>
+</section>
+
+<svg class="strands" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" opacity=".7"><path d="M0 40 C200 0 400 70 600 35 S1000 0 1200 38"/><path d="M0 48 C220 12 420 74 620 42 S1010 10 1200 46" opacity=".6"/><path d="M0 56 C240 24 440 78 640 50 S1020 20 1200 54" opacity=".35"/></g></svg>
+
+<section class="svc" id="servicos"><div class="wrap">
+ <h2 class="reveal">Tudo o que está <em>na placa</em></h2>
+ <p class="sub reveal">Os serviços do espaço, do jeito que estão na fachada. Valores e horários direto com o salão.</p>
+ <div class="groups">
+  <div class="group reveal"><h3>Cor e mechas</h3><ul><li>Especialidade em mechas</li><li>Californiana</li><li>Ombré hair</li><li>Coloração</li></ul></div>
+  <div class="group reveal"><h3>Tratamento e alisamento</h3><ul><li>Progressiva</li><li>Plástica de fios</li><li>Selante</li><li>Botox</li><li>Relaxamento</li></ul></div>
+  <div class="group reveal"><h3>Corte, festa e rosto</h3><ul><li>Corte</li><li>Penteados</li><li>Maquiagem</li><li>Manutenção de mega hair</li><li>Design de sobrancelhas</li></ul></div>
+ </div>
+ <div class="free reveal"><i></i>Progressiva e tratamentos sem formol</div>
+</div></section>
+
+<section class="story" id="como"><div class="wrap">
+ <h2 class="reveal">Do horário <em>ao espelho</em></h2>
+ <div class="steps">
+  <article class="step">
+   <div class="ph crop" style="aspect-ratio:4/3;--w:435%;--x:-204%;--y:-107%"><img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RMfPBHE2pipZs_gEbXu2n2qAV7viPxRntnKoKi8rACPm3S5bdJu9KL-JoEKo2HuGZi5u84L1NWHpRRjwDB6VtFLN1niMRMyf21_1WYCSiMA_AKYTIb8n5zpqI_KnCtTsVVwZ4=w3000-k-no" alt="Fachada do salão com letreiro e pergolado branco" referrerpolicy="no-referrer"></div>
+   <div class="reveal"><div class="n">1.</div><h3>Marca pelo WhatsApp</h3><p>Manda mensagem no (17) 99264-2956, conta o que quer fazer e escolhe o dia. De terça a sábado, das 8h às 18h.</p></div>
+  </article>
+  <article class="step">
+   <div class="ph crop" style="aspect-ratio:16/10;--w:685%;--x:-311%;--y:-243%"><img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QueutcUfNnGb0nrxryTvcNrwJVumCpVzLJTlE3W09V9TtgaoCPzdsUqHgKPmDrNijbhhy09J7xed5GvIaxzFnYNGJjmykQ9T1dK7-b3QrwohiV9BdFGdN7c3n-cKxgM8SfER1D=w5000-k-no" alt="Placa do salão com a lista de serviços e o aviso sem formol" referrerpolicy="no-referrer"></div>
+   <div class="reveal"><div class="n">2.</div><h3>Escolhe o cuidado</h3><p>Mechas, progressiva, plástica de fios, botox ou selante: a equipe indica o que combina com o seu cabelo, sempre sem formol.</p></div>
+  </article>
+  <article class="step">
+   <div class="ph crop" style="aspect-ratio:4/3;--w:300%;--x:-104%;--y:-60%"><img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RgeZR7vYE7yu_fGnYexCZizz0NRR-I6je3jwC_wwWLxvM4X7uWlXw8Fo3kvU0GP9mz7NIoIdSzii9K77CNPnsRrLUP4OQRiH8LsdiOuQneO13HLG1tr64s-mrpMhPoFEL6Fff_=w2400-k-no" alt="Recepção do salão vista da entrada" referrerpolicy="no-referrer"></div>
+   <div class="reveal"><div class="n">3.</div><h3>Sai renovada</h3><p>O nome do salão é promessa. Atendimento com hora marcada, no espaço da avenida, no Solo Sagrado.</p></div>
+  </article>
+ </div>
+</div></section>
+
+<section class="quote">
+ <div class="wrap reveal">
+  <blockquote>“Realmente saí do salão <span>renovada!</span>”</blockquote>
+  <cite>Cliente no Google · nota 5,0 em 6 avaliações</cite>
+ </div>
+</section>
+
+<section class="visit" id="visite"><div class="wrap">
+ <h2 class="reveal">Passa <em>no salão</em></h2>
+ <div class="vgrid">
+  <div class="card reveal">
+   <h3>Endereço</h3>
+   <p class="big">Av. São José do Rio Preto, 5260<br>Solo Sagrado</p>
+   <p class="muted">São José do Rio Preto/SP · 15044-000</p>
+   <div class="links">
+    <a class="btn gold" href="https://www.google.com/maps/search/?api=1&amp;query=Renova%C3%A7%C3%A3o%20%26%20Beleza%20S%C3%A3o%20Jos%C3%A9%20do%20Rio%20Preto">Como chegar</a>
+   </div>
+  </div>
+  <div class="card reveal">
+   <h3>Contato</h3>
+   <p class="big">WhatsApp<br>(17) 99264-2956</p>
+   <p class="muted">Telefone fixo (17) 3237-7745</p>
+   <div class="links">
+    <a class="btn gold" href="https://wa.me/5517992642956">WhatsApp</a>
+    <a class="btn line" href="tel:+551732377745">Ligar</a>
+   </div>
+  </div>
+  <div class="card reveal">
+   <h3>Horários</h3>
+   <ul class="hours" id="hours">
+    <li data-d="1" class="off"><span>Segunda</span><span>Fechado</span></li>
+    <li data-d="2"><span>Terça</span><span>8h – 18h</span></li>
+    <li data-d="3"><span>Quarta</span><span>8h – 18h</span></li>
+    <li data-d="4"><span>Quinta</span><span>8h – 18h</span></li>
+    <li data-d="5"><span>Sexta</span><span>8h – 18h</span></li>
+    <li data-d="6"><span>Sábado</span><span>8h – 18h</span></li>
+    <li data-d="0" class="off"><span>Domingo</span><span>Fechado</span></li>
+   </ul>
+  </div>
+ </div>
+</div></section>
+
+<footer><div class="wrap">
+ <span>Renovação &amp; Beleza · Av. São José do Rio Preto, 5260 · Solo Sagrado · São José do Rio Preto/SP · (17) 3237-7745</span>
+ <span>Prévia criada pela Vetra Studio. Fotos publicadas por clientes no Google Maps, usadas apenas para esta prévia.</span>
+</div></footer>
+
+<div class="dock" id="dock">
+ <a class="btn gold" href="https://wa.me/5517992642956">Agendar</a>
+ <a class="btn line" href="#servicos">Serviços</a>
+</div>
+
+<script>
+(function(){
+ document.documentElement.classList.add("js");
+ setTimeout(function(){document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("in")})},4000);
+ var h=document.querySelector('#hours [data-d="'+new Date().getDay()+'"]');if(h)h.classList.add('today');
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.15});
+ document.querySelectorAll('.reveal,.step').forEach(function(el){io.observe(el)});
+ setTimeout(function(){document.querySelectorAll('.hero .reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('in')},120*i)})},80);
+ var bg=document.getElementById('heroBg'),dock=document.getElementById('dock'),rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ addEventListener('scroll',function(){var y=scrollY;if(!rm&&y<innerHeight*1.2)bg.style.transform='translateY('+(y*.25)+'px)';dock.classList.toggle('show',y>innerHeight*.7);},{passive:true});
+})();
+</script>
+</body>
+</html>

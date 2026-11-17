@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#fff4f1">
+<title>Atelier Sweet Petit · Bolos e doces sob encomenda em Campinas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500;1,9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:only light;--glace:#fff4f1;--rose:#ffe3e6;--rasp:#b0174f;--rasp2:#8c0f3e;--plum:#3a1630;--berry:#e0475f;--soft:#6e4a5f;--line:rgba(58,22,48,.14)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--glace);color:var(--plum);font:400 17px/1.6 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
+::selection{background:var(--rasp);color:#fff}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.pv{position:relative;z-index:30;background:var(--plum);color:#ffe3e6;font:500 12px/1.35 "DM Sans",sans-serif;text-align:center;padding:7px 12px}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.serif{font-family:Fraunces,Georgia,serif;font-variation-settings:"opsz" 144;letter-spacing:-.02em}
+
+header{position:absolute;left:0;right:0;z-index:20}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{font:italic 700 25px/1 Fraunces,Georgia,serif;color:#fff;text-shadow:0 2px 18px rgba(58,22,48,.5)}
+.bar nav{display:none;gap:28px;font-weight:500;font-size:16px;color:#fff}
+.bar nav a:hover{text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--rose)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;color:#fff}
+.hero .bg{position:absolute;inset:-6% 0 0 0;z-index:-2;will-change:transform}
+.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(1.18) contrast(1.1) brightness(.9)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+ radial-gradient(90% 60% at 80% 10%,rgba(255,200,210,.28),transparent 60%),
+ linear-gradient(180deg,rgba(58,22,48,.45) 0%,rgba(58,22,48,0) 26%,rgba(58,22,48,.15) 48%,rgba(58,22,48,.82) 82%,rgba(58,22,48,.92) 100%)}
+.grain{position:absolute;inset:0;z-index:-1;opacity:.1;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero .wrap{padding:120px 0 96px}
+.place{display:inline-block;font-weight:500;font-size:16px;color:#ffd9df;margin:0}
+.hero h1{font:500 clamp(54px,min(15vw,15vh),150px)/.95 Fraunces,Georgia,serif;font-variation-settings:"opsz" 144;letter-spacing:-.03em;margin:12px 0 0;max-width:10ch;text-shadow:0 6px 40px rgba(58,22,48,.45)}
+.hero h1 em{font-style:italic;color:#ffc7d1}
+.hero p.lead{max-width:36ch;font-size:clamp(17px,2.2vw,20px);color:#ffeef0;margin:18px 0 28px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-weight:700;font-size:16px;transition:transform .2s,background .2s,color .2s}
+.btn.main{background:var(--rasp);color:#fff;box-shadow:0 12px 30px -10px rgba(176,23,79,.8)}
+.btn.main:hover{background:var(--rasp2)}
+.btn.line{border:1.5px solid currentColor}
+.btn:active{transform:scale(.97)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--berry);outline-offset:3px}
+
+/* scallop edge (bordinha de bolo) */
+.scallop{height:22px;background:radial-gradient(circle at 14px 0,transparent 13px,var(--glace) 14px) 0 0/28px 22px repeat-x;margin-top:-22px;position:relative;z-index:5}
+.scallop.rose{background:radial-gradient(circle at 14px 0,transparent 13px,var(--rose) 14px) 0 0/28px 22px repeat-x}
+.scallop.plum{background:radial-gradient(circle at 14px 0,transparent 13px,var(--plum) 14px) 0 0/28px 22px repeat-x}
+
+/* intro */
+.intro{padding:80px 0 30px}
+.intro h2{font:500 clamp(40px,8vw,76px)/1 Fraunces,Georgia,serif;font-variation-settings:"opsz" 144;letter-spacing:-.03em;margin:0;max-width:16ch}
+.intro h2 em{color:var(--rasp)}
+.intro p{max-width:56ch;color:var(--soft);font-size:18px;margin:22px 0 0}
+
+/* story */
+.story{padding:40px 0 90px}
+.steps{display:grid;gap:64px;margin-top:40px}
+.step{display:grid;gap:22px;align-items:center}
+.step .ph{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/3;background:var(--rose)}
+.step .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(1.15) contrast(1.06);transform:scale(1.08);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.step.in .ph img{transform:scale(1)}
+.step .n{font:italic 500 64px/1 Fraunces,Georgia,serif;color:var(--rasp)}
+.step h3{font:500 clamp(30px,6vw,44px)/1.05 Fraunces,Georgia,serif;letter-spacing:-.02em;margin:4px 0 10px}
+.step p{margin:0;color:var(--soft);max-width:42ch}
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .in .reveal,.js .reveal.in{opacity:1;transform:none}
+
+/* menu */
+.menu{background:var(--rose);padding:90px 0 100px}
+.menu h2,.visit h2{font:500 clamp(42px,9vw,84px)/1 Fraunces,Georgia,serif;font-variation-settings:"opsz" 144;letter-spacing:-.03em;margin:0}
+.menu .sub{color:var(--soft);max-width:46ch;margin:16px 0 0}
+.items{list-style:none;padding:0;margin:40px 0 0;display:grid;gap:0}
+.items li{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;padding:24px 0;border-top:1px solid var(--line)}
+.items li:last-child{border-bottom:1px solid var(--line)}
+.items b{font:500 clamp(26px,5vw,36px)/1.1 Fraunces,Georgia,serif;grid-column:1/-1}
+.items span{color:var(--soft);grid-column:1/-1}
+.order{margin-top:40px;background:var(--plum);color:#fff;border-radius:28px;padding:28px 24px;display:grid;gap:16px}
+.order b{font:italic 500 clamp(28px,5vw,40px)/1.1 Fraunces,Georgia,serif}
+.order p{margin:0;color:#f3d3dc}
+.order .btn.line{color:#fff}
+
+/* band */
+.band{position:relative;min-height:70vh;display:grid;place-items:center;text-align:center;overflow:hidden;isolation:isolate;color:#fff}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(1.2) brightness(.6) contrast(1.1)}
+.band::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 60% at 50% 50%,rgba(58,22,48,.15),rgba(58,22,48,.85))}
+.band h2{font:500 clamp(46px,11vw,120px)/.98 Fraunces,Georgia,serif;letter-spacing:-.03em;margin:0;padding:0 20px}
+.band h2 em{color:#ffc7d1}
+.band p{margin:14px 0 0;color:#ffe3e6;font-weight:500}
+
+/* visit */
+.visit{padding:90px 0 120px}
+.vgrid{display:grid;gap:22px;margin-top:36px}
+.card{border:1px solid var(--line);border-radius:28px;padding:26px;background:#fff}
+.card h3{margin:0 0 14px;font:700 16px "DM Sans",sans-serif;color:var(--rasp)}
+.big{font:500 26px/1.25 Fraunces,Georgia,serif;margin:0 0 6px}
+.muted{color:var(--soft);margin:0}
+.hours{list-style:none;margin:0;padding:0}
+.hours li{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line)}
+.hours li.off{color:var(--soft)}
+.hours li.today{color:var(--rasp);font-weight:700}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.card .btn.line{color:var(--plum)}
+footer{background:var(--plum);color:#f3d3dc;padding:30px 0 120px;font-size:14px}
+footer .wrap{display:grid;gap:6px}
+
+.dock{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;display:flex;gap:10px;transform:translateY(150%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.dock.show{transform:none}
+.dock a{flex:1}
+.dock .btn.line{background:rgba(255,244,241,.94);color:var(--plum);backdrop-filter:blur(8px)}
+
+@media (min-width:820px){
+ .bar nav{display:flex}
+ .step{grid-template-columns:1.1fr .9fr;gap:64px}
+ .step:nth-child(even) .ph{order:2}
+ .items{grid-template-columns:1fr 1fr;column-gap:56px}
+ .items li:nth-last-child(2){border-bottom:1px solid var(--line)}
+ .order{grid-template-columns:1fr auto auto;align-items:center;padding:32px 40px}
+ .vgrid{grid-template-columns:1fr 1fr}
+ .dock{display:none}
+ footer{padding-bottom:40px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}.step .ph img{transform:none}}
+</style>
+</head>
+<body>
+<div class="pv">Prévia – proposta da Vetra Studio para o Atelier Sweet Petit · fotos de clientes no Google, usadas só nesta prévia</div>
+
+<header><div class="wrap bar">
+ <a class="brand" href="#">Atelier Sweet Petit</a>
+ <nav><a href="#como">Como encomendar</a><a href="#doces">Doces</a><a href="#contato">Contato</a></nav>
+</div></header>
+
+<section class="hero">
+ <div class="bg" id="heroBg"><img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SX8qI1ZWa3Dn11BCgZ1mnInKZ1G-9b1PmNhvpBN1wc0aN9McI53YvOlthlNnWJC1Qemgw7S9fz8Ar95QaHMdV9_7zLZ0F5uEJnrsJ9vfE9Y-Sn9D_lqUtxSmunpyOSHJ3iqGWjNg=w1600-k-no" alt="Bolo com chantilly, morangos e calda de chocolate" referrerpolicy="no-referrer" fetchpriority="high"></div>
+ <div class="grain"></div>
+ <div class="wrap">
+  <p class="place reveal">Confeitaria artesanal · Parque Centenário, Campinas</p>
+  <h1 class="reveal">Bolo bonito, <em>feito à mão.</em></h1>
+  <p class="lead reveal">Bolos personalizados, bolos no pote e docinhos para a sua festa, sob encomenda e com ingredientes escolhidos por você.</p>
+  <div class="ctas reveal">
+   <a class="btn main" href="tel:+5511947889817"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Encomendar: (11) 94788-9817</a>
+   <a class="btn line" href="#doces">Ver os doces</a>
+  </div>
+ </div>
+</section>
+<div class="scallop"></div>
+
+<section class="intro"><div class="wrap">
+ <h2 class="reveal">Sobremesa não é só o fim da festa. <em>Merece destaque.</em></h2>
+ <p class="reveal">No Atelier Sweet Petit cada bolo é feito artesanalmente, para aniversário, presente ou evento. Você conta a ocasião, escolhe os ingredientes e a gente prepara.</p>
+</div></section>
+
+<section class="story" id="como"><div class="wrap">
+ <div class="steps">
+  <article class="step">
+   <div class="ph"><img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9StwxTAWI1gt5KopS7ojtP7tVVNQ0C5sxfRNsBALeeXqMpSJgFBxzzOczYnK3g_3Jxpq5hBT3Oks85QWrHU4sqc3joRTZuooXxnYncDOOumgXLNda0FWCq0LdNWQxKFLG4CvTQgEw=w1000-k-no" alt="Caixa com brigadeiros, docinhos coloridos e doce com chocolate branco" referrerpolicy="no-referrer"></div>
+   <div class="reveal"><div class="n">1.</div><h3>Conta a ocasião</h3><p>Liga no (11) 94788-9817 e diz o que vai comemorar, quantas pessoas e o que não pode faltar.</p></div>
+  </article>
+  <article class="step">
+   <div class="ph"><img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SX8qI1ZWa3Dn11BCgZ1mnInKZ1G-9b1PmNhvpBN1wc0aN9McI53YvOlthlNnWJC1Qemgw7S9fz8Ar95QaHMdV9_7zLZ0F5uEJnrsJ9vfE9Y-Sn9D_lqUtxSmunpyOSHJ3iqGWjNg=w1000-k-no" alt="Bolo decorado com morangos e chantilly" referrerpolicy="no-referrer" style="object-position:50% 30%"></div>
+   <div class="reveal"><div class="n">2.</div><h3>Feito à mão, pra você</h3><p>O bolo é montado com os ingredientes que você escolheu. Nada de prateleira: cada encomenda sai do ateliê para uma festa só.</p></div>
+  </article>
+  <article class="step">
+   <div class="ph"><img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9StwxTAWI1gt5KopS7ojtP7tVVNQ0C5sxfRNsBALeeXqMpSJgFBxzzOczYnK3g_3Jxpq5hBT3Oks85QWrHU4sqc3joRTZuooXxnYncDOOumgXLNda0FWCq0LdNWQxKFLG4CvTQgEw=w1000-k-no" alt="Docinhos de festa organizados na caixa" referrerpolicy="no-referrer" style="object-position:85% 50%;transform-origin:85% 50%"></div>
+   <div class="reveal"><div class="n">3.</div><h3>Chega na festa</h3><p>Combina a retirada no Parque Centenário e leva o seu bolo pronto pra ser a parte mais fotografada do dia.</p></div>
+  </article>
+ </div>
+</div></section>
+
+<div class="scallop rose" style="background-color:var(--glace)"></div>
+<section class="menu" id="doces"><div class="wrap">
+ <h2 class="reveal">O que sai do ateliê</h2>
+ <p class="sub reveal">Tudo sob encomenda. Sabores, tamanhos e valores direto com a confeiteira.</p>
+ <ul class="items">
+  <li class="reveal"><b>Bolos personalizados</b><span>Para aniversário, presente ou evento, com os ingredientes que você escolher.</span></li>
+  <li class="reveal"><b>Bolos no pote</b><span>Pra dar de lembrança ou deixar a sobremesa da semana garantida.</span></li>
+  <li class="reveal"><b>Doces e docinhos</b><span>Brigadeiros, beijinhos e docinhos coloridos para a mesa da festa.</span></li>
+  <li class="reveal"><b>Ovos de Páscoa de colher</b><span>Na época da Páscoa, feitos para comer de colher.</span></li>
+ </ul>
+ <div class="order reveal">
+  <div><b>Tem festa chegando?</b><p>Encomenda com antecedência e garante a data. Aceita cartão de débito e crédito.</p></div>
+  <a class="btn main" href="tel:+5511947889817">Ligar e encomendar</a>
+  <a class="btn line" href="https://wa.me/5519988533601">WhatsApp</a>
+ </div>
+</div></section>
+<div class="scallop plum" style="background-color:var(--rose);transform:scaleY(-1);margin-top:0"></div>
+
+<section class="band" style="margin-top:-1px">
+ <img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9StwxTAWI1gt5KopS7ojtP7tVVNQ0C5sxfRNsBALeeXqMpSJgFBxzzOczYnK3g_3Jxpq5hBT3Oks85QWrHU4sqc3joRTZuooXxnYncDOOumgXLNda0FWCq0LdNWQxKFLG4CvTQgEw=w1600-k-no" alt="" referrerpolicy="no-referrer">
+ <div class="reveal"><h2>Toda festa<br><em>tem um doce.</em></h2><p>O seu pode vir do Atelier Sweet Petit.</p></div>
+</section>
+
+<section class="visit" id="contato"><div class="wrap">
+ <h2 class="reveal">Vamos encomendar?</h2>
+ <div class="vgrid">
+  <div class="card reveal">
+   <h3>Contato e endereço</h3>
+   <p class="big">(11) 94788-9817</p>
+   <p class="muted">Av. Eduardo Alves de Lima, 115<br>Parque Centenário · Campinas/SP · 13052-693</p>
+   <div class="links">
+    <a class="btn main" href="tel:+5511947889817">Ligar</a>
+    <a class="btn line" href="https://wa.me/5519988533601">WhatsApp (19) 98853-3601</a>
+   </div>
+  </div>
+  <div class="card reveal">
+   <h3>Horários</h3>
+   <ul class="hours" id="hours">
+    <li data-d="1"><span>Segunda</span><span>9h – 20h</span></li>
+    <li data-d="2"><span>Terça</span><span>9h – 20h</span></li>
+    <li data-d="3"><span>Quarta</span><span>9h – 20h</span></li>
+    <li data-d="4"><span>Quinta</span><span>9h – 20h</span></li>
+    <li data-d="5"><span>Sexta</span><span>9h – 20h</span></li>
+    <li data-d="6"><span>Sábado</span><span>9h – 18h</span></li>
+    <li data-d="0" class="off"><span>Domingo</span><span>Fechado</span></li>
+   </ul>
+  </div>
+ </div>
+</div></section>
+
+<footer><div class="wrap">
+ <span>Atelier Sweet Petit · Av. Eduardo Alves de Lima, 115 · Campinas/SP · (11) 94788-9817</span>
+ <span>Prévia criada pela Vetra Studio. Fotos publicadas no Google Maps, usadas apenas para esta prévia.</span>
+</div></footer>
+
+<div class="dock" id="dock">
+ <a class="btn main" href="tel:+5511947889817">Encomendar</a>
+ <a class="btn line" href="#doces">Ver doces</a>
+</div>
+
+<script>
+(function(){
+ document.documentElement.classList.add("js");
+ setTimeout(function(){document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("in")})},4000);
+ var h=document.querySelector('#hours [data-d="'+new Date().getDay()+'"]');if(h)h.classList.add('today');
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.15});
+ document.querySelectorAll('.reveal,.step').forEach(function(el){io.observe(el)});
+ setTimeout(function(){document.querySelectorAll('.hero .reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('in')},120*i)})},80);
+ var bg=document.getElementById('heroBg'),dock=document.getElementById('dock'),rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ addEventListener('scroll',function(){var y=scrollY;if(!rm&&y<innerHeight*1.2)bg.style.transform='translateY('+(y*.25)+'px) scale('+(1+y*.0002)+')';dock.classList.toggle('show',y>innerHeight*.7);},{passive:true});
+})();
+</script>
+</body>
+</html>
