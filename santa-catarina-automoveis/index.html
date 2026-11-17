@@ -121,7 +121,9 @@ header{position:sticky;top:0;z-index:30;background:rgba(13,14,16,.86);backdrop-f
 /* ficha */
 dialog{border:1px solid var(--line);padding:0;border-radius:18px;width:min(1080px,100% - 20px);max-height:calc(100svh - 20px);background:var(--bg2);color:var(--txt)}
 dialog::backdrop{background:rgba(0,0,0,.8);backdrop-filter:blur(4px)}
-.sheet{display:grid}
+.sheet{display:grid;grid-template-columns:minmax(0,1fr)}
+.gal,.info{min-width:0}
+dialog{overflow-x:hidden}
 .gal{background:#000;position:relative}
 .gal .view{position:relative;aspect-ratio:4/3;overflow:hidden}
 .gal .view img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .7s ease,transform .7s ease;transform:scale(1.03)}
@@ -215,7 +217,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
  .perks{grid-template-columns:repeat(4,1fr)}
  .cats{grid-template-columns:repeat(4,1fr)}
  .filters{grid-template-columns:2fr 1fr 1fr 1fr 1fr}.filters .q{grid-column:auto}
- .sheet{grid-template-columns:1.3fr 1fr}.info{max-height:calc(100svh - 20px);overflow:auto}
+ .sheet{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}.info{max-height:calc(100svh - 20px);overflow:auto}
  .steps{grid-template-columns:repeat(4,1fr)}.step{grid-template-columns:1fr}
  .duo{grid-template-columns:1fr 1fr}
  .about{grid-template-columns:auto 1fr}
@@ -483,7 +485,7 @@ $('#more').onclick=()=>{shown+=9;list()};
 
 /* ficha com todas as fotos */
 let gi=0,gimgs=[],gt=null;
-function go(i){if(!gimgs.length)return;gi=(i+gimgs.length)%gimgs.length;gimgs.forEach((im,j)=>im.classList.toggle('on',j===gi));$('#fpos').textContent=(gi+1)+' / '+gimgs.length;$('#fth').querySelectorAll('button').forEach((b,j)=>{b.setAttribute('aria-current',j===gi);if(j===gi)b.scrollIntoView({block:'nearest',inline:'center'})})}
+function go(i){if(!gimgs.length)return;gi=(i+gimgs.length)%gimgs.length;gimgs.forEach((im,j)=>im.classList.toggle('on',j===gi));$('#fpos').textContent=(gi+1)+' / '+gimgs.length;$('#fth').querySelectorAll('button').forEach((b,j)=>{b.setAttribute('aria-current',j===gi);if(j===gi){const th=b.parentElement;th.scrollTo({left:b.offsetLeft-th.clientWidth/2+b.clientWidth/2,behavior:'smooth'})}})}
 function openCar(c){
  $('#fn').textContent=c.n+' '+c.a;$('#fpz').textContent=brl(c.p);
  const v=$('#fview'),th=$('#fth');v.querySelectorAll('img').forEach(x=>x.remove());th.innerHTML='';gimgs=[];
