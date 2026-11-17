@@ -226,6 +226,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
  .dock{display:none}footer{padding-bottom:30px}
 }
 @media (max-width:859px){section{padding:70px 0}.yard{grid-template-columns:1fr 1fr}.yard img:last-child{display:none}}
+
+@media (max-width:859px){
+ dialog{width:100%;max-width:100%;height:100svh;max-height:100svh;margin:0;border:0;border-radius:0;overflow-y:auto;overscroll-behavior:contain}
+ .gal .view{aspect-ratio:auto;height:min(58svh,100vw)}
+ .x{position:fixed;top:max(12px,env(safe-area-inset-top))}
+ .info{padding:20px 18px calc(24px + env(safe-area-inset-bottom))}
+ .info h3{font-size:34px}
+}
+.gal .view img{object-fit:contain;background:#000}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.badge{opacity:1}.js .reveal{opacity:1;transform:none}.carbox img.drive{opacity:1}}
 </style>
 </head>
@@ -486,11 +495,11 @@ function openCar(c){
  $('#fop').innerHTML=c.o.slice(0,12).map(o=>`<li>${o}</li>`).join('');
  $('#fwa').href=wa(`Olá! Vi no site o ${c.n} ${c.a} (${brl(c.p)}, código ${c.id}). Ele ainda está disponível?`);
  $('#ffin').onclick=()=>{$('#fcar').value=c.id;ficha.close()};
- ficha.showModal();if(!RM&&c.f.length>1)gt=setInterval(()=>go(gi+1),2600);
+ ficha.showModal();document.documentElement.style.overflow='hidden';ficha.scrollTop=0;if(!RM&&c.f.length>1)gt=setInterval(()=>go(gi+1),2600);
 }
 const stopG=()=>{clearInterval(gt);gt=null};
 $('#fprev').onclick=()=>{stopG();go(gi-1)};$('#fnext').onclick=()=>{stopG();go(gi+1)};
-ficha.addEventListener('close',stopG);
+ficha.addEventListener('close',()=>{stopG();document.documentElement.style.overflow=''});
 ficha.addEventListener('click',e=>{if(e.target===ficha)ficha.close()});
 ficha.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){stopG();go(gi+1)}if(e.key==='ArrowLeft'){stopG();go(gi-1)}});
 let sx=0;$('#fview').addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
