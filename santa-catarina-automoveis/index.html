@@ -478,7 +478,7 @@ function go(i){if(!gimgs.length)return;gi=(i+gimgs.length)%gimgs.length;gimgs.fo
 function openCar(c){
  $('#fn').textContent=c.n+' '+c.a;$('#fpz').textContent=brl(c.p);
  const v=$('#fview'),th=$('#fth');v.querySelectorAll('img').forEach(x=>x.remove());th.innerHTML='';gimgs=[];
- Q.length=0;c.f.forEach((f,j)=>{const im=qimg('X',f,'',j<2);im.alt=`${c.n} ${c.a}, foto ${j+1}`;v.prepend(im);gimgs.push(im);const t=document.createElement('button');t.type='button';t.setAttribute('aria-label','Foto '+(j+1));t.appendChild(qimg('P',f));t.onclick=()=>{stopG();go(j)};th.appendChild(t);
+ c.f.forEach((f,j)=>{const im=qimg('X',f,'',j<2);im.alt=`${c.n} ${c.a}, foto ${j+1}`;v.prepend(im);gimgs.push(im);const t=document.createElement('button');t.type='button';t.setAttribute('aria-label','Foto '+(j+1));t.appendChild(qimg('P',f));t.onclick=()=>{stopG();go(j)};th.appendChild(t);
   im.addEventListener('gaveup',()=>{const k=gimgs.indexOf(im);if(k>-1){gimgs.splice(k,1);th.children[k]&&th.children[k].remove();im.remove();go(Math.min(gi,gimgs.length-1))}})});
  $('#fprev').hidden=$('#fnext').hidden=c.f.length<2;
  if(!c.f.length)$('#fpos').textContent='Fotos em breve';else go(0);
