@@ -119,6 +119,82 @@ h2{font-size:clamp(44px,7vw,84px);margin:0 0 18px}
 footer{background:var(--asphalt);color:#b9b4ab;font-size:14px;padding:36px 0 110px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
+
+/* estoque */
+.stock{background:var(--paper)}
+.stock-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:26px}
+.stock-head h2{margin:0}
+.count{font-weight:600;color:var(--muted)}
+.filters{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:22px}
+.filters label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;color:var(--muted)}
+.filters input,.filters select{font:500 16px Figtree,sans-serif;min-height:48px;padding:0 12px;border:1.5px solid var(--line);border-radius:6px;background:#fff;color:var(--asphalt)}
+.filters input:focus,.filters select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(242,120,12,.18)}
+.filters .q{grid-column:1/-1}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.car{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .2s,box-shadow .2s;text-align:left;font:inherit;color:inherit;padding:0}
+.car:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(27,28,31,.45)}
+.car .ph{aspect-ratio:4/3;background:#2a2b2f center/cover no-repeat;position:relative}
+.car .ph img{width:100%;height:100%;object-fit:cover}
+.car .ph .nophoto{position:absolute;inset:0;display:grid;place-items:center;color:#cfcac2;font:italic 800 22px "Saira Condensed",sans-serif;text-transform:uppercase}
+.car .yr{position:absolute;left:10px;top:10px;background:var(--asphalt);color:#fff;font:italic 800 17px/1 "Saira Condensed",sans-serif;padding:6px 9px;border-radius:4px}
+.car .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.car h3{margin:0;font:italic 900 26px/1 "Saira Condensed",sans-serif;text-transform:uppercase}
+.car .meta{color:var(--muted);font-size:15px}
+.car .pr{margin-top:auto;padding-top:10px;font:800 22px/1 Figtree,sans-serif;color:var(--asphalt)}
+.car .pr small{font-size:13px;font-weight:600;color:var(--muted)}
+.empty{grid-column:1/-1;padding:40px 0;color:var(--muted)}
+.note{margin-top:18px;font-size:14px;color:var(--muted)}
+.more{display:flex;justify-content:center;margin-top:26px}
+
+/* ficha do carro */
+dialog{border:0;padding:0;border-radius:10px;width:min(960px,100% - 24px);max-height:calc(100svh - 24px);background:#fff;color:var(--asphalt)}
+dialog::backdrop{background:rgba(15,15,17,.72)}
+.sheet{display:grid}
+.sheet .gal{background:#111;position:relative}
+.sheet .gal img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.sheet .thumbs{display:flex;gap:6px;padding:8px;background:#111}
+.sheet .thumbs button{border:2px solid transparent;padding:0;border-radius:4px;overflow:hidden;width:72px;height:54px;cursor:pointer;background:#222}
+.sheet .thumbs button[aria-current=true]{border-color:var(--sun)}
+.sheet .thumbs img{width:100%;height:100%;object-fit:cover}
+.sheet .info{padding:22px 22px 26px;display:flex;flex-direction:column;gap:14px}
+.sheet h3{margin:0;font:italic 900 40px/.95 "Saira Condensed",sans-serif;text-transform:uppercase}
+.sheet .price{font:800 30px/1 Figtree,sans-serif}
+.specs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 16px;margin:0}
+.specs div{border-top:1px solid var(--line);padding-top:6px}
+.specs dt{font-size:13px;color:var(--muted)}
+.specs dd{margin:0;font-weight:700}
+.ops{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:0}
+.ops li{background:var(--concrete);border-radius:999px;padding:5px 11px;font-size:14px;font-weight:600}
+.sheet .acts{display:grid;gap:10px}
+.x{position:absolute;right:10px;top:10px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.92);font-size:24px;line-height:1;cursor:pointer;color:var(--asphalt)}
+
+/* formulários */
+.form{display:grid;gap:12px;margin-top:6px}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form label{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:600}
+.form input,.form select{font:500 16px Figtree,sans-serif;min-height:48px;padding:0 12px;border:1.5px solid var(--line);border-radius:6px;background:#fff;color:var(--asphalt)}
+.form input:focus,.form select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(242,120,12,.18)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;border:0;padding:0;margin:0}
+.chips legend{font-size:14px;font-weight:600;margin-bottom:6px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1.5px solid var(--line);border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;background:#fff}
+.chips input:checked+span{background:var(--asphalt);color:#fff;border-color:var(--asphalt)}
+.chips input:focus-visible+span{outline:3px solid var(--orange);outline-offset:2px}
+.small{font-size:13px;color:var(--muted);margin:0}
+.fin{background:var(--concrete)}
+.fin .wrap{display:grid;gap:36px}
+.buy .form label{color:#eee}
+.about{display:grid;gap:30px;align-items:center}
+.about .years{font:italic 900 clamp(90px,16vw,190px)/.8 "Saira Condensed",sans-serif;color:var(--orange)}
+@media (min-width:820px){
+ .filters{grid-template-columns:2fr 1fr 1fr 1fr 1fr}
+ .filters .q{grid-column:auto}
+ .sheet{grid-template-columns:1.15fr 1fr}
+ .sheet .info{max-height:calc(100svh - 24px);overflow:auto}
+ .fin .wrap{grid-template-columns:1fr 1.1fr;align-items:start}
+ .about{grid-template-columns:auto 1fr}
+}
+
 /* barra fixa no celular */
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(247,246,243,.96);border-top:1px solid var(--line)}
 .dock .btn{min-height:50px;padding:0 10px;font-size:15px}
@@ -153,7 +229,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <header><div class="wrap bar">
  <a class="brand" href="#topo" aria-label="Santa Catarina Automóveis"><b>Santa Catarina</b><span>automóveis</span></a>
- <nav aria-label="Seções"><a href="#patio">Pátio</a><a href="#comprar">Como comprar</a><a href="#troca">Seu usado</a><a href="#visita">Visite</a></nav>
+ <nav aria-label="Seções"><a href="#estoque">Estoque</a><a href="#troca">Seu usado</a><a href="#financiar">Financiar</a><a href="#visita">Visite</a></nav>
 </div></header>
 
 <main id="topo">
@@ -162,39 +238,62 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
  <div class="wrap">
   <div class="rating reveal"><span class="st">★★★★★</span> 4,7 no Google · 77 avaliações</div>
   <h1 class="display reveal">Seminovo de procedência <em>em Joinville.</em></h1>
-  <p class="lead reveal">Carros e camionetes de várias marcas no pátio da Rua São Paulo, no Floresta. Vem ver de perto, financia com as principais financeiras e dá o seu usado na troca.</p>
+  <p class="lead reveal">Há mais de 45 anos vendendo carros e camionetes em Joinville. Escolha no estoque, financie com as principais financeiras e dê o seu usado na troca.</p>
   <div class="ctas reveal">
    <a class="btn orange" href="https://wa.me/554734362124"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4.1-4.9-4.3-.1-.2-1.2-1.5-1.2-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Chamar no WhatsApp</a>
-   <a class="btn ghost" href="#patio">Ver o pátio</a>
+   <a class="btn ghost" href="#estoque">Ver os carros à venda</a>
   </div>
  </div>
 </section>
 
 <div class="sign" aria-hidden="true"><div class="track">
- <span>Compramos seu veículo</span><span>Avalie seu usado</span><span>Financie seu carro</span><span>Rua São Paulo, 2590</span><span>Compramos seu veículo</span><span>Avalie seu usado</span><span>Financie seu carro</span><span>Rua São Paulo, 2590</span>
+ <span>Compramos seu veículo</span><span>Avalie seu usado</span><span>Financie seu carro</span><span>Mais de 45 anos</span><span>Compramos seu veículo</span><span>Avalie seu usado</span><span>Financie seu carro</span><span>Mais de 45 anos</span>
 </div></div>
 
-<section id="patio">
+
+<section class="stock" id="estoque">
  <div class="wrap">
-  <h2 class="display reveal">O pátio</h2>
-  <p class="intro reveal">Picape, SUV, hatch e até Kombi. Tudo coberto, do jeito que está na loja, para você chegar sabendo o que vai encontrar.</p>
-  <div class="yard">
-   <figure class="a reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SKayIkdRuLET7dOIDzQ5D1Ffnx7883psE4-tevSjFq1kiaXS6pq5sP5kHBC0nYwqI2hZqEa0G_e3e7y-Sq9Q55WYlLwpS3pZ1LUHPHkPAK4G5zJr4xVa3dGhS-2EGlPKEOn_kA=w1400-k-no" alt="Chevrolet S10 branca no pátio coberto"></figure>
-   <figure class="b reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TP_DC-K_7tHmqpokSWPL1-LGZK7dgNMakH3_rRUhai3HhusgEEdOq0XDzUNfocgUGe9DlDarYC8KI8klaWYI-Di9hcG5vk3hzhy5f1-M-y3ToSp1pgaCLC-sNRYImQWdI-NUhT=w1000-k-no" alt="Sedã prata no showroom"></figure>
-   <figure class="c reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S3q0HOHYCWCQdbeZ8m0J7xADc-c4oRGfd_tTtnKIf20xZJ31kvBXq6UiAcbjfccGLPfso_Rk_dnYvTxVqpLEaZM7r5oSofcsb4nZx4Sj61qmlddIoGddZO_fzRZZlUsM2aMesn=w1000-k-no" alt="Mitsubishi prata vista de frente"></figure>
-   <figure class="d reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RbhU8VimMTPh-aajKJkxQhrlptG5SGfb8rDfCFjBlskSCxPtXWDIfPoS6nKVXCiHtrU2AsekoJmceL-QMcSNtB9lypOxh3KauA3zmuZan-34sVPonPKTHmy8jEx8tji-zYuMw=w1000-k-no" alt="Ford EcoSport branca na frente da loja"></figure>
-   <figure class="e reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TXMsJvxxTyqGKv3BO5zasR18u5_Bo9L5ufC0N9HjPzWt0dNEoTF9vZTqL-WbuAb_2g08yF6eGmhunMslI6LJYDwm1_b3ad3ImN2CTChYIY5S7axztLZ2pWx6KkcA90t0xVKxwM=w1000-k-no" alt="Kombi e outros carros na área coberta"></figure>
+  <div class="stock-head">
+   <h2 class="display reveal">Estoque</h2>
+   <span class="count" id="count" aria-live="polite"></span>
   </div>
-  <div class="brands reveal" aria-label="Marcas que passam pelo pátio"><span>Chevrolet</span><span>Fiat</span><span>Volkswagen</span><span>Ford</span><span>Hyundai</span><span>Renault</span><span>Jeep</span><span>Mitsubishi</span><span>Nissan</span><span>Honda</span><span>Citroën</span></div>
+  <form class="filters" id="filters" onsubmit="return false">
+   <label class="q">Buscar<input id="q" type="search" placeholder="Modelo, marca ou cor" autocomplete="off"></label>
+   <label>Marca<select id="fm"><option value="">Todas</option></select></label>
+   <label>Até<select id="fp"><option value="">Qualquer preço</option><option>40000</option><option>60000</option><option>80000</option><option>100000</option></select></label>
+   <label>Ano a partir de<select id="fa"><option value="">Qualquer ano</option><option>2010</option><option>2015</option><option>2018</option><option>2020</option><option>2022</option><option>2024</option></select></label>
+   <label>Ordenar<select id="fo"><option value="ano">Mais novos</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="km">Menor km</option></select></label>
+  </form>
+  <div class="grid" id="grid"></div>
+  <div class="more"><button class="btn dark" id="more" type="button" hidden>Mostrar mais carros</button></div>
+  <p class="note">Valores e fotos do estoque publicado pela loja em 16/11/2026. Confirme a disponibilidade pelo WhatsApp.</p>
  </div>
 </section>
+
+<dialog id="ficha" aria-labelledby="fn">
+ <button class="x" type="button" aria-label="Fechar" onclick="ficha.close()">×</button>
+ <div class="sheet">
+  <div class="gal"><img id="fimg" alt=""><div class="thumbs" id="fth"></div></div>
+  <div class="info">
+   <h3 id="fn"></h3>
+   <div class="price" id="fpz"></div>
+   <dl class="specs" id="fsp"></dl>
+   <ul class="ops" id="fop"></ul>
+   <div class="acts">
+    <a class="btn orange" id="fwa" target="_blank" rel="noopener">Tenho interesse neste carro</a>
+    <a class="btn dark" id="ffin" href="#financiar">Simular financiamento</a>
+   </div>
+  </div>
+ </div>
+</dialog>
+
 
 <section class="buy" id="comprar">
  <div class="wrap">
   <h2 class="display reveal">Do pátio pra sua garagem</h2>
   <p class="intro reveal">Do primeiro contato até sair dirigindo, o caminho é curto.</p>
   <div class="steps">
-   <div class="step reveal"><div class="n">1</div><div><h3>Escolha o carro</h3><p>Manda mensagem no WhatsApp com o modelo que procura e o time responde com o que tem no pátio.</p></div></div>
+   <div class="step reveal"><div class="n">1</div><div><h3>Escolha o carro</h3><p>Filtre o estoque aqui no site por marca, preço e ano, abra a ficha e veja fotos e opcionais.</p></div></div>
    <div class="step reveal"><div class="n">2</div><div><h3>Venha ver de perto</h3><p>Rua São Paulo, 2590, no Floresta. Segunda a sexta das 8h às 18h e sábado de manhã.</p></div></div>
    <div class="step reveal"><div class="n">3</div><div><h3>Monte a negociação</h3><p>Financiamento com as principais financeiras e o seu usado entrando na troca.</p></div></div>
    <div class="step reveal"><div class="n">4</div><div><h3>Saia dirigindo</h3><p>Com a documentação em ordem e a garantia explicada antes de assinar.</p></div></div>
@@ -207,17 +306,53 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   <div class="ph reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SVGU1X7yJKCx_BZvqrv6mFdj5qak_sLrRSv2CXvuvg6FO5SDLp4R_QJRombyP2Ncdw5yYN2-EN_5fdw8H3oFQW05GWbJGawdz5oCjx1c1Oa6DC4CSXPVE960N5_WEFm1m0KEVazA=w1400-k-no" alt="Fachada laranja da Santa Catarina Automóveis com picapes na frente"></div>
   <div>
    <h2 class="display reveal">Tem um carro pra vender?</h2>
-   <p class="reveal" style="color:var(--muted);margin:0">A loja compra o seu veículo, sem burocracia e com agilidade.</p>
-   <ul class="reveal">
-    <li><b>Compramos o seu veículo</b><span>Você recebe a proposta e resolve rápido.</span></li>
-    <li><b>Avalie o seu usado</b><span>Manda fotos e dados pelo WhatsApp, do conforto de casa.</span></li>
-    <li><b>Use na troca</b><span>O valor do seu carro entra na compra do próximo.</span></li>
-   </ul>
-   <a class="btn dark reveal" href="https://wa.me/554734362124">Pedir avaliação do meu carro</a>
+   <p class="reveal" style="color:var(--muted);margin:0">A loja compra, troca ou consigna o seu veículo, sem burocracia e com agilidade. Conte qual é o carro e receba a avaliação pelo WhatsApp.</p>
+   <form class="form reveal" id="aval">
+    <fieldset class="chips"><legend>O que você quer fazer?</legend>
+     <label><input type="radio" name="mot" value="vender" checked><span>Vender</span></label>
+     <label><input type="radio" name="mot" value="trocar"><span>Trocar</span></label>
+     <label><input type="radio" name="mot" value="consignar"><span>Consignar</span></label>
+    </fieldset>
+    <div class="row"><label>Marca e modelo<input name="mod" required placeholder="Ex.: Fiat Strada"></label><label>Ano<input name="ano" inputmode="numeric" maxlength="4" required placeholder="2019"></label></div>
+    <div class="row"><label>Quilometragem<input name="km" inputmode="numeric" placeholder="80.000"></label><label>Seu nome<input name="nome" required autocomplete="given-name"></label></div>
+    <button class="btn dark" type="submit">Enviar pelo WhatsApp</button>
+    <p class="small">Os dados vão direto para o WhatsApp da loja. Nada fica guardado no site.</p>
+   </form>
   </div>
  </div>
 </section>
 
+
+<section class="fin" id="financiar">
+ <div class="wrap">
+  <div>
+   <h2 class="display reveal">Financie do seu jeito</h2>
+   <p class="intro reveal" style="margin-bottom:0">A loja trabalha com as principais financeiras, o que garante boas taxas. Diga o carro e a condição que você precisa, e a equipe monta a simulação.</p>
+  </div>
+  <form class="form reveal" id="finform">
+   <label>Carro<select name="car" id="fcar"><option value="">Ainda estou escolhendo</option></select></label>
+   <div class="row"><label>Entrada (R$)<input name="ent" inputmode="numeric" placeholder="10.000"></label><label>Prazo<select name="prz"><option>48 meses</option><option>36 meses</option><option>24 meses</option><option>60 meses</option></select></label></div>
+   <fieldset class="chips"><legend>Condição que você precisa</legend>
+    <label><input type="checkbox" name="cond" value="Entrada parcelada"><span>Entrada parcelada</span></label>
+    <label><input type="checkbox" name="cond" value="Mais prazo"><span>Mais prazo</span></label>
+    <label><input type="checkbox" name="cond" value="Menor parcela"><span>Menor parcela</span></label>
+    <label><input type="checkbox" name="cond" value="Financiar sem CNH"><span>Financiar sem CNH</span></label>
+   </fieldset>
+   <label>Seu nome<input name="nome" required autocomplete="given-name"></label>
+   <button class="btn orange" type="submit">Pedir simulação no WhatsApp</button>
+   <p class="small">CPF e documentos só são pedidos pela loja depois, no atendimento. Nada fica guardado no site.</p>
+  </form>
+ </div>
+</section>
+
+<section class="about-sec" id="sobre"><div class="wrap"><div class="about"><div class="years display reveal">45+</div><div><h2 class="display reveal">Anos de estrada</h2><p class="intro reveal" style="margin-bottom:0">A Santa Catarina Automóveis está no mercado há mais de 45 anos. Cada carro passa por avaliação técnica antes de entrar no pátio coberto da Rua São Paulo.</p></div></div><div class="yard" style="margin-top:40px">
+   <figure class="a reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SKayIkdRuLET7dOIDzQ5D1Ffnx7883psE4-tevSjFq1kiaXS6pq5sP5kHBC0nYwqI2hZqEa0G_e3e7y-Sq9Q55WYlLwpS3pZ1LUHPHkPAK4G5zJr4xVa3dGhS-2EGlPKEOn_kA=w1400-k-no" alt="Chevrolet S10 branca no pátio coberto"></figure>
+   <figure class="b reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TP_DC-K_7tHmqpokSWPL1-LGZK7dgNMakH3_rRUhai3HhusgEEdOq0XDzUNfocgUGe9DlDarYC8KI8klaWYI-Di9hcG5vk3hzhy5f1-M-y3ToSp1pgaCLC-sNRYImQWdI-NUhT=w1000-k-no" alt="Sedã prata no showroom"></figure>
+   <figure class="c reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S3q0HOHYCWCQdbeZ8m0J7xADc-c4oRGfd_tTtnKIf20xZJ31kvBXq6UiAcbjfccGLPfso_Rk_dnYvTxVqpLEaZM7r5oSofcsb4nZx4Sj61qmlddIoGddZO_fzRZZlUsM2aMesn=w1000-k-no" alt="Mitsubishi prata vista de frente"></figure>
+   <figure class="d reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RbhU8VimMTPh-aajKJkxQhrlptG5SGfb8rDfCFjBlskSCxPtXWDIfPoS6nKVXCiHtrU2AsekoJmceL-QMcSNtB9lypOxh3KauA3zmuZan-34sVPonPKTHmy8jEx8tji-zYuMw=w1000-k-no" alt="Ford EcoSport branca na frente da loja"></figure>
+   <figure class="e reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TXMsJvxxTyqGKv3BO5zasR18u5_Bo9L5ufC0N9HjPzWt0dNEoTF9vZTqL-WbuAb_2g08yF6eGmhunMslI6LJYDwm1_b3ad3ImN2CTChYIY5S7axztLZ2pWx6KkcA90t0xVKxwM=w1000-k-no" alt="Kombi e outros carros na área coberta"></figure>
+  </div>
+  </div></section>
 <section class="voices">
  <div class="wrap">
   <h2 class="display reveal">Quem já comprou</h2>
@@ -256,8 +391,56 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <div class="dock">
  <a class="btn orange" href="https://wa.me/554734362124">WhatsApp</a>
- <a class="btn dark" href="tel:+554734362124">Ligar</a>
+ <a class="btn dark" href="#estoque">Ver estoque</a>
 </div>
+
+<script>
+const CARS=[{"id":"1428892","n":"Chevrolet Tracker","a":2025,"km":40500,"p":124990,"cor":"Branco","c":"Flex","f":["1428892/921/chevrolet-tracker---2025-24424649.webp","1428892/921/chevrolet-tracker---2025-24424650.webp","1428892/921/chevrolet-tracker---2025-24424651.webp"],"o":["Único dono","Teto solar","Banco de couro","Câmera de ré","Sensor de estacionamento","Painel digital","Bluetooth","Controle de estabilidade","Ar digital","Rodas de liga leve","Direção elétrica","Airbag","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Alarme","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1428881","n":"Volkswagen Polo","a":2025,"km":39000,"p":97500,"cor":"Prata","c":"Flex","f":["1428881/921/volkswagen-polo---2025-24424484.webp","1428881/921/volkswagen-polo---2025-24424485.webp","1428881/921/volkswagen-polo---2025-24424488.webp"],"o":["Único dono","Sensor de estacionamento","Painel digital","Bluetooth","Controle de estabilidade","Rodas de liga leve","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","GPS","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1446523","n":"Fiat Mobi","a":2025,"km":45700,"p":62500,"cor":"Branco","c":"Flex","f":["1446523/921/fiat-mobi---2025-24676994.webp","1446523/921/fiat-mobi---2025-24676996.webp","1446523/921/fiat-mobi---2025-24676998.webp"],"o":["Único dono","Bluetooth","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Direção hidráulica","Vidros elétricos","Travas elétricas","Alarme","Airbag do passageiro","Chave reserva","Para-choque na cor"]},{"id":"1341793","n":"Fiat Argo","a":2025,"km":50000,"p":72900,"cor":"Preto","c":"Flex","f":["1341793/921/fiat-argo---2025-24201806.webp","1341793/921/fiat-argo---2025-24201808.webp","1341793/921/fiat-argo---2025-24201809.webp"],"o":["Painel digital","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Ar quente","Desembaçador traseiro","Vidros elétricos","Travas elétricas","Airbag do passageiro","Chave reserva","Para-choque na cor"]},{"id":"1401153","n":"Volkswagen T-Cross","a":2024,"km":26000,"p":119900,"cor":"Preto","c":"Flex","f":["1401153/921/volkswagen-t-cross---2024-24424531.webp","1401153/921/volkswagen-t-cross---2024-24424532.webp","1401153/921/volkswagen-t-cross---2024-24424533.webp"],"o":["Único dono","Câmera de ré","Sensor de estacionamento","Bluetooth","Controle de estabilidade","Start-stop","Ar digital","Rodas de liga leve","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Ar quente","Desembaçador traseiro","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Alarme","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1446952","n":"Fiat Pulse","a":2024,"km":32000,"p":94900,"cor":"Branco","c":"Flex","f":["1446952/921/fiat-pulse---2024-24677114.webp","1446952/921/fiat-pulse---2024-24677116.webp","1446952/921/fiat-pulse---2024-24677117.webp"],"o":["Bluetooth","Controle de estabilidade","Ar digital","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Alarme","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1306796","n":"Hyundai HB20","a":2024,"km":48000,"p":68500,"cor":"Branco","c":"Flex","f":["1306796/921/hyundai-hb20---2024-24424574.webp","1306796/921/hyundai-hb20---2024-24424575.webp","1306796/921/hyundai-hb20---2024-24424576.webp"],"o":["Único dono","Painel digital","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Vidros elétricos","Travas elétricas","Airbag do passageiro","Para-choque na cor"]},{"id":"1395997","n":"Fiat Strada","a":2023,"km":52000,"p":79900,"cor":"Branco","c":"Flex","f":["1395997/921/fiat-strada---2023-24122437.webp","1395997/921/fiat-strada---2023-24122439.webp","1395997/921/fiat-strada---2023-24122441.webp"],"o":["Único dono","Câmera de ré","Airbag","Freios ABS","Ar-condicionado","Ar quente","Direção hidráulica","Vidros elétricos","Travas elétricas","Alarme","Airbag do passageiro","Chave reserva"]},{"id":"1431112","n":"Volkswagen Gol","a":2023,"km":95000,"p":59900,"cor":"Branco","c":"Flex","f":["1431112/921/volkswagen-gol---2023-24181536.webp","1431112/921/volkswagen-gol---2023-24181537.webp","1431112/921/volkswagen-gol---2023-24181538.webp"],"o":["Bluetooth","Airbag","Freios ABS","Ar-condicionado","Ar quente","Desembaçador traseiro","Direção hidráulica","Vidros elétricos","Travas elétricas","Airbag do passageiro","Chave reserva","Para-choque na cor"]},{"id":"1428886","n":"Volkswagen Gol","a":2023,"km":52000,"p":59900,"cor":"Prata","c":"Flex","f":["1428886/921/volkswagen-gol---2023-24161856.webp","1428886/921/volkswagen-gol---2023-24161858.webp","1428886/921/volkswagen-gol---2023-24161861.webp"],"o":[]},{"id":"1373366","n":"Volkswagen T-Cross","a":2022,"km":73000,"p":116500,"cor":"Cinza","c":"Flex","f":["1373366/921/volkswagen-t-cross---2022-24424615.webp","1373366/921/volkswagen-t-cross---2022-24424617.webp","1373366/921/volkswagen-t-cross---2022-24424619.webp"],"o":["Único dono","Banco de couro","Câmera de ré","Sensor de estacionamento","Painel digital","Bluetooth","Controle de estabilidade","Start-stop","Ar digital","Rodas de liga leve","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Travas elétricas","Retrovisores elétricos","GPS","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1446816","n":"Fiat Pulse","a":2022,"km":60000,"p":86900,"cor":"Cinza","c":"Flex","f":["1446816/921/fiat-pulse---2022-24677023.webp","1446816/921/fiat-pulse---2022-24677025.webp","1446816/921/fiat-pulse---2022-24677027.webp"],"o":["Sensor de estacionamento","Painel digital","Bluetooth","Controle de estabilidade","Ar digital","Rodas de liga leve","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Alarme","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1428977","n":"Nissan Kicks","a":2022,"km":77000,"p":99900,"cor":"Cinza","c":"Flex","f":["1428977/921/nissan-kicks---2022-24165651.webp","1428977/921/nissan-kicks---2022-24165653.webp","1428977/921/nissan-kicks---2022-24165655.webp"],"o":["Banco de couro","Câmera de ré","Sensor de estacionamento","Bluetooth","Controle de estabilidade","Ar digital","Rodas de liga leve","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Alarme","Airbag lateral","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1442714","n":"Renault Duster","a":2022,"km":74800,"p":87900,"cor":"Bege","c":"Flex","f":["1442714/921/renault-duster---2022-24586057.webp","1442714/921/renault-duster---2022-24586060.webp","1442714/921/renault-duster---2022-24586063.webp"],"o":["Painel digital","Rodas de liga leve","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Volante com regulagem","Vidros elétricos","Travas elétricas","Airbag do passageiro","Som no volante","Para-choque na cor"]},{"id":"1422367","n":"Volkswagen Nivus","a":2021,"km":77000,"p":105500,"cor":"Vermelho","c":"Flex","f":["1422367/921/volkswagen-nivus---2021-24165982.webp","1422367/921/volkswagen-nivus---2021-24165983.webp","1422367/921/volkswagen-nivus---2021-24165984.webp"],"o":["Banco de couro","Câmera de ré","Sensor de estacionamento","Bluetooth","Controle de estabilidade","Start-stop","Ar digital","Rodas de liga leve","Direção elétrica","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Alarme","Airbag lateral","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1438591","n":"Jeep Renegade","a":2020,"km":106000,"p":74900,"cor":"Vermelho","c":"Flex","f":["1438591/921/jeep-renegade---2020-24386831.webp","1438591/921/jeep-renegade---2020-24386832.webp","1438591/921/jeep-renegade---2020-24386833.webp"],"o":["Painel digital","Bluetooth","Ar digital","Rodas de liga leve","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Alarme","Airbag lateral","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1442720","n":"Honda Fit","a":2020,"km":99000,"p":88900,"cor":"Cinza","c":"Flex","f":["1442720/921/honda-fit---2020-24511033.webp","1442720/921/honda-fit---2020-24511034.webp","1442720/921/honda-fit---2020-24511035.webp"],"o":["Banco de couro","Painel digital","Bluetooth","Controle de estabilidade","Ar digital","Rodas de liga leve","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1341073","n":"Volkswagen Up","a":2018,"km":129900,"p":64990,"cor":"Branco","c":"Flex","f":["1341073/921/volkswagen-up---2018-22514732.webp","1341073/921/volkswagen-up---2018-22514733.webp","1341073/921/volkswagen-up---2018-22514734.webp"],"o":["Banco de couro","Rodas de liga leve","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Airbag do passageiro","Som no volante","Para-choque na cor"]},{"id":"1445937","n":"Volkswagen Fox","a":2018,"km":82000,"p":63990,"cor":"Branco","c":"Flex","f":["1445937/921/volkswagen-fox---2018-24623801.webp","1445937/921/volkswagen-fox---2018-24623802.webp","1445937/921/volkswagen-fox---2018-24623803.webp"],"o":["Painel digital","Bluetooth","Rodas de liga leve","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1438616","n":"Hyundai HB20S","a":2017,"km":122000,"p":63900,"cor":"Prata","c":"Flex","f":[],"o":["Painel digital","Ar digital","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Ar quente","Desembaçador traseiro","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1444583","n":"Hyundai HB20","a":2016,"km":123000,"p":48990,"cor":"Marrom","c":"Flex","f":["1444583/921/hyundai-hb20---2016-24586271.webp","1444583/921/hyundai-hb20---2016-24586273.webp","1444583/921/hyundai-hb20---2016-24586275.webp"],"o":["Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Ar quente","Desembaçador traseiro","Vidros elétricos","Travas elétricas","Airbag do passageiro","Para-choque na cor"]},{"id":"1422365","n":"Chevrolet S10","a":2015,"km":143500,"p":104990,"cor":"Preto","c":"Flex","f":["1422365/921/chevrolet-s10---2015-24101942.webp","1422365/921/chevrolet-s10---2015-24101943.webp","1422365/921/chevrolet-s10---2015-24101944.webp"],"o":["Banco de couro","Câmera de ré","Sensor de estacionamento","Bluetooth","Controle de estabilidade","Rodas de liga leve","Airbag","Freios ABS","Ar-condicionado","Ar quente","Desembaçador traseiro","Direção hidráulica","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Alarme","Airbag do passageiro","Chave reserva","Som no volante","Para-choque na cor"]},{"id":"1444597","n":"Fiat Fiorino","a":2015,"km":88000,"p":57990,"cor":"Branco","c":"Flex","f":["1444597/921/fiat-fiorino---2015-24598560.webp","1444597/921/fiat-fiorino---2015-24598562.webp","1444597/921/fiat-fiorino---2015-24598564.webp"],"o":["Rodas de liga leve","Direção elétrica","Airbag","Freios ABS","Ar-condicionado","Ar quente","Vidros elétricos","Travas elétricas","Airbag do passageiro"]},{"id":"1448054","n":"Fiat Freemont","a":2014,"km":156000,"p":57900,"cor":"Branco","c":"Gasolina","f":["1448054/921/fiat-freemont---2014-24710764.webp","1448054/921/fiat-freemont---2014-24710765.webp","1448054/921/fiat-freemont---2014-24710767.webp"],"o":["Banco de couro","Sensor de estacionamento","Painel digital","Bluetooth","Rodas de liga leve","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Direção hidráulica","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Alarme","Airbag lateral","Airbag do passageiro","Para-choque na cor"]},{"id":"1428981","n":"Chevrolet Meriva","a":2012,"km":199000,"p":34990,"cor":"Prata","c":"Flex","f":["1428981/921/chevrolet-meriva---2012-24162725.webp","1428981/921/chevrolet-meriva---2012-24162726.webp","1428981/921/chevrolet-meriva---2012-24162728.webp"],"o":["Rodas de liga leve","Airbag","Freios ABS","Ar-condicionado","Limpador traseiro","Ar quente","Desembaçador traseiro","Direção hidráulica","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Airbag do passageiro","Chave reserva","Para-choque na cor"]},{"id":"1431062","n":"Ford Fiesta","a":2012,"km":null,"p":26990,"cor":"Vermelho","c":"Flex","f":["1431062/921/ford-fiesta---2012-24180352.webp","1431062/921/ford-fiesta---2012-24180353.webp","1431062/921/ford-fiesta---2012-24180355.webp"],"o":[]},{"id":"1428979","n":"Citroën C3","a":2012,"km":151000,"p":29900,"cor":"Prata","c":"Flex","f":["1428979/921/citroen-c3---2012-24197004.webp","1428979/921/citroen-c3---2012-24197005.webp","1428979/921/citroen-c3---2012-24197006.webp"],"o":["Bluetooth","Rodas de liga leve","Direção elétrica","Ar-condicionado","Ar quente","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Chave reserva","Para-choque na cor"]},{"id":"1447174","n":"Hyundai Azera","a":2011,"km":177000,"p":49990,"cor":"Preto","c":"Gasolina","f":["1447174/921/hyundai-azera---2011-24679703.webp","1447174/921/hyundai-azera---2011-24679704.webp","1447174/921/hyundai-azera---2011-24679705.webp"],"o":["Teto solar","Banco de couro","Rodas de liga leve","Airbag","Freios ABS","Ar-condicionado","Ar quente","Desembaçador traseiro","Direção hidráulica","Volante com regulagem","Vidros elétricos","Travas elétricas","Retrovisores elétricos","Airbag lateral","Airbag do passageiro","Para-choque na cor"]},{"id":"1445931","n":"Fiat Palio","a":2010,"km":250000,"p":32000,"cor":"Preto","c":"Flex","f":["1445931/921/fiat-palio---2010-24623793.webp","1445931/921/fiat-palio---2010-24623794.webp","1445931/921/fiat-palio---2010-24623795.webp"],"o":["Ar-condicionado","Ar quente","Direção hidráulica","Vidros elétricos","Travas elétricas","Para-choque na cor"]},{"id":"1438599","n":"Fiat Idea","a":2010,"km":null,"p":29900,"cor":"Preto","c":"Flex","f":["1438599/921/fiat-idea---2010-24386750.webp","1438599/921/fiat-idea---2010-24386751.webp","1438599/921/fiat-idea---2010-24386752.webp"],"o":["Ar-condicionado","Ar quente","Desembaçador traseiro","Direção hidráulica","Volante com regulagem","Vidros elétricos","Chave reserva","Para-choque na cor"]},{"id":"1446921","n":"Mitsubishi Pajero","a":2001,"km":null,"p":38000,"cor":"Prata","c":"Diesel","f":["1446921/921/mitsubishi-pajero---2001-24669137.webp"],"o":["Rodas de liga leve","Ar-condicionado","Ar quente","Direção hidráulica","Volante com regulagem","Vidros elétricos","Retrovisores elétricos","Para-choque na cor"]}];
+const IMG='https://www.scautomoveis.com.br/foto-resize/M/';
+const WA='554734362124';
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+const kmt=c=>c.km?c.km.toLocaleString('pt-BR')+' km':'km a consultar';
+const wa=t=>'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
+const $=s=>document.querySelector(s);
+const brand=c=>c.n.split(' ')[0];
+[...new Set(CARS.map(brand))].sort().forEach(b=>$('#fm').add(new Option(b,b)));
+$('#fp').querySelectorAll('option[value=""]~option').forEach(o=>{o.value=o.text;o.text='Até '+brl(+o.text)});
+$('#fa').querySelectorAll('option[value=""]~option').forEach(o=>{o.value=o.text;o.text='A partir de '+o.text});
+CARS.forEach(c=>$('#fcar').add(new Option(`${c.n} ${c.a} · ${brl(c.p)}`,c.id)));
+let shown=9;
+function list(){
+ const q=$('#q').value.trim().toLowerCase(),m=$('#fm').value,p=+$('#fp').value||1e9,a=+$('#fa').value||0,o=$('#fo').value;
+ let r=CARS.filter(c=>(!m||brand(c)===m)&&c.p<=p&&c.a>=a&&(!q||(c.n+' '+c.cor+' '+c.a).toLowerCase().includes(q)));
+ r.sort((x,y)=>o==='menor'?x.p-y.p:o==='maior'?y.p-x.p:o==='km'?(x.km??9e9)-(y.km??9e9):y.a-x.a||y.p-x.p);
+ $('#count').textContent=r.length===1?'1 carro':r.length+' carros';
+ const g=$('#grid');g.innerHTML='';
+ if(!r.length){g.innerHTML='<p class="empty">Nenhum carro com esses filtros. Tente outra faixa de preço ou fale com a loja, que eles buscam o carro para você.</p>'}
+ r.slice(0,shown).forEach(c=>{const b=document.createElement('button');b.type='button';b.className='car';b.setAttribute('aria-label',`${c.n} ${c.a}, ${brl(c.p)}`);
+  b.innerHTML=`<div class="ph">${c.f[0]?`<img loading="lazy" referrerpolicy="no-referrer" src="${IMG+c.f[0]}" alt="">`:'<span class="nophoto">Foto em breve</span>'}<span class="yr">${c.a}</span></div><div class="bd"><h3>${c.n}</h3><div class="meta">${kmt(c)} · ${c.cor} · ${c.c}</div><div class="pr">${brl(c.p)}</div></div>`;
+  b.onclick=()=>open(c);g.appendChild(b)});
+ $('#more').hidden=r.length<=shown;
+}
+['#q','#fm','#fp','#fa','#fo'].forEach(s=>$(s).addEventListener('input',()=>{shown=9;list()}));
+$('#more').onclick=()=>{shown+=9;list()};
+function open(c){
+ $('#fn').textContent=c.n+' '+c.a;$('#fpz').textContent=brl(c.p);
+ const im=$('#fimg'),th=$('#fth');th.innerHTML='';
+ if(c.f.length){im.hidden=false;im.referrerPolicy='no-referrer';im.src=IMG+c.f[0];im.alt=c.n+' '+c.a;
+  c.f.forEach((f,i)=>{const t=document.createElement('button');t.type='button';t.setAttribute('aria-label','Foto '+(i+1));t.setAttribute('aria-current',i===0);t.innerHTML=`<img referrerpolicy="no-referrer" src="${IMG+f}" alt="">`;t.onclick=()=>{im.src=IMG+f;th.querySelectorAll('button').forEach(x=>x.setAttribute('aria-current',x===t))};th.appendChild(t)})}
+ else{im.hidden=true}
+ $('#fsp').innerHTML=[['Ano',c.a],['Quilometragem',kmt(c)],['Cor',c.cor],['Combustível',c.c]].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+ $('#fop').innerHTML=c.o.slice(0,10).map(o=>`<li>${o}</li>`).join('');
+ $('#fwa').href=wa(`Olá! Vi no site o ${c.n} ${c.a} (${brl(c.p)}, código ${c.id}). Ele ainda está disponível?`);
+ $('#ffin').onclick=()=>{$('#fcar').value=c.id;ficha.close()};
+ ficha.showModal();
+}
+ficha.addEventListener('click',e=>{if(e.target===ficha)ficha.close()});
+list();
+$('#aval').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);
+ location.href=wa(`Olá! Sou ${f.get('nome')} e quero ${f.get('mot')} meu carro: ${f.get('mod')} ${f.get('ano')}${f.get('km')?', '+f.get('km')+' km':''}. Podem avaliar?`)});
+$('#finform').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);const c=CARS.find(x=>x.id===f.get('car'));const cond=f.getAll('cond');
+ location.href=wa(`Olá! Sou ${f.get('nome')} e quero simular um financiamento${c?` do ${c.n} ${c.a} (${brl(c.p)}, código ${c.id})`:''}. Entrada: ${f.get('ent')?'R$ '+f.get('ent'):'a combinar'}. Prazo: ${f.get('prz')}.${cond.length?' Preciso de: '+cond.join(', ')+'.':''}`)});
+</script>
 
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
