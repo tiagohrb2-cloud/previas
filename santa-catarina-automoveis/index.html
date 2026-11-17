@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#f2780c">
+<title>Santa Catarina Automóveis · Seminovos em Joinville</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');setTimeout(()=>document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in')),4000)</script>
+<style>
+:root{color-scheme:only light;--asphalt:#1b1c1f;--asphalt2:#2a2b2f;--concrete:#eceae6;--paper:#f7f6f3;--orange:#f2780c;--sun:#f7a823;--red:#c4261d;--muted:#5d5a55;--line:rgba(27,28,31,.12)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--asphalt);font:400 17px/1.6 Figtree,system-ui,sans-serif;overflow-x:hidden}
+::selection{background:var(--sun);color:var(--asphalt)}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+img{display:block;max-width:100%}
+.pv{position:relative;z-index:30;background:var(--asphalt);color:#f3efe8;font:600 12px/1.3 Figtree,sans-serif;text-align:center;padding:7px 12px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.display{font-family:"Saira Condensed","Arial Narrow",sans-serif;font-weight:900;font-style:italic;text-transform:uppercase;line-height:.88;letter-spacing:-.5px}
+
+/* topo */
+header{position:absolute;inset:auto 0 auto 0;z-index:20;color:#fff}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font:italic 900 28px/0.9 "Saira Condensed",sans-serif;color:#fff;letter-spacing:-.3px}
+.brand span{font:600 13px/1.2 Figtree,sans-serif;color:var(--sun);margin-left:2px}
+.bar nav{display:none;gap:28px;font-weight:600;font-size:15px}
+.bar nav a{opacity:.9;border-bottom:2px solid transparent;padding-bottom:2px}
+.bar nav a:hover{opacity:1;border-color:var(--sun)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;padding-top:100px;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;color:#fff;background:var(--asphalt)}
+.hero .bg{position:absolute;inset:-6% 0 0 0;z-index:-2;will-change:transform}
+.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;filter:saturate(1.15) contrast(1.12) brightness(.78)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+ linear-gradient(100deg,rgba(27,28,31,.92) 0%,rgba(27,28,31,.62) 42%,rgba(27,28,31,.1) 75%),
+ linear-gradient(180deg,rgba(27,28,31,.5) 0%,transparent 28%,transparent 70%,rgba(27,28,31,.85) 100%)}
+.hero .wrap{padding:0 0 60px}
+.rating{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;margin-bottom:18px}
+.rating .st{color:var(--sun);letter-spacing:2px}
+.hero h1{font-size:clamp(54px,min(14vw,15vh),150px);margin:0 0 22px;max-width:11ch}
+.hero h1 em{font-style:italic;color:var(--sun);display:block}
+.hero p.lead{max-width:30em;font-size:clamp(17px,2vw,20px);margin:0 0 30px;color:#ece8e1}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:6px;font-weight:700;font-size:16px;transition:transform .15s,background .2s}
+.btn:active{transform:translateY(2px)}
+.btn.orange{background:var(--orange);color:#fff}
+.btn.orange:hover{background:#d96806}
+.btn.ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
+.btn.ghost:hover{background:#fff;color:var(--asphalt)}
+.btn.dark{background:var(--asphalt);color:#fff}
+.btn.dark:hover{background:#000}
+
+/* faixa da fachada: o elemento marcante */
+.sign{background:linear-gradient(180deg,var(--sun),var(--orange));color:var(--asphalt);overflow:hidden;border-block:4px solid var(--red)}
+.sign .track{display:flex;gap:46px;white-space:nowrap;padding:16px 0;font:italic 900 clamp(26px,4vw,40px)/1 "Saira Condensed",sans-serif;text-transform:uppercase;animation:roll 38s linear infinite;width:max-content}
+.sign .track span::after{content:"/";margin-left:46px;color:var(--red)}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+section{padding:96px 0}
+h2{font-size:clamp(44px,7vw,84px);margin:0 0 18px}
+.intro{max-width:36em;color:var(--muted);font-size:18px;margin:0 0 44px}
+
+/* pátio */
+.yard{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+.yard figure{margin:0;overflow:hidden;border-radius:4px;background:#ddd;position:relative}
+.yard img{width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.05);transition:transform .6s ease}
+.yard figure:hover img{transform:scale(1.04)}
+.yard .a{grid-column:span 7;aspect-ratio:16/10}
+.yard .b{grid-column:span 5;aspect-ratio:auto}
+.yard .c{grid-column:span 4;aspect-ratio:4/3}
+.yard .d{grid-column:span 4;aspect-ratio:4/3}
+.yard .e{grid-column:span 4;aspect-ratio:4/3}
+.brands{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:36px;font:italic 800 22px/1.1 "Saira Condensed",sans-serif;text-transform:uppercase;color:var(--asphalt2)}
+.brands span{opacity:.55}
+.brands span:hover{opacity:1;color:var(--orange)}
+
+/* passos */
+.buy{background:var(--asphalt);color:#f3efe8}
+.buy h2{color:#fff}
+.buy .intro{color:#b9b4ab}
+.steps{display:grid;gap:2px;background:rgba(255,255,255,.08)}
+.step{background:var(--asphalt);display:grid;grid-template-columns:auto 1fr;gap:20px;padding:30px 0}
+.step .n{font:italic 900 64px/0.8 "Saira Condensed",sans-serif;color:var(--orange);min-width:62px}
+.step h3{font:700 22px/1.25 Figtree,sans-serif;margin:4px 0 8px;color:#fff}
+.step p{margin:0;color:#c9c4bb;max-width:34em}
+
+/* serviços com foto */
+.trade{display:grid;gap:28px;align-items:center}
+.trade .ph{border-radius:4px;overflow:hidden;aspect-ratio:4/3}
+.trade .ph img{width:100%;height:100%;object-fit:cover}
+.trade ul{list-style:none;padding:0;margin:26px 0 30px;display:grid;gap:16px}
+.trade li{padding-left:22px;position:relative}
+.trade li::before{content:"";position:absolute;left:0;top:.6em;width:10px;height:10px;background:var(--orange);transform:skewX(-14deg)}
+.trade li b{display:block;font-size:18px}
+.trade li span{color:var(--muted)}
+
+/* avaliações */
+.voices{background:var(--concrete)}
+.quotes{display:grid;gap:34px}
+.quotes blockquote{margin:0;border-top:3px solid var(--asphalt);padding-top:18px}
+.quotes p{font:italic 800 clamp(24px,3vw,32px)/1.12 "Saira Condensed",sans-serif;text-transform:none;margin:0 0 12px}
+.quotes cite{font-style:normal;color:var(--muted);font-size:15px}
+
+/* visita */
+.visit{display:grid;gap:36px}
+.visit .big{font:italic 900 clamp(36px,5vw,58px)/0.95 "Saira Condensed",sans-serif;text-transform:uppercase;margin:0 0 20px}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:6px 24px;margin:0 0 28px;font-size:17px}
+.hours dt{font-weight:700}
+.hours dd{margin:0;color:var(--muted)}
+.map{border-radius:4px;overflow:hidden;min-height:320px;background:#ddd}
+.map img{width:100%;height:100%;object-fit:cover}
+
+footer{background:var(--asphalt);color:#b9b4ab;font-size:14px;padding:36px 0 110px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* barra fixa no celular */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(247,246,243,.96);border-top:1px solid var(--line)}
+.dock .btn{min-height:50px;padding:0 10px;font-size:15px}
+
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (min-width:820px){
+ .bar nav{display:flex}
+ .steps{grid-template-columns:repeat(4,1fr);background:none;gap:28px}
+ .step{grid-template-columns:1fr;border-top:3px solid var(--orange);padding:22px 0 0}
+ .trade{grid-template-columns:1.1fr 1fr;gap:56px}
+ .quotes{grid-template-columns:repeat(3,1fr)}
+ .visit{grid-template-columns:1fr 1.1fr;align-items:stretch}
+ .dock{display:none}
+ footer{padding-bottom:36px}
+}
+@media (max-width:819px){
+ section{padding:72px 0}
+ .yard{grid-template-columns:1fr 1fr}
+ .yard .a{grid-column:span 2}
+ .yard .b{grid-column:span 2;aspect-ratio:16/10}
+ .yard .c,.yard .d{grid-column:span 1}
+ .yard .e{grid-column:span 2;aspect-ratio:16/10}
+ .hero .wrap{padding-bottom:110px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}.sign .track{white-space:normal;flex-wrap:wrap;width:auto;gap:12px 46px}}
+</style>
+</head>
+<body>
+<div class="pv">Prévia – proposta da Vetra Studio para a Santa Catarina Automóveis · fotos de clientes no Google, usadas só nesta prévia</div>
+
+<header><div class="wrap bar">
+ <a class="brand" href="#topo" aria-label="Santa Catarina Automóveis"><b>Santa Catarina</b><span>automóveis</span></a>
+ <nav aria-label="Seções"><a href="#patio">Pátio</a><a href="#comprar">Como comprar</a><a href="#troca">Seu usado</a><a href="#visita">Visite</a></nav>
+</div></header>
+
+<main id="topo">
+<section class="hero" style="padding-bottom:0">
+ <div class="bg"><img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9T3MpTnD9mvQBPPpWz8kqQc5Ofuu4ECjsJ4zTzxKWGLkrIW5I-Iusl9DwCxbnhZtE5Pkpamxmtr-MmCqIJ3TdNc4UBScurDBbjLYNU5f10JlzQD7gAIePMfKsY6CJiL3HPyS0Q=w2000-k-no" referrerpolicy="no-referrer" alt="Pátio coberto da Santa Catarina Automóveis com carros seminovos enfileirados"></div>
+ <div class="wrap">
+  <div class="rating reveal"><span class="st">★★★★★</span> 4,7 no Google · 77 avaliações</div>
+  <h1 class="display reveal">Seminovo de procedência <em>em Joinville.</em></h1>
+  <p class="lead reveal">Carros e camionetes de várias marcas no pátio da Rua São Paulo, no Floresta. Vem ver de perto, financia com as principais financeiras e dá o seu usado na troca.</p>
+  <div class="ctas reveal">
+   <a class="btn orange" href="https://wa.me/554734362124"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4.1-4.9-4.3-.1-.2-1.2-1.5-1.2-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Chamar no WhatsApp</a>
+   <a class="btn ghost" href="#patio">Ver o pátio</a>
+  </div>
+ </div>
+</section>
+
+<div class="sign" aria-hidden="true"><div class="track">
+ <span>Compramos seu veículo</span><span>Avalie seu usado</span><span>Financie seu carro</span><span>Rua São Paulo, 2590</span><span>Compramos seu veículo</span><span>Avalie seu usado</span><span>Financie seu carro</span><span>Rua São Paulo, 2590</span>
+</div></div>
+
+<section id="patio">
+ <div class="wrap">
+  <h2 class="display reveal">O pátio</h2>
+  <p class="intro reveal">Picape, SUV, hatch e até Kombi. Tudo coberto, do jeito que está na loja, para você chegar sabendo o que vai encontrar.</p>
+  <div class="yard">
+   <figure class="a reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SKayIkdRuLET7dOIDzQ5D1Ffnx7883psE4-tevSjFq1kiaXS6pq5sP5kHBC0nYwqI2hZqEa0G_e3e7y-Sq9Q55WYlLwpS3pZ1LUHPHkPAK4G5zJr4xVa3dGhS-2EGlPKEOn_kA=w1400-k-no" alt="Chevrolet S10 branca no pátio coberto"></figure>
+   <figure class="b reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TP_DC-K_7tHmqpokSWPL1-LGZK7dgNMakH3_rRUhai3HhusgEEdOq0XDzUNfocgUGe9DlDarYC8KI8klaWYI-Di9hcG5vk3hzhy5f1-M-y3ToSp1pgaCLC-sNRYImQWdI-NUhT=w1000-k-no" alt="Sedã prata no showroom"></figure>
+   <figure class="c reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S3q0HOHYCWCQdbeZ8m0J7xADc-c4oRGfd_tTtnKIf20xZJ31kvBXq6UiAcbjfccGLPfso_Rk_dnYvTxVqpLEaZM7r5oSofcsb4nZx4Sj61qmlddIoGddZO_fzRZZlUsM2aMesn=w1000-k-no" alt="Mitsubishi prata vista de frente"></figure>
+   <figure class="d reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RbhU8VimMTPh-aajKJkxQhrlptG5SGfb8rDfCFjBlskSCxPtXWDIfPoS6nKVXCiHtrU2AsekoJmceL-QMcSNtB9lypOxh3KauA3zmuZan-34sVPonPKTHmy8jEx8tji-zYuMw=w1000-k-no" alt="Ford EcoSport branca na frente da loja"></figure>
+   <figure class="e reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TXMsJvxxTyqGKv3BO5zasR18u5_Bo9L5ufC0N9HjPzWt0dNEoTF9vZTqL-WbuAb_2g08yF6eGmhunMslI6LJYDwm1_b3ad3ImN2CTChYIY5S7axztLZ2pWx6KkcA90t0xVKxwM=w1000-k-no" alt="Kombi e outros carros na área coberta"></figure>
+  </div>
+  <div class="brands reveal" aria-label="Marcas que passam pelo pátio"><span>Chevrolet</span><span>Fiat</span><span>Volkswagen</span><span>Ford</span><span>Hyundai</span><span>Renault</span><span>Jeep</span><span>Mitsubishi</span><span>Nissan</span><span>Honda</span><span>Citroën</span></div>
+ </div>
+</section>
+
+<section class="buy" id="comprar">
+ <div class="wrap">
+  <h2 class="display reveal">Do pátio pra sua garagem</h2>
+  <p class="intro reveal">Do primeiro contato até sair dirigindo, o caminho é curto.</p>
+  <div class="steps">
+   <div class="step reveal"><div class="n">1</div><div><h3>Escolha o carro</h3><p>Manda mensagem no WhatsApp com o modelo que procura e o time responde com o que tem no pátio.</p></div></div>
+   <div class="step reveal"><div class="n">2</div><div><h3>Venha ver de perto</h3><p>Rua São Paulo, 2590, no Floresta. Segunda a sexta das 8h às 18h e sábado de manhã.</p></div></div>
+   <div class="step reveal"><div class="n">3</div><div><h3>Monte a negociação</h3><p>Financiamento com as principais financeiras e o seu usado entrando na troca.</p></div></div>
+   <div class="step reveal"><div class="n">4</div><div><h3>Saia dirigindo</h3><p>Com a documentação em ordem e a garantia explicada antes de assinar.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section id="troca">
+ <div class="wrap trade">
+  <div class="ph reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SVGU1X7yJKCx_BZvqrv6mFdj5qak_sLrRSv2CXvuvg6FO5SDLp4R_QJRombyP2Ncdw5yYN2-EN_5fdw8H3oFQW05GWbJGawdz5oCjx1c1Oa6DC4CSXPVE960N5_WEFm1m0KEVazA=w1400-k-no" alt="Fachada laranja da Santa Catarina Automóveis com picapes na frente"></div>
+  <div>
+   <h2 class="display reveal">Tem um carro pra vender?</h2>
+   <p class="reveal" style="color:var(--muted);margin:0">A loja compra o seu veículo, sem burocracia e com agilidade.</p>
+   <ul class="reveal">
+    <li><b>Compramos o seu veículo</b><span>Você recebe a proposta e resolve rápido.</span></li>
+    <li><b>Avalie o seu usado</b><span>Manda fotos e dados pelo WhatsApp, do conforto de casa.</span></li>
+    <li><b>Use na troca</b><span>O valor do seu carro entra na compra do próximo.</span></li>
+   </ul>
+   <a class="btn dark reveal" href="https://wa.me/554734362124">Pedir avaliação do meu carro</a>
+  </div>
+ </div>
+</section>
+
+<section class="voices">
+ <div class="wrap">
+  <h2 class="display reveal">Quem já comprou</h2>
+  <div class="quotes">
+   <blockquote class="reveal"><p>“A honestidade com que fomos tratados, especialmente em relação à garantia do veículo, nos deu muita confiança.”</p><cite>Jéssika, no Google</cite></blockquote>
+   <blockquote class="reveal"><p>“Super indico! Fomos bem atendidos, garantia 100%.”</p><cite>Felipe, no Google</cite></blockquote>
+   <blockquote class="reveal"><p>“Equipe de muita confiança. Diversas marcas de veículos. De ótima procedência.”</p><cite>Rogélio, no Google</cite></blockquote>
+  </div>
+ </div>
+</section>
+
+<section id="visita">
+ <div class="wrap visit">
+  <div>
+   <h2 class="display reveal">Passa na loja</h2>
+   <p class="big reveal">R. São Paulo, 2590<br>Floresta · Joinville</p>
+   <dl class="hours reveal">
+    <dt>Seg a sex</dt><dd>8h às 12h · 13h30 às 18h</dd>
+    <dt>Sábado</dt><dd>8h às 12h</dd>
+    <dt>Telefone</dt><dd>(47) 3436-2124</dd>
+   </dl>
+   <div class="ctas reveal">
+    <a class="btn orange" href="https://wa.me/554734362124">Chamar no WhatsApp</a>
+    <a class="btn dark" href="https://www.google.com/maps/dir/?api=1&destination=Santa+Catarina+Autom%C3%B3veis+R.+S%C3%A3o+Paulo+2590+Joinville">Como chegar</a>
+   </div>
+  </div>
+  <div class="map reveal"><img loading="lazy" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TW9NXjXBhjvf8m5-CJka-w4S5g1gXQzYc4Ygwah3wnjV8GdImIiqEpJroqUIIqhRRVtlm472Nncm5xfdCrBaFl10942-lNAKovvYm9t5MTebfxAOKditwJHCsCSMFnhd1hBcik=w1400-k-no" alt="Prédio da loja com carros no pátio da frente"></div>
+ </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+ <span>Santa Catarina Automóveis · R. São Paulo, 2590 – Floresta, Joinville/SC · (47) 3436-2124</span>
+ <span>Prévia feita pela Vetra Studio · fotos de clientes no Google, usadas só nesta prévia</span>
+</div></footer>
+
+<div class="dock">
+ <a class="btn orange" href="https://wa.me/554734362124">WhatsApp</a>
+ <a class="btn dark" href="tel:+554734362124">Ligar</a>
+</div>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const bg=document.querySelector('.hero .bg');
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){addEventListener('scroll',()=>{const y=scrollY;if(y<innerHeight)bg.style.transform=`translateY(${y*.25}px)`},{passive:true})}
+</script>
+</body>
+</html>
