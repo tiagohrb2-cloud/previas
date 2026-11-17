@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="only dark">
+<meta name="theme-color" content="#0e0e10">
+<title>Dom Luis Barbearia · Ribeirão Preto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:only dark;--preto:#0e0e10;--preto2:#17171a;--prata:#c9ccd1;--giz:#f3f1ec;--feltro:#1f6b4a;--feltro2:#2f8a61;--latao:#d8b46a;--soft:#a3a6ad;--line:rgba(243,241,236,.13)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--preto);color:var(--giz);font:400 17px/1.6 Archivo,system-ui,sans-serif;overflow-x:hidden}
+::selection{background:var(--latao);color:var(--preto)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.pv{position:relative;z-index:30;background:var(--giz);color:var(--preto);font:600 12px/1.35 Archivo,sans-serif;text-align:center;padding:7px 12px}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.serif{font-family:"DM Serif Display",Georgia,serif;font-weight:400;line-height:.95;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:4px;font-weight:700;font-size:16px;letter-spacing:.01em;transition:transform .2s,background .2s,color .2s;border:0;cursor:pointer}
+.btn:active{transform:scale(.97)}
+.btn.brass{background:var(--latao);color:var(--preto)}
+.btn.brass:hover{background:#ecca82}
+.btn.ghost{border:1.5px solid rgba(243,241,236,.45);color:var(--giz)}
+.btn.ghost:hover{background:var(--giz);color:var(--preto)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--latao);outline-offset:3px}
+.wa{width:20px;height:20px;flex:none}
+
+/* parede de tijolinho branco da barbearia */
+.brick{height:64px;background:#ecebe6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='32'%3E%3Cg fill='none' stroke='%23b9b6af' stroke-width='2'%3E%3Cpath d='M0 1h64M0 17h64M1 1v16M33 17v16'/%3E%3C/g%3E%3C/svg%3E") 0 0/64px 32px;box-shadow:inset 0 10px 18px -10px rgba(0,0,0,.45),inset 0 -10px 18px -10px rgba(0,0,0,.45)}
+
+/* hero */
+header{position:absolute;left:0;right:0;z-index:20}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand small{font:700 10px Archivo,sans-serif;letter-spacing:.42em;color:var(--prata)}
+.brand b{font:400 26px "DM Serif Display",serif}
+.bar nav{display:none;gap:28px;font-weight:600;font-size:15px}
+.bar nav a:hover{color:var(--latao)}
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:-6% 0 0 0;z-index:-2;will-change:transform}
+.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;filter:grayscale(.55) contrast(1.22) brightness(.62)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+ radial-gradient(80% 60% at 75% 20%,rgba(216,180,106,.16),transparent 60%),
+ linear-gradient(90deg,rgba(14,14,16,.82) 0%,rgba(14,14,16,.2) 70%),
+ linear-gradient(180deg,rgba(14,14,16,.5) 0%,transparent 30%,rgba(14,14,16,.6) 70%,var(--preto) 98%)}
+.grain{position:absolute;inset:0;z-index:-1;opacity:.14;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero .wrap{padding:120px 0 64px}
+.rating{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(14,14,16,.6);border-radius:4px;padding:7px 14px;font-size:14px;font-weight:600}
+.rating .st{color:var(--latao);letter-spacing:1px}
+.hero h1{font-size:clamp(64px,min(19vw,18vh),190px);margin:18px 0 0}
+.hero h1 em{font-style:italic;color:var(--latao)}
+.hero p{max-width:34ch;font-size:clamp(17px,2.2vw,20px);color:#dcdad5;margin:16px 0 28px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+
+/* sequência */
+.story{padding:96px 0 40px}
+.story h2,.svc h2,.visit h2{font-size:clamp(46px,10vw,92px);margin:0}
+.lede{color:var(--soft);max-width:50ch;margin:16px 0 0;font-size:18px}
+.steps{display:grid;gap:64px;margin-top:60px}
+.step{display:grid;gap:22px;align-items:center}
+.step .ph{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--preto2);border-radius:6px}
+.step .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.15) brightness(.85);transform:scale(1.08);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.step.in .ph img{transform:scale(1)}
+.step .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(14,14,16,.7))}
+.step .n{font:italic 400 84px/.8 "DM Serif Display",serif;color:var(--latao)}
+.step h3{font:400 clamp(32px,6vw,48px)/1.02 "DM Serif Display",serif;margin:10px 0 10px}
+.step p{margin:0;color:var(--soft);max-width:42ch}
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in,.js .in .reveal{opacity:1;transform:none}
+
+/* serviços */
+.svc{padding:90px 0;background:var(--preto2)}
+.svc-top{display:grid;gap:16px}
+.menu{list-style:none;margin:40px 0 0;padding:0}
+.menu li{display:flex;align-items:baseline;gap:14px;padding:20px 0;border-bottom:1px solid var(--line)}
+.menu li b{font:400 clamp(28px,5vw,40px)/1.1 "DM Serif Display",serif}
+.menu li::after{display:none}
+.menu li span{order:2;color:var(--soft);font-size:15px;text-align:right}
+.felt{position:relative;margin-top:44px;border-radius:6px;overflow:hidden;display:grid;background:var(--feltro);border:10px solid #c79a3c}
+.felt .ph{aspect-ratio:16/10}
+.felt img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:grayscale(.2) contrast(1.1) brightness(.9)}
+.felt .tx{padding:28px 24px}
+.felt b{display:block;font:400 34px/1.05 "DM Serif Display",serif}
+.felt p{margin:10px 0 18px;color:#d9eee3}
+
+/* depoimentos */
+.quotes{padding:90px 0;display:grid;gap:30px}
+.quotes blockquote{margin:0;font:italic 400 clamp(26px,4.5vw,38px)/1.2 "DM Serif Display",serif;border-left:0;padding-top:18px;border-top:1px solid var(--line)}
+.quotes cite{display:block;margin-top:10px;font:600 14px Archivo,sans-serif;font-style:normal;color:var(--soft)}
+
+/* visita */
+.visit{padding:90px 0 120px}
+.vgrid{display:grid;gap:22px;margin-top:40px}
+.logo{border-radius:6px;overflow:hidden;aspect-ratio:1/1;background:#000}
+.logo img{width:100%;height:100%;object-fit:cover}
+.card{border:1px solid var(--line);border-radius:6px;padding:26px 24px;background:var(--preto2)}
+.card h3{margin:0 0 14px;font:700 13px Archivo,sans-serif;letter-spacing:.22em;color:var(--latao)}
+.addr{font-size:22px;font-weight:700;line-height:1.3;margin:0 0 6px}
+.muted{color:var(--soft);margin:0}
+.hours{list-style:none;margin:0;padding:0}
+.hours li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.hours li.off{color:var(--soft)}
+.hours li.today{color:var(--latao);font-weight:700}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+footer{border-top:1px solid var(--line);padding:28px 0 120px;color:var(--soft);font-size:13px}
+footer .wrap{display:grid;gap:6px}
+
+.dock{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;display:flex;gap:10px;transform:translateY(150%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.dock.show{transform:none}
+.dock a{flex:1}
+.dock .btn.ghost{background:rgba(14,14,16,.88);backdrop-filter:blur(8px)}
+
+@media (min-width:820px){
+ .bar nav{display:flex}
+ .hero .wrap{padding-bottom:96px}
+ .step{grid-template-columns:1.1fr .9fr;gap:60px}
+ .step:nth-child(even) .ph{order:2}
+ .svc-top{grid-template-columns:1fr 1fr;align-items:end}
+ .felt{grid-template-columns:1.2fr 1fr;align-items:center}
+ .felt .ph{aspect-ratio:auto;height:100%;min-height:340px}
+ .felt .tx{padding:40px}
+ .quotes{grid-template-columns:repeat(3,1fr);gap:40px}
+ .vgrid{grid-template-columns:.9fr 1.1fr 1fr}
+ .dock{display:none}
+ footer{padding-bottom:40px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}.step .ph img{transform:none}}
+</style>
+</head>
+<body>
+<div class="pv">Prévia – proposta da Vetra Studio para a Dom Luis Barbearia · fotos de clientes no Google, usadas só nesta prévia</div>
+
+<header><div class="wrap bar">
+ <a class="brand" href="#"><small>BARBEARIA</small><b>Dom Luis</b></a>
+ <nav><a href="#como">Como funciona</a><a href="#servicos">Serviços</a><a href="#visite">Horários</a></nav>
+</div></header>
+
+<section class="hero">
+ <div class="bg" id="heroBg"><img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rr5waYvamjWMrR702EywAWQ6uqHPjXt3ORfWTa-J1ustWsPQg7G99x90S9BfsuVtUC6KXGnxBUK39uyI-YVAhgGVWYgascbW6_kPK8unrYlXm0HDt_yI8B47LJkZdf2bf06UiW8w=w1600-k-no" alt="Barbeiros trabalhando na bancada preta diante do espelho e da parede de tijolinho" referrerpolicy="no-referrer" fetchpriority="high"></div>
+ <div class="grain"></div>
+ <div class="wrap">
+  <span class="rating reveal"><span class="st">★★★★★</span> 4,9 no Google · 52 avaliações</span>
+  <h1 class="serif reveal">Dom <em>Luis</em></h1>
+  <p class="reveal">Corte, degradê e barba no Planalto Verde, em Ribeirão Preto. De segunda a sábado, das 9h às 20h.</p>
+  <div class="ctas reveal">
+   <a class="btn brass" href="https://wa.me/5516993963867?text=Oi!%20Quero%20marcar%20um%20hor%C3%A1rio%20na%20Dom%20Luis"><svg class="wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>Marcar horário</a>
+   <a class="btn ghost" href="#servicos">Ver serviços</a>
+  </div>
+ </div>
+</section>
+
+<div class="brick" aria-hidden="true"></div>
+
+<section class="story" id="como"><div class="wrap">
+ <h2 class="serif reveal">Da mensagem<br>à cadeira</h2>
+ <p class="lede reveal">É assim que funciona na Dom Luis.</p>
+ <div class="steps">
+  <article class="step">
+   <div class="ph"><img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q1t4BHxM5fHBniAvqe96yL50BA9szARlTnlECGpiJjuhii5aR_eH1OXpaWphzuHZmr5DauWVP3pdB1C3RnoGTf59Y1BUE7rU93hi7wxF52pyNLd0vX7I0sFU55DZbxeiS_KpX6=w1000-k-no" alt="Logo da Barbearia Dom Luis, com chapéu e bigode" referrerpolicy="no-referrer" style="object-fit:contain;background:#0b0b0c"></div>
+   <div class="reveal"><div class="n">1</div><h3>Chama no WhatsApp</h3><p>Manda mensagem no (16) 99396-3867 e escolhe o melhor horário, de segunda a sábado.</p></div>
+  </article>
+  <article class="step">
+   <div class="ph"><img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rr5waYvamjWMrR702EywAWQ6uqHPjXt3ORfWTa-J1ustWsPQg7G99x90S9BfsuVtUC6KXGnxBUK39uyI-YVAhgGVWYgascbW6_kPK8unrYlXm0HDt_yI8B47LJkZdf2bf06UiW8w=w1000-k-no" alt="Bancada preta, espelhos e parede de tijolinho branco" referrerpolicy="no-referrer" style="object-position:50% 22%"></div>
+   <div class="reveal"><div class="n">2</div><h3>Senta na cadeira</h3><p>Chega na Rua Genoveva Onófre Barban, 892 e conta o corte que você quer. Os barbeiros resolvem.</p></div>
+  </article>
+  <article class="step">
+   <div class="ph"><img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Tv20iBhV8QJAQzDWd_m5ZZSJBNtbGDHrDUPHvuD_997C90N4Mkd0BhNUS5GA4_AJ4uGjhWAoNdxAEUQUxdhSJhdh-0dRtsX-RqMZLXMinukXmpMmtS2QEiPB8agCOf4ifXRSFb=w1000-k-no" alt="Degradê bem marcado na nuca e na lateral" referrerpolicy="no-referrer" style="object-position:70% 12%"></div>
+   <div class="reveal"><div class="n">3</div><h3>Sai alinhado</h3><p>Degradê no capricho e barba no jeito. Pronto pra semana.</p></div>
+  </article>
+ </div>
+</div></section>
+
+<section class="svc" id="servicos"><div class="wrap">
+ <div class="svc-top">
+  <h2 class="serif reveal">Na cadeira<br>da Dom Luis</h2>
+  <p class="lede reveal" style="margin:0">Valores e horários livres direto pelo WhatsApp.</p>
+ </div>
+ <ul class="menu">
+  <li class="reveal"><b>Corte masculino</b></li>
+  <li class="reveal"><b>Degradê</b></li>
+  <li class="reveal"><b>Barba</b></li>
+  <li class="reveal"><b>Corte infantil</b><span>A criançada também</span></li>
+ </ul>
+ <div class="felt reveal">
+  <div class="ph"><img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Tv20iBhV8QJAQzDWd_m5ZZSJBNtbGDHrDUPHvuD_997C90N4Mkd0BhNUS5GA4_AJ4uGjhWAoNdxAEUQUxdhSJhdh-0dRtsX-RqMZLXMinukXmpMmtS2QEiPB8agCOf4ifXRSFb=w1000-k-no" alt="Cliente na cadeira com a mesa de sinuca ao fundo" referrerpolicy="no-referrer"></div>
+  <div class="tx"><b>Tem mesa de sinuca no salão.</b><p>Barbearia de bairro, com o pessoal gente boa que as avaliações citam.</p><a class="btn brass" href="https://wa.me/5516993963867?text=Oi!%20Quero%20marcar%20um%20hor%C3%A1rio%20na%20Dom%20Luis">Marcar meu horário</a></div>
+ </div>
+</div></section>
+
+<div class="wrap quotes">
+ <blockquote class="reveal">“Excelência no trabalho, ótimo atendimento, super recomendo!”<cite>Avaliação no Google</cite></blockquote>
+ <blockquote class="reveal">“Barbearia top, com barbeiros qualificados e gente boa.”<cite>Avaliação no Google</cite></blockquote>
+ <blockquote class="reveal">“Barbeiros sabem o que estão fazendo.”<cite>Avaliação no Google</cite></blockquote>
+</div>
+
+<div class="brick" aria-hidden="true"></div>
+
+<section class="visit" id="visite"><div class="wrap">
+ <h2 class="serif reveal">Passa aqui</h2>
+ <div class="vgrid">
+  <div class="logo reveal"><img loading="lazy" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q1t4BHxM5fHBniAvqe96yL50BA9szARlTnlECGpiJjuhii5aR_eH1OXpaWphzuHZmr5DauWVP3pdB1C3RnoGTf59Y1BUE7rU93hi7wxF52pyNLd0vX7I0sFU55DZbxeiS_KpX6=w800-k-no" alt="Logo da Barbearia Dom Luis" referrerpolicy="no-referrer"></div>
+  <div class="card reveal">
+   <h3>ENDEREÇO</h3>
+   <p class="addr">Rua Genoveva Onófre Barban, 892<br>Planalto Verde</p>
+   <p class="muted">Ribeirão Preto/SP · 14056-340</p>
+   <div class="links">
+    <a class="btn brass" href="https://www.google.com/maps/search/?api=1&query=Dom%20Luis%20Barbearia%20Ribeir%C3%A3o%20Preto">Como chegar</a>
+    <a class="btn ghost" href="https://wa.me/5516993963867">(16) 99396-3867</a>
+   </div>
+  </div>
+  <div class="card reveal">
+   <h3>HORÁRIOS</h3>
+   <ul class="hours" id="hours">
+    <li data-d="1"><span>Segunda</span><span>9h – 20h</span></li>
+    <li data-d="2"><span>Terça</span><span>9h – 20h</span></li>
+    <li data-d="3"><span>Quarta</span><span>9h – 20h</span></li>
+    <li data-d="4"><span>Quinta</span><span>9h – 20h</span></li>
+    <li data-d="5"><span>Sexta</span><span>9h – 20h</span></li>
+    <li data-d="6"><span>Sábado</span><span>9h – 20h</span></li>
+    <li data-d="0" class="off"><span>Domingo</span><span>Fechado</span></li>
+   </ul>
+  </div>
+ </div>
+</div></section>
+
+<footer><div class="wrap">
+ <span>Dom Luis Barbearia · Rua Genoveva Onófre Barban, 892 · Planalto Verde · Ribeirão Preto/SP · (16) 99396-3867</span>
+ <span>Prévia criada pela Vetra Studio. Fotos de clientes no Google, usadas só nesta prévia.</span>
+</div></footer>
+
+<div class="dock" id="dock">
+ <a class="btn brass" href="https://wa.me/5516993963867?text=Oi!%20Quero%20marcar%20um%20hor%C3%A1rio%20na%20Dom%20Luis">Marcar horário</a>
+ <a class="btn ghost" href="#visite">Endereço</a>
+</div>
+
+<script>
+(function(){
+ document.documentElement.classList.add("js");
+ setTimeout(function(){document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("in")})},4000);
+ var h=document.querySelector('#hours [data-d="'+new Date().getDay()+'"]');if(h)h.classList.add('today');
+ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.15});
+ document.querySelectorAll('.reveal,.step').forEach(function(el){io.observe(el)});}
+ setTimeout(function(){document.querySelectorAll('.hero .reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('in')},120*i)})},80);
+ var bg=document.getElementById('heroBg'),dock=document.getElementById('dock'),rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ addEventListener('scroll',function(){var y=scrollY;if(!rm&&y<innerHeight*1.2)bg.style.transform='translateY('+(y*.25)+'px)';dock.classList.toggle('show',y>innerHeight*.6);},{passive:true});
+})();
+</script>
+</body>
+</html>
