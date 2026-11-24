@@ -10,7 +10,8 @@ Plataforma própria de dropshipping nacional: conecta fornecedores brasileiros �
 
 | Documento | Conteúdo |
 |---|---|
-| [docs/INSTALACAO.md](docs/INSTALACAO.md) | Instalação local e em produção (Supabase + hospedagem) |
+| **[docs/INSTALACAO_GRATUITA.md](docs/INSTALACAO_GRATUITA.md)** | **Instalação sem custo, feita pelo celular (Supabase + Render + cron-job.org) e app na tela inicial** |
+| [docs/INSTALACAO.md](docs/INSTALACAO.md) | Instalação local e em servidor próprio |
 | [docs/MANUAL.md](docs/MANUAL.md) | Manual de utilização de cada tela |
 | [docs/MERCADO_LIVRE.md](docs/MERCADO_LIVRE.md) | Como criar o aplicativo e conectar a conta do Mercado Livre |
 | [docs/FORNECEDORES.md](docs/FORNECEDORES.md) | Como cadastrar fornecedores e configurar integrações |

@@ -1,0 +1,33 @@
+# Configuração do DropFlow no Render (plano gratuito).
+# No Render: New + › Blueprint › escolha este repositório e a branch do DropFlow.
+# Chaves secretas são geradas automaticamente; você só preenche DATABASE_URL
+# (e, quando tiver, as credenciais do Mercado Livre).
+services:
+  - type: web
+    name: dropflow
+    runtime: node
+    plan: free
+    rootDir: dropflow
+    buildCommand: npm ci && npm run build
+    startCommand: npm run db:migrate && npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_SSL
+        value: "true"
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      - key: SETUP_TOKEN
+        generateValue: true
+      - key: CRON_SECRET
+        generateValue: true
+      - key: ML_WEBHOOK_KEY
+        generateValue: true
+      - key: ML_CLIENT_ID
+        sync: false
+      - key: ML_CLIENT_SECRET
+        sync: false

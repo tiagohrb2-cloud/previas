@@ -8,8 +8,10 @@ function key(): Buffer {
   const raw = env().ENCRYPTION_KEY;
   if (!raw) throw new Error("ENCRYPTION_KEY não configurada. Veja .env.example.");
   const buf = Buffer.from(raw, "base64");
-  if (buf.length !== 32) throw new Error("ENCRYPTION_KEY deve ter 32 bytes em base64.");
-  return buf;
+  if (buf.length === 32 && /^[A-Za-z0-9+/=_-]+$/.test(raw)) return buf;
+  // Aceita também um segredo longo qualquer (ex.: gerado automaticamente pela hospedagem)
+  if (raw.length < 32) throw new Error("ENCRYPTION_KEY muito curta: use pelo menos 32 caracteres aleatórios.");
+  return createHash("sha256").update(raw, "utf8").digest();
 }
 
 /** AES-256-GCM. Formato: v1.<iv>.<tag>.<ciphertext> (base64url). */

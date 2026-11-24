@@ -26,7 +26,10 @@ let cached: Env | null = null;
 
 export function env(): Env {
   if (cached) return cached;
-  const parsed = schema.safeParse(process.env);
+  // No Render o endereço público é informado automaticamente (RENDER_EXTERNAL_URL)
+  const source = { ...process.env };
+  if (!source.APP_URL && source.RENDER_EXTERNAL_URL) source.APP_URL = source.RENDER_EXTERNAL_URL;
+  const parsed = schema.safeParse(source);
   if (!parsed.success) {
     const issues = parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ");
     throw new Error(`Configuração de ambiente inválida: ${issues}`);

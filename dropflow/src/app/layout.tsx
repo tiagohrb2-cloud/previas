@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: { default: "DropFlow", template: "%s · DropFlow" },
   description: "Plataforma de dropshipping nacional integrada ao Mercado Livre",
   robots: { index: false, follow: false },
+  appleWebApp: { capable: true, title: "DropFlow", statusBarStyle: "black-translucent" },
 };
 
 export const viewport: Viewport = {
