@@ -14,8 +14,8 @@ import { SupplierIntegrationError, type SupplierAdapter, type SupplierContext, t
 const statusMap = z.record(z.string(), z.enum(["submitted", "confirmed", "preparing", "dispatched", "rejected", "cancelled"])).default({});
 
 export const restConfigSchema = z.object({
-  baseUrl: z.string().url("URL base inválida").refine((u) => u.startsWith("https://"), "Use HTTPS"),
-  documentationUrl: z.string().url("Informe o link da documentação oficial do fornecedor"),
+  baseUrl: z.string({ error: "Informe a URL base da API" }).url("URL base inválida").refine((u) => u.startsWith("https://"), "Use HTTPS"),
+  documentationUrl: z.string({ error: "Informe o link da documentação oficial do fornecedor" }).url("Informe o link da documentação oficial do fornecedor"),
   auth: z.object({
     type: z.enum(["bearer", "header", "basic", "query", "none"]),
     headerName: z.string().optional(),

@@ -59,3 +59,9 @@ function safeJson(text: string): unknown {
     return { raw: text.slice(0, 500) };
   }
 }
+
+/** Requisição binária (ex.: PDF de etiqueta oficial). */
+export async function mlRaw(accountId: string, path: string): Promise<Response> {
+  const url = new URL(path, env().ML_API_URL);
+  return fetch(url, { headers: { Authorization: `Bearer ${await getAccessToken(accountId)}` }, signal: AbortSignal.timeout(20000) });
+}
