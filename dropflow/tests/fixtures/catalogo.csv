@@ -1,0 +1,6 @@
+sku;sku_pai;nome;descricao;marca;ean;preco_custo;estoque;peso_kg;altura;largura;comprimento;imagens;cor;tamanho;attr_Material
+CAM-001-P;CAM-001;Camiseta Básica Algodão;Camiseta 100% algodão penteado;Marca X;;R$ 29,90;10;0,2;2;25;30;https://exemplo.com/a.jpg|https://exemplo.com/b.jpg;Azul;P;Algodão
+CAM-001-M;CAM-001;Camiseta Básica Algodão;Camiseta 100% algodão penteado;Marca X;;29,90;0;0,2;2;25;30;https://exemplo.com/a.jpg;Azul;M;Algodão
+GAR-500;;Garrafa Térmica 500ml;Garrafa inox parede dupla;Marca Y;7891234567895;45,00;30;0,4;25;8;8;https://exemplo.com/g.jpg;;;Inox
+;;;;;;;;;;;;;;;
+SEM-PRECO;;Produto sem preço;;;;;5;;;;;;;;

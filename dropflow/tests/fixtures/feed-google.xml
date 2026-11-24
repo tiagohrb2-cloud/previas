@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
+  <channel>
+    <title>Feed fornecedor</title>
+    <item>
+      <g:id>TEN-38</g:id>
+      <g:item_group_id>TEN</g:item_group_id>
+      <g:title>Tênis Corrida Leve</g:title>
+      <g:description>Tênis para corrida</g:description>
+      <g:price>119.90 BRL</g:price>
+      <g:image_link>https://exemplo.com/t1.jpg</g:image_link>
+      <g:additional_image_link>https://exemplo.com/t2.jpg</g:additional_image_link>
+      <g:brand>Marca Z</g:brand>
+      <g:size>38</g:size>
+      <g:color>Preto</g:color>
+    </item>
+    <item>
+      <g:id>TEN-39</g:id>
+      <g:item_group_id>TEN</g:item_group_id>
+      <g:title>Tênis Corrida Leve</g:title>
+      <g:price>119.90 BRL</g:price>
+      <g:image_link>https://exemplo.com/t1.jpg</g:image_link>
+      <g:brand>Marca Z</g:brand>
+      <g:size>39</g:size>
+      <g:color>Preto</g:color>
+    </item>
+  </channel>
+</rss>
