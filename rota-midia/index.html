@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rota Mídia – onde sua marca rodou</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{
+  --asfalto:#141C24; --asfalto-2:#1E2A35; --faixa:#F5C518; --faixa-escura:#C99E00;
+  --branco:#F4F6F8; --nevoa:#A9B8C6; --linha:#2E3D4B; --alerta:#FF8A5B;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--asfalto);color:var(--branco);font:16px/1.55 Barlow,system-ui,sans-serif}
+::selection{background:var(--faixa);color:var(--asfalto)}
+:focus-visible{outline:3px solid var(--faixa);outline-offset:2px}
+a{color:var(--faixa);text-underline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header{padding:28px 0 18px}
+.marca{font:700 22px/1 "Barlow Condensed",sans-serif;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+.marca i{display:inline-block;width:34px;height:10px;background:repeating-linear-gradient(90deg,var(--faixa) 0 10px,transparent 10px 14px)}
+h1{font:700 clamp(38px,6vw,64px)/1 "Barlow Condensed",sans-serif;margin:34px 0 12px;max-width:16ch;text-wrap:balance}
+.sub{color:var(--nevoa);max-width:60ch;margin:0 0 24px;font-size:18px}
+.aviso{background:#3A2A12;border:1px solid #6B4B12;color:#FFE08A;border-radius:10px;padding:12px 16px;margin:0 0 20px;font-size:15px}
+.barra{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px}
+select,.btn{min-height:44px;border-radius:10px;font:600 16px Barlow,sans-serif;padding:0 14px}
+select{background:var(--asfalto-2);color:var(--branco);border:1px solid var(--linha)}
+.btn{background:var(--faixa);color:var(--asfalto);border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.btn:active{transform:translateY(1px)}
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:12px;overflow:hidden;margin-bottom:16px}
+.numeros div{background:var(--asfalto-2);padding:14px 16px}
+.numeros b{display:block;font:700 30px/1.1 "Barlow Condensed",sans-serif;color:var(--faixa)}
+.numeros span{color:var(--nevoa);font-size:14px}
+#mapa{height:min(68vh,620px);border-radius:12px;border:1px solid var(--linha);background:#0E141A}
+.estrada{height:6px;margin:44px 0 30px;background:repeating-linear-gradient(90deg,var(--faixa) 0 36px,transparent 36px 60px);opacity:.8}
+h2{font:700 30px/1.1 "Barlow Condensed",sans-serif;margin:0 0 14px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--linha);vertical-align:top}
+th{color:var(--nevoa);font-weight:500}
+.ponto{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}
+.tabela{overflow-x:auto}
+.tabela table{min-width:620px}
+td:nth-child(-n+4){white-space:nowrap}
+footer{color:var(--nevoa);font-size:14px;padding:40px 0 48px}
+.leaflet-popup-content{font:14px/1.45 Barlow,sans-serif}
+@media (max-width:720px){
+  .numeros{grid-template-columns:repeat(2,1fr)}
+  h1{margin-top:22px}
+  #mapa{height:60vh}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><div class="marca"><i></i>Rota Mídia</div></header>
+
+  <h1 id="titulo">Por onde sua marca rodou</h1>
+  <p class="sub" id="subtitulo">Rotas reais gravadas pelo GPS do celular de cada motoboy, com a bag ligada. Escolha uma bag ou um anunciante para ver só o trajeto dele.</p>
+
+  <p class="aviso" id="aviso" hidden>Estes são dados de demonstração. Assim que os motoboys gravarem as primeiras rotas, o mapa passa a mostrar os trajetos de verdade.</p>
+
+  <div class="barra">
+    <label for="fBag" class="sr">Bag</label>
+    <select id="fBag"><option value="">Todas as bags</option></select>
+    <select id="fData"><option value="">Todos os dias</option></select>
+    <a class="btn" id="zap" href="#" target="_blank" rel="noopener">Anunciar na Rota Mídia</a>
+  </div>
+
+  <div class="numeros">
+    <div><b id="nBags">–</b><span>bags no mapa</span></div>
+    <div><b id="nKm">–</b><span>km rodados</span></div>
+    <div><b id="nHoras">–</b><span>horas na rua</span></div>
+    <div><b id="nExib">–</b><span>exibições estimadas por anúncio</span></div>
+  </div>
+
+  <div id="mapa" role="region" aria-label="Mapa das rotas"></div>
+
+  <div class="estrada" aria-hidden="true"></div>
+
+  <h2>Diário de rotas</h2>
+  <div class="tabela"><table>
+    <thead><tr><th>Bag</th><th>Dia</th><th>Horário</th><th>Km</th><th>Anunciantes</th></tr></thead>
+    <tbody id="linhas"></tbody>
+  </table></div>
+
+  <footer>
+    Exibições estimadas = horas com a bag ligada × 12,9 passagens por hora (ciclo de 10 anúncios de 28 s).<br>
+    Mapa: © colaboradores do OpenStreetMap. <span id="atualizado"></span>
+  </footer>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const WHATSAPP = ""; // coloque aqui o número com DDD, ex.: "5519999999999"
+const CORES = ["#F5C518","#5BC0FF","#FF8A5B","#7EE0A1","#D69BFF","#FF5B8A","#FFFFFF","#9FD3C7"];
+const POR_HORA = 3600 / 280;
+
+const params = new URLSearchParams(location.search);
+const filtroCliente = params.get("cliente");
+
+const mapa = L.map("mapa",{scrollWheelZoom:false}).setView([-22.9,-47.06],12);
+L.tileLayer("https://{s}.basemap.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{
+  maxZoom:19, attribution:'© OpenStreetMap · © CARTO'
+}).addTo(mapa);
+const camada = L.layerGroup().addTo(mapa);
+
+function km(pontos){
+  let t=0;
+  for(let i=1;i<pontos.length;i++){
+    const [a,b]=pontos[i-1],[c,d]=pontos[i],R=6371,r=Math.PI/180;
+    const x=Math.sin((c-a)*r/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin((d-b)*r/2)**2;
+    t+=2*R*Math.asin(Math.sqrt(x));
+  }
+  return t;
+}
+function horas(ini,fim){
+  if(!ini||!fim) return 0;
+  const m=s=>{const [h,mi]=s.split(":").map(Number);return h*60+mi};
+  let d=m(fim)-m(ini); if(d<0) d+=1440; return d/60;
+}
+const fmt = n => n.toLocaleString("pt-BR",{maximumFractionDigits:0});
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+let dados;
+fetch("rotas.json",{cache:"no-store"}).then(r=>r.json()).then(d=>{
+  dados=d;
+  if(d.exemplo) document.getElementById("aviso").hidden=false;
+  if(d.atualizado) document.getElementById("atualizado").textContent="Atualizado em "+d.atualizado.split("-").reverse().join("/")+".";
+  if(WHATSAPP) document.getElementById("zap").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent("Olá! Quero anunciar na Rota Mídia.");
+  else document.getElementById("zap").hidden=true;
+  if(filtroCliente){
+    document.getElementById("titulo").textContent="Por onde "+filtroCliente+" rodou";
+    d.bags=d.bags.filter(b=>(b.anunciantes||[]).includes(filtroCliente));
+  }
+  d.bags.forEach((b,i)=>{b.cor=CORES[i%CORES.length];fBag.add(new Option(b.id,b.id))});
+  [...new Set(d.bags.flatMap(b=>b.rotas.map(r=>r.data)))].sort().reverse()
+    .forEach(x=>fData.add(new Option(x.split("-").reverse().join("/"),x)));
+  desenhar();
+});
+fBag.onchange=fData.onchange=desenhar;
+
+function desenhar(){
+  camada.clearLayers();
+  const linhas=[]; let tk=0,th=0; const bagsVis=new Set(); const limites=[];
+  dados.bags.filter(b=>!fBag.value||b.id===fBag.value).forEach(b=>{
+    b.rotas.filter(r=>!fData.value||r.data===fData.value).forEach(r=>{
+      const k=r.km||km(r.pontos), h=horas(r.inicio,r.fim);
+      tk+=k; th+=h; bagsVis.add(b.id);
+      if(r.pontos.length){
+        L.polyline(r.pontos,{color:b.cor,weight:5,opacity:.9}).addTo(camada)
+          .bindPopup(`<b>${esc(b.id)}</b><br>${r.data.split("-").reverse().join("/")} · ${esc(r.inicio)}–${esc(r.fim)}<br>${k.toFixed(1)} km`);
+        L.circleMarker(r.pontos.at(-1),{radius:7,color:"#141C24",weight:2,fillColor:b.cor,fillOpacity:1}).addTo(camada);
+        limites.push(...r.pontos);
+      }
+      linhas.push(`<tr><td><span class="ponto" style="background:${b.cor}"></span>${esc(b.id)}</td><td>${r.data.split("-").reverse().join("/")}</td><td>${esc(r.inicio)}–${esc(r.fim)}</td><td>${k.toFixed(1)}</td><td>${(b.anunciantes||[]).map(esc).join(", ")}</td></tr>`);
+    });
+  });
+  if(limites.length) mapa.fitBounds(limites,{padding:[30,30]});
+  nBags.textContent=bagsVis.size; nKm.textContent=fmt(tk);
+  nHoras.textContent=fmt(th); nExib.textContent=fmt(th*POR_HORA);
+  linhas_el().innerHTML=linhas.join("")||'<tr><td colspan="5">Nenhuma rota nesse filtro.</td></tr>';
+}
+function linhas_el(){return document.getElementById("linhas")}
+</script>
+<style>.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}</style>
+</body>
+</html>

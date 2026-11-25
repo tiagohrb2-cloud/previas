@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rota Mídia – gravar rota</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--asfalto:#141C24;--asfalto-2:#1E2A35;--faixa:#F5C518;--branco:#F4F6F8;--nevoa:#A9B8C6;--linha:#2E3D4B;--pare:#FF6B5B}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--asfalto);color:var(--branco);font:17px/1.5 Barlow,system-ui,sans-serif}
+::selection{background:var(--faixa);color:var(--asfalto)}
+:focus-visible{outline:3px solid var(--faixa);outline-offset:2px}
+main{max-width:520px;margin:0 auto;padding:24px 18px 48px}
+h1{font:700 34px/1.05 "Barlow Condensed",sans-serif;margin:8px 0 8px}
+p{color:var(--nevoa);margin:0 0 16px}
+label{display:block;font-weight:600;margin:16px 0 6px}
+select,input,textarea{width:100%;min-height:48px;border-radius:10px;border:1px solid var(--linha);background:var(--asfalto-2);color:var(--branco);font:16px Barlow,sans-serif;padding:10px 12px}
+.btn{width:100%;min-height:56px;border:0;border-radius:12px;font:700 22px "Barlow Condensed",sans-serif;cursor:pointer;margin-top:16px;background:var(--faixa);color:var(--asfalto)}
+.btn.pare{background:var(--pare);color:#fff}
+.btn.sec{background:var(--asfalto-2);color:var(--branco);border:1px solid var(--linha);font-size:19px}
+.btn:active{transform:translateY(1px)}
+.painel{border:1px solid var(--linha);border-radius:12px;padding:16px;margin-top:18px;background:var(--asfalto-2)}
+.painel b{font:700 28px "Barlow Condensed",sans-serif;color:var(--faixa)}
+.linha{display:flex;justify-content:space-between;gap:12px}
+hr{border:0;height:5px;margin:30px 0;background:repeating-linear-gradient(90deg,var(--faixa) 0 28px,transparent 28px 46px);opacity:.7}
+textarea{min-height:120px;font:13px ui-monospace,monospace}
+small{color:var(--nevoa)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Gravar rota da bag</h1>
+  <p>Aperte em começar quando ligar a tela da bag e em encerrar quando desligar. No fim, envie a rota pelo WhatsApp.</p>
+
+  <label for="bag">Qual bag você está usando?</label>
+  <input id="bag" placeholder="Ex.: BAG-01" autocomplete="off">
+
+  <button class="btn" id="acao">Começar a rodar</button>
+
+  <div class="painel">
+    <div class="linha"><span>Tempo</span><b id="tempo">0:00</b></div>
+    <div class="linha"><span>Distância</span><b id="dist">0,0 km</b></div>
+    <small id="estado">Parado.</small>
+  </div>
+
+  <button class="btn sec" id="enviar" hidden>Enviar rota pelo WhatsApp</button>
+  <label for="saida" id="saidaRotulo" hidden>Rota (se o botão não abrir, copie e mande este texto)</label>
+  <textarea id="saida" readonly hidden></textarea>
+
+  <hr>
+
+  <h1>Já gravou em outro app?</h1>
+  <p>Se usou um app de GPS (como GPS Logger ou Geo Tracker), exporte o arquivo .gpx e escolha aqui.</p>
+  <input type="file" id="gpx" accept=".gpx,application/gpx+xml,text/xml">
+
+  <p style="margin-top:24px"><small>Importante: no navegador, o GPS só grava com a tela do celular ligada e esta página aberta. Para gravar com o celular no bolso, use o app de GPS e importe o .gpx.</small></p>
+</main>
+<script>
+const CHAVE="rotamidia-gravacao";
+let g=JSON.parse(localStorage.getItem(CHAVE)||"null"), watch=null, trava=null, relogio=null;
+const $=id=>document.getElementById(id);
+try{ $("bag").value=localStorage.getItem("rotamidia-bag")||""; }catch(e){}
+
+function dist(a,b){const R=6371,r=Math.PI/180,x=Math.sin((b[0]-a[0])*r/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin((b[1]-a[1])*r/2)**2;return 2*R*Math.asin(Math.sqrt(x))}
+function total(p){let t=0;for(let i=1;i<p.length;i++)t+=dist(p[i-1],p[i]);return t}
+const hhmm=d=>new Date(d).toTimeString().slice(0,5);
+const salvar=()=>{try{localStorage.setItem(CHAVE,JSON.stringify(g))}catch(e){}};
+
+function atualizar(){
+  if(!g) return;
+  const s=Math.floor(((g.fim||Date.now())-g.inicio)/1000);
+  $("tempo").textContent=Math.floor(s/3600)+":"+String(Math.floor(s/60)%60).padStart(2,"0");
+  $("dist").textContent=total(g.pontos).toFixed(1).replace(".",",")+" km";
+}
+
+async function comecar(){
+  const bag=$("bag").value.trim().toUpperCase();
+  if(!bag){ $("bag").focus(); $("estado").textContent="Escreva o número da bag."; return; }
+  try{localStorage.setItem("rotamidia-bag",bag)}catch(e){}
+  if(!g||g.fim) g={bag,inicio:Date.now(),pontos:[]};
+  salvar(); ligarGPS();
+}
+async function ligarGPS(){
+  $("acao").textContent="Encerrar rota"; $("acao").classList.add("pare");
+  $("estado").textContent="Procurando sinal de GPS…";
+  try{ trava=await navigator.wakeLock?.request("screen"); }catch(e){}
+  watch=navigator.geolocation.watchPosition(pos=>{
+    const p=[+pos.coords.latitude.toFixed(5),+pos.coords.longitude.toFixed(5)];
+    const ult=g.pontos.at(-1);
+    if(pos.coords.accuracy>80) return;
+    if(!ult||dist(ult,p)>0.04){ g.pontos.push(p); salvar(); }
+    $("estado").textContent="Gravando · "+g.pontos.length+" pontos · última posição "+hhmm(Date.now());
+    atualizar();
+  },err=>{$("estado").textContent="Sem GPS: "+(err.code===1?"permita a localização para este site.":err.message)},
+  {enableHighAccuracy:true,maximumAge:10000});
+  relogio=setInterval(atualizar,15000); atualizar();
+}
+function encerrar(){
+  navigator.geolocation.clearWatch(watch); clearInterval(relogio); trava?.release?.();
+  g.fim=Date.now(); salvar(); atualizar();
+  $("acao").textContent="Começar nova rota"; $("acao").classList.remove("pare");
+  $("estado").textContent="Rota encerrada.";
+  mostrar(g.bag,g.inicio,g.fim,g.pontos);
+}
+function reduzir(p,max=400){ if(p.length<=max) return p; const s=p.length/max; return Array.from({length:max},(_,i)=>p[Math.floor(i*s)]).concat([p.at(-1)]); }
+function mostrar(bag,ini,fim,pontos){
+  const rota={bag,data:new Date(ini).toISOString().slice(0,10),inicio:hhmm(ini),fim:hhmm(fim),km:+total(pontos).toFixed(1),pontos:reduzir(pontos)};
+  const txt="ROTA MÍDIA – "+bag+" – "+rota.data+" "+rota.inicio+"-"+rota.fim+" – "+rota.km+" km\n"+JSON.stringify(rota);
+  $("saida").value=txt; ["saida","saidaRotulo","enviar"].forEach(i=>$(i).hidden=false);
+  $("enviar").onclick=()=>{
+    if(navigator.share) navigator.share({text:txt}).catch(()=>{});
+    else open("https://wa.me/?text="+encodeURIComponent(txt));
+  };
+}
+$("acao").onclick=()=> watch!==null && !g.fim ? encerrar() : comecar();
+if(g && !g.fim){ $("bag").value=g.bag; ligarGPS(); }
+else if(g && g.fim){ atualizar(); mostrar(g.bag,g.inicio,g.fim,g.pontos); }
+
+$("gpx").onchange=async e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const xml=new DOMParser().parseFromString(await f.text(),"text/xml");
+  const pts=[...xml.querySelectorAll("trkpt,rtept")];
+  if(!pts.length){ alert("Esse arquivo não tem pontos de rota."); return; }
+  const pontos=pts.map(n=>[+(+n.getAttribute("lat")).toFixed(5),+(+n.getAttribute("lon")).toFixed(5)]);
+  const tempo=n=>n.querySelector("time")?.textContent;
+  const ini=Date.parse(tempo(pts[0])||Date.now()), fim=Date.parse(tempo(pts.at(-1))||Date.now());
+  const bag=($("bag").value.trim()||"BAG-?").toUpperCase();
+  g={bag,inicio:ini,fim,pontos}; salvar(); atualizar(); mostrar(bag,ini,fim,pontos);
+};
+</script>
+</body>
+</html>
