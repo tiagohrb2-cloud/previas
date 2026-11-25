@@ -16,34 +16,50 @@ Como atualizar o mapa: cole a rota recebida no WhatsApp dentro de `rotas.json`, 
 
 Mais tarde (quando tiver mais de 5 bags): rastreamento ao vivo com Traccar (gratuito, código aberto) ou um banco gratuito (Firebase/Supabase). Isso já envolve servidor e login, então deixe para depois.
 
-## 2. O que as simulações mostraram
+## 2. O que as simulações mostraram (Araraquara)
 
-Premissas (mude em `simulacao.py` ou no `simulador.html`): chip 4G R$ 50 + manutenção R$ 40 por bag por mês; bag montada por R$ 2.200; videomaker R$ 50 por vídeo.
+Premissas (mude em `simulacao.py` ou no `simulador.html`): bag montada por R$ 1.000; motoboy R$ 450; chip 4G R$ 50 + manutenção R$ 40 por bag por mês; vídeo cobrado **uma vez** (R$ 100, pagando R$ 50 ao videomaker).
 
-- **Custo de uma bag na rua: R$ 540/mês.** Com **3 anúncios** a bag já se paga. Cheia (10 anúncios) ela dá **~R$ 1.960/mês de lucro**.
-- **Cada anúncio passa ~12,9 vezes por hora.** Com 8 h por dia, são **~2.670 exibições por mês**, ou cerca de R$ 93 por mil exibições. Use isso na venda.
-- Com 50% das vagas vendidas, a bag se paga em **~3 meses**.
+- **Cada bag na rua custa R$ 540/mês.** Cada anúncio passa ~12,9 vezes por hora, ou ~2.670 vezes por mês com 8 h/dia de tela ligada.
+- Com a bag a R$ 1.000, o investimento deixa de ser o problema: o que pesa é o **custo fixo do motoboy**.
 
-Lucro por mês, por número de bags e vagas vendidas:
+Se o preço do anúncio cair, quanto muda (1 bag):
 
-| Bags | 30% | 50% | 70% | 90% |
-|---|---|---|---|---|
-| 1 | 210 | 710 | 1.210 | 1.710 |
-| 3 | 630 | 2.130 | 3.630 | 5.130 |
-| 5 | 1.050 | 3.550 | 6.050 | 8.550 |
-| 10 | 2.100 | 7.100 | 12.100 | 17.100 |
+| Preço | Anúncios para empatar | Lucro com 6 vendidos | Lucro com a bag cheia |
+|---|---|---|---|
+| R$ 250 | 3 | R$ 960 | R$ 1.960 |
+| R$ 200 | 3 | R$ 660 | R$ 1.460 |
+| R$ 180 | 3 | R$ 540 | R$ 1.260 |
+| R$ 150 | 4 | R$ 360 | R$ 960 |
+| R$ 120 | 5 | R$ 180 | R$ 660 |
+| R$ 100 | 6 | R$ 60 | R$ 460 |
 
-12 meses sorteando vendas e cancelamentos (5.000 rodadas cada):
+12 meses começando com 2 bags (5.000 rodadas cada). **As vendas por mês são um palpite**: preço menor deve vender mais rápido, mas isso precisa ser testado.
 
 | Cenário | Lucro no mês 12 (provável) | Caixa em 12 meses (provável) | Chance de fechar o ano no positivo |
 |---|---|---|---|
-| A. Devagar: 2 bags, 1–3 vendas/mês, 15% cancelam | R$ 1.715 | R$ 6.500 | 95% |
-| B. Realista: 2 bags, 2–5 vendas/mês, cresce até 6 bags | R$ 4.170 | R$ 21.900 | 100% |
-| C. Agressivo: 3 bags, 4–8 vendas/mês, cresce até 15 | R$ 8.170 | R$ 44.400 | 100% |
-| D. Pacote R$ 200 com contrato de 3 meses, 3–6 vendas/mês | R$ 4.660 | R$ 20.600 | 100% |
-| E. Ruim: 3 bags, 0–2 vendas/mês, 20% cancelam | R$ -370 | R$ -15.700 | 0% |
+| R$ 250 (hoje), vende 1–2/mês | R$ 950 | R$ 3.000 | 84% |
+| **R$ 200 com fidelidade de 3 meses**, vende 2–3/mês | R$ 2.240 | R$ 11.100 | 100% |
+| **R$ 150 com fidelidade de 3 meses**, vende 3–5/mês | R$ 2.180 | R$ 11.000 | 100% |
+| R$ 120 com fidelidade de 6 meses, vende 4–6/mês | R$ 1.880 | R$ 7.200 | 100% |
+| R$ 100, vende 4–7/mês | R$ 780 | R$ 2.100 | 100% |
+| R$ 150, mas a venda não sobe (1–3/mês) | R$ 900 | R$ 1.100 | 75% |
 
-O que decide o negócio não é o preço, é **vender pelo menos 2 anúncios novos por mês e segurar o cancelamento abaixo de 10%**. O cenário E mostra o risco: colocar bag na rua antes de ter anunciante.
+Conclusões:
+- **Baixar para R$ 150–200 só vale com fidelidade** (mínimo de 3 meses). Sem fidelidade, o desconto vira só menos dinheiro.
+- **Abaixo de R$ 120 não compensa:** precisa de 5 ou 6 anúncios só para pagar o motoboy.
+- O que mais melhora o resultado é **reduzir o cancelamento**, mais do que o preço.
+
+### Nova tabela de preços sugerida
+
+| Plano | Preço por mês | Para quem |
+|---|---|---|
+| Teste 15 dias (só para os 3 primeiros clientes) | grátis, em troca de depoimento e foto | Criar prova em Araraquara |
+| Mensal sem fidelidade | R$ 250 | Fica de âncora: faz o plano trimestral parecer barato |
+| Trimestral | R$ 180 | O plano que vocês querem vender |
+| Semestral | R$ 150 | Cliente que já gostou |
+| Mais bags (3 bags) | R$ 450 (R$ 150 cada) | Comércio que quer aparecer na cidade toda |
+| Vídeo | R$ 100 uma vez | Grátis no semestral |
 
 ## 3. Plano de ação
 
@@ -53,9 +69,9 @@ O que decide o negócio não é o preço, é **vender pelo menos 2 anúncios nov
 3. Gravar 1 vídeo da bag rodando por motoboy, com o anúncio aparecendo.
 
 **Semanas 2 a 4 – venda**
-4. Lista de 40 comércios nos bairros por onde as bags já passam (o mapa mostra quais). Restaurantes, lojas, academias, clínicas, imobiliárias.
-5. Oferta de entrada: **3 meses por R$ 200/mês** (cenário D) ou primeiro mês com vídeo grátis. Contrato mínimo reduz cancelamento.
-6. Pacotes: 1 bag R$ 250 · 3 bags R$ 650 · 5 bags R$ 1.000 (o cliente aparece em mais ruas; vocês enchem as bags mais rápido).
+4. Lista de 40 comércios de Araraquara nos bairros por onde as bags já passam (o mapa mostra quais). Restaurantes, lojas, academias, clínicas, imobiliárias.
+5. Vender pela nova tabela: âncora R$ 250, vender o trimestral de R$ 180. Os 3 primeiros clientes ganham 15 dias de teste em troca de depoimento.
+6. Bons alvos em Araraquara: imobiliárias, autoescolas, academias, clínicas e dentistas, cursinhos e faculdades particulares, lojas de bairro e eventos da cidade.
 7. Todo cliente recebe o link `?cliente=Nome` e um resumo no fim do mês: km, horas, exibições, fotos.
 
 **Mês 2 em diante – crescer com regra**

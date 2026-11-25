@@ -3,18 +3,19 @@
 Rode com:  python3 rota-midia/simulacao.py
 Mude os números em PREMISSAS para testar outros cenários.
 """
+import math
 import random
 import statistics as st
 
 PREMISSAS = dict(
     preco_anuncio=250.0,     # R$/mês por anúncio em uma bag
-    adicional_video=100.0,   # R$ cobrado a mais quando a Rota Mídia produz o vídeo
+    adicional_video=100.0,   # R$ cobrado UMA VEZ quando a Rota Mídia produz o vídeo
     custo_video=50.0,        # R$ pago ao videomaker por vídeo (ajuste se for da equipe)
     vagas_por_bag=10,        # 10 anúncios de até 28 s
     motoboy=450.0,           # R$/mês por bag rodando
     chip_4g=50.0,            # R$/mês (troca de conteúdo remota / prova de exibição)
     manutencao=40.0,         # R$/mês reserva para bateria, cabo, conserto
-    investimento_bag=2200.0, # R$ por bag montada (bag + tela + player + bateria)
+    investimento_bag=1000.0, # R$ por bag montada (bag + tela + player + bateria)
 )
 P = PREMISSAS
 
@@ -24,13 +25,15 @@ def resultado_mes(bags, ocupacao, pct_video):
     anuncios = round(bags * P["vagas_por_bag"] * ocupacao)
     receita = anuncios * P["preco_anuncio"]
     # o vídeo é cobrado uma vez por cliente novo; aqui tratamos como mensal
-    receita_video = anuncios * pct_video * (P["adicional_video"] - P["custo_video"])
+    receita_video = 0  # vídeo é cobrado uma vez só; entra na simulação de 12 meses
     custo = bags * (P["motoboy"] + P["chip_4g"] + P["manutencao"])
     return anuncios, receita + receita_video, custo, receita + receita_video - custo
 
 
-def tabela_fixa():
-    print("\n=== 1. Lucro mensal por número de bags x ocupação (sem vídeo) ===")
+def tabela_fixa(preco=None):
+    if preco:
+        P["preco_anuncio"] = preco
+    print(f"\n=== Lucro mensal com anúncio a R$ {P['preco_anuncio']:.0f} (bags x vagas vendidas) ===")
     ocup = [0.2, 0.3, 0.5, 0.7, 0.9, 1.0]
     print("bags | " + " | ".join(f"{int(o*100):>3}% ocup." for o in ocup))
     for b in [1, 2, 3, 5, 10, 20]:
@@ -41,7 +44,7 @@ def tabela_fixa():
         print(f"{b:>4} | " + " | ".join(linha))
     custo_bag = P["motoboy"] + P["chip_4g"] + P["manutencao"]
     print(f"\nCusto por bag/mês: R$ {custo_bag:.0f}  ->  ponto de equilíbrio = "
-          f"{custo_bag / P['preco_anuncio']:.2f} anúncios por bag (ou seja, 3 anúncios já pagam a bag)")
+          f"{custo_bag / P['preco_anuncio']:.2f} anúncios por bag (ou seja, {math.ceil(custo_bag / P['preco_anuncio'])} anúncios já pagam a bag)")
     meses = P["investimento_bag"] / (P["vagas_por_bag"] * 0.5 * P["preco_anuncio"] - custo_bag)
     print(f"Com 50% de ocupação, a bag se paga em {meses:.1f} meses.")
 
@@ -105,17 +108,25 @@ def monte_carlo(nome, bags_inicio, nova_bag_cada, max_bags, vendas_mes, churn, p
     print(f"Chance de terminar o ano com caixa positivo: {sum(c > 0 for c in caixas)/rodadas:.0%}")
 
 
+def comparar_precos():
+    custo_bag = P["motoboy"] + P["chip_4g"] + P["manutencao"]
+    print("\n=== 1. Comparando preços (1 bag) ===")
+    print("preço | anúncios p/ empatar | lucro bag cheia | lucro com 6 vendidos | R$ por mil exibições (8h/dia)")
+    exib = 3600 / 280 * 8 * 26
+    for preco in (250, 200, 180, 150, 120, 100):
+        print(f"R$ {preco:>3} | {custo_bag/preco:>5.1f} | R$ {10*preco-custo_bag:>6,.0f} | R$ {6*preco-custo_bag:>6,.0f} | R$ {preco/exib*1000:>5.2f}".replace(",", "."))
+
+
 if __name__ == "__main__":
-    tabela_fixa()
+    comparar_precos()
     exibicoes()
-    print("\n=== 3. Simulação de 12 meses (5.000 rodadas cada, sorteando vendas e cancelamentos) ===")
-    monte_carlo("A) Devagar: 2 bags, vende 1-3 anúncios/mês, 15% cancelam, não expande",
-                2, 1, 2, (1, 3), 0.15, 0.3)
-    monte_carlo("B) Realista: 2 bags, vende 2-5/mês, 10% cancelam, expande até 6 bags",
-                2, 1, 6, (2, 5), 0.10, 0.4)
-    monte_carlo("C) Agressivo: 3 bags, vende 4-8/mês, 8% cancelam, expande até 15 bags",
-                3, 1, 15, (4, 8), 0.08, 0.5)
-    monte_carlo("D) Pacote: R$ 200/anúncio para fechar 3 meses, vende 3-6/mês, 6% cancelam, até 8 bags",
-                2, 1, 8, (3, 6), 0.06, 0.4, preco=200)
-    monte_carlo("E) Ruim: 3 bags, vende 0-2/mês, 20% cancelam",
-                3, 1, 3, (0, 2), 0.20, 0.2)
+    print("\n=== 3. 12 meses em Araraquara, 5.000 rodadas cada ===")
+    print("Hipótese: preço menor vende mais rápido. As faixas de venda abaixo são palpite; troque pelos números reais.")
+    monte_carlo("R$ 250 (hoje): vende 1-2/mês, 15% cancelam", 2, 1, 6, (1, 2), 0.15, 0.3, preco=250)
+    monte_carlo("R$ 200 com fidelidade de 3 meses: vende 2-3/mês, 8% cancelam", 2, 1, 6, (2, 3), 0.08, 0.4, preco=200)
+    monte_carlo("R$ 150 com fidelidade de 3 meses: vende 3-5/mês, 8% cancelam", 2, 1, 8, (3, 5), 0.08, 0.4, preco=150)
+    monte_carlo("R$ 120 com fidelidade de 6 meses: vende 4-6/mês, 5% cancelam", 2, 1, 10, (4, 6), 0.05, 0.4, preco=120)
+    monte_carlo("R$ 150, mas vende só 1-3/mês (preço baixou e a venda não subiu)", 2, 1, 6, (1, 3), 0.10, 0.3, preco=150)
+    monte_carlo("R$ 100: vende 4-7/mês, 10% cancelam", 2, 1, 10, (4, 7), 0.10, 0.4, preco=100)
+    for p in (250, 150):
+        tabela_fixa(p)

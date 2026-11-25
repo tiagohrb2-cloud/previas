@@ -105,7 +105,7 @@ const POR_HORA = 3600 / 280;
 const params = new URLSearchParams(location.search);
 const filtroCliente = params.get("cliente");
 
-const mapa = L.map("mapa",{scrollWheelZoom:false}).setView([-22.9,-47.06],12);
+const mapa = L.map("mapa",{scrollWheelZoom:false}).setView([-21.7946,-48.1758],13);
 L.tileLayer("https://{s}.basemap.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{
   maxZoom:19, attribution:'© OpenStreetMap · © CARTO'
 }).addTo(mapa);
