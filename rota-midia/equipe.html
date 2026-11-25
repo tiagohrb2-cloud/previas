@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#141C24">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Rota Mídia">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Rota Mídia – equipe</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--asfalto:#141C24;--asfalto-2:#1E2A35;--faixa:#F5C518;--branco:#F4F6F8;--nevoa:#A9B8C6;--linha:#2E3D4B}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--asfalto);color:var(--branco);font:17px/1.5 Barlow,system-ui,sans-serif;min-height:100vh}
+::selection{background:var(--faixa);color:var(--asfalto)}
+:focus-visible{outline:3px solid var(--faixa);outline-offset:2px}
+main{max-width:520px;margin:0 auto;padding:max(28px,env(safe-area-inset-top)) 18px 40px}
+.marca{font:700 22px/1 "Barlow Condensed",sans-serif;display:flex;align-items:center;gap:10px}
+.marca i{width:34px;height:10px;background:repeating-linear-gradient(90deg,var(--faixa) 0 10px,transparent 10px 14px)}
+h1{font:700 40px/1.05 "Barlow Condensed",sans-serif;margin:34px 0 22px}
+nav a{display:flex;flex-direction:column;justify-content:center;min-height:84px;padding:14px 18px;margin-bottom:12px;border-radius:14px;background:var(--asfalto-2);border:1px solid var(--linha);color:var(--branco);text-decoration:none}
+nav a b{font:700 26px/1.1 "Barlow Condensed",sans-serif}
+nav a span{color:var(--nevoa);font-size:15px}
+nav a:first-child{background:var(--faixa);border-color:var(--faixa);color:var(--asfalto)}
+nav a:first-child span{color:#4A3B00}
+nav a:active{transform:translateY(1px)}
+.estrada{height:5px;margin:30px 0 24px;background:repeating-linear-gradient(90deg,var(--faixa) 0 28px,transparent 28px 46px);opacity:.7}
+.instalar{border:1px solid var(--linha);border-radius:14px;padding:16px 18px}
+.instalar h2{font:700 24px "Barlow Condensed",sans-serif;margin:0 0 6px}
+.instalar p,.instalar li{color:var(--nevoa);margin:0 0 6px}
+.instalar ol{padding-left:20px;margin:6px 0 0}
+.btn{width:100%;min-height:52px;border:0;border-radius:12px;background:var(--faixa);color:var(--asfalto);font:700 21px "Barlow Condensed",sans-serif;cursor:pointer;margin-top:8px}
+</style>
+</head>
+<body>
+<main>
+  <div class="marca"><i></i>Rota Mídia</div>
+  <h1>O que vamos fazer agora?</h1>
+
+  <nav>
+    <a href="registrar.html"><b>Gravar rota</b><span>Motoboy: aperte ao ligar a tela da bag</span></a>
+    <a href="index.html"><b>Mapa das bags</b><span>O que o cliente vê. Mande o link para ele</span></a>
+    <a href="simulador.html"><b>Simulador de preços</b><span>Quanto sobra com cada preço e número de bags</span></a>
+  </nav>
+
+  <div class="estrada" aria-hidden="true"></div>
+
+  <section class="instalar" id="caixaInstalar">
+    <h2>Instalar no celular</h2>
+    <div id="android">
+      <p>Fica com ícone na tela inicial e abre como app.</p>
+      <button class="btn" id="btnInstalar" hidden>Instalar app</button>
+      <ol id="passosAndroid">
+        <li>No Chrome, toque nos três pontinhos ⋮ no canto de cima.</li>
+        <li>Toque em <b>Instalar app</b> ou <b>Adicionar à tela inicial</b>.</li>
+      </ol>
+    </div>
+    <div id="iphone" hidden>
+      <ol>
+        <li>Abra este endereço no <b>Safari</b>.</li>
+        <li>Toque no botão de compartilhar (quadrado com seta para cima).</li>
+        <li>Toque em <b>Adicionar à Tela de Início</b>.</li>
+      </ol>
+    </div>
+  </section>
+</main>
+<script>
+if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+const instalado = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+if(instalado) document.getElementById("caixaInstalar").hidden = true;
+if(/iphone|ipad|ipod/i.test(navigator.userAgent)){
+  document.getElementById("android").hidden = true;
+  document.getElementById("iphone").hidden = false;
+}
+let pedido;
+addEventListener("beforeinstallprompt", e=>{
+  e.preventDefault(); pedido = e;
+  document.getElementById("btnInstalar").hidden = false;
+  document.getElementById("passosAndroid").hidden = true;
+});
+document.getElementById("btnInstalar").onclick = async ()=>{
+  if(!pedido) return;
+  pedido.prompt(); await pedido.userChoice; pedido = null;
+  document.getElementById("btnInstalar").hidden = true;
+};
+addEventListener("appinstalled", ()=> document.getElementById("caixaInstalar").hidden = true);
+</script>
+</body>
+</html>
