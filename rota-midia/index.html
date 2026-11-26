@@ -43,7 +43,7 @@ select{background:var(--asfalto-2);color:var(--branco);border:1px solid var(--li
 .numeros div{background:var(--asfalto-2);padding:14px 16px}
 .numeros b{display:block;font:700 30px/1.1 "Barlow Condensed",sans-serif;color:var(--faixa)}
 .numeros span{color:var(--nevoa);font-size:14px}
-#mapa{height:min(68vh,620px);border-radius:12px;border:1px solid var(--linha);background:#0E141A}
+#mapa{height:min(68vh,620px);border-radius:12px;border:1px solid var(--linha);background:#E5E3DF}
 .estrada{height:6px;margin:44px 0 30px;background:repeating-linear-gradient(90deg,var(--faixa) 0 36px,transparent 36px 60px);opacity:.8}
 h2{font:700 30px/1.1 "Barlow Condensed",sans-serif;margin:0 0 14px}
 table{width:100%;border-collapse:collapse;font-size:15px}
@@ -55,6 +55,8 @@ th{color:var(--nevoa);font-weight:500}
 td:nth-child(-n+4){white-space:nowrap}
 footer{color:var(--nevoa);font-size:14px;padding:40px 0 48px}
 .leaflet-popup-content{font:14px/1.45 Barlow,sans-serif}
+.leaflet-control-layers{font:600 15px Barlow,sans-serif;border-radius:10px}
+.leaflet-control-layers label{margin:4px 0}
 @media (max-width:720px){
   .numeros{grid-template-columns:repeat(2,1fr)}
   h1{margin-top:22px}
@@ -105,16 +107,20 @@ footer{color:var(--nevoa);font-size:14px;padding:40px 0 48px}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const WHATSAPP = ""; // coloque aqui o número com DDD, ex.: "5519999999999"
-const CORES = ["#F5C518","#5BC0FF","#FF8A5B","#7EE0A1","#D69BFF","#FF5B8A","#FFFFFF","#9FD3C7"];
+const CORES = ["#F5C518","#1E88E5","#E5533D","#2EAD5B","#8E44AD","#E91E63","#00897B","#FF8F00"];
 const POR_HORA = 3600 / 280;
 
 const params = new URLSearchParams(location.search);
 const filtroCliente = params.get("cliente");
 
 const mapa = L.map("mapa",{scrollWheelZoom:false}).setView([-21.7946,-48.1758],13);
-L.tileLayer("https://{s}.basemap.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{
-  maxZoom:19, attribution:'© OpenStreetMap · © CARTO'
+const ruas=L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{
+  maxZoom:19, attribution:'© colaboradores do OpenStreetMap'
 }).addTo(mapa);
+const satelite=L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{
+  maxZoom:19, attribution:'Imagens © Esri'
+});
+L.control.layers({"Ruas":ruas,"Satélite":satelite},null,{collapsed:false}).addTo(mapa);
 const camada = L.layerGroup().addTo(mapa);
 
 function km(pontos){
@@ -160,7 +166,8 @@ function desenhar(){
       const k=r.km||km(r.pontos), h=horas(r.inicio,r.fim);
       tk+=k; th+=h; bagsVis.add(b.id);
       if(r.pontos.length){
-        L.polyline(r.pontos,{color:b.cor,weight:5,opacity:.9}).addTo(camada)
+        L.polyline(r.pontos,{color:"#141C24",weight:9,opacity:.55}).addTo(camada);
+        L.polyline(r.pontos,{color:b.cor,weight:5,opacity:1}).addTo(camada)
           .bindPopup(`<b>${esc(b.id)}</b><br>${r.data.split("-").reverse().join("/")} · ${esc(r.inicio)}–${esc(r.fim)}<br>${k.toFixed(1)} km`);
         L.circleMarker(r.pontos.at(-1),{radius:7,color:"#141C24",weight:2,fillColor:b.cor,fillOpacity:1}).addTo(camada);
         limites.push(...r.pontos);
