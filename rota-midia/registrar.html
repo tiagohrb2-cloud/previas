@@ -12,6 +12,7 @@
 
 <title>Rota Mídia – gravar rota</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{--asfalto:#141C24;--asfalto-2:#1E2A35;--faixa:#F5C518;--branco:#F4F6F8;--nevoa:#A9B8C6;--linha:#2E3D4B;--pare:#FF6B5B}
 *{box-sizing:border-box}
@@ -21,6 +22,7 @@ body{margin:0;background:var(--asfalto);color:var(--branco);font:17px/1.5 Barlow
 :focus-visible{outline:3px solid var(--faixa);outline-offset:2px}
 main{max-width:520px;margin:0 auto;padding:24px 18px 48px}
 h1{font:700 34px/1.05 "Barlow Condensed",sans-serif;margin:8px 0 8px}
+h2{font:700 26px/1.1 "Barlow Condensed",sans-serif;margin:0 0 10px}
 p{color:var(--nevoa);margin:0 0 16px}
 label{display:block;font-weight:600;margin:16px 0 6px}
 select,input,textarea{width:100%;min-height:48px;border-radius:10px;border:1px solid var(--linha);background:var(--asfalto-2);color:var(--branco);font:16px Barlow,sans-serif;padding:10px 12px}
@@ -28,18 +30,28 @@ select,input,textarea{width:100%;min-height:48px;border-radius:10px;border:1px s
 .btn.pare{background:var(--pare);color:#fff}
 .btn.sec{background:var(--asfalto-2);color:var(--branco);border:1px solid var(--linha);font-size:19px}
 .btn:active{transform:translateY(1px)}
-.painel{border:1px solid var(--linha);border-radius:12px;padding:16px;margin-top:18px;background:var(--asfalto-2)}
-.painel b{font:700 28px "Barlow Condensed",sans-serif;color:var(--faixa)}
-.linha{display:flex;justify-content:space-between;gap:12px}
+.painel{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:12px;overflow:hidden;margin-top:16px}
+.painel div{background:var(--asfalto-2);padding:12px 14px}
+.painel b{display:block;font:700 30px/1.1 "Barlow Condensed",sans-serif;color:var(--faixa)}
+.painel span{color:var(--nevoa);font-size:14px}
+#estado{display:block;margin-top:8px}
+#mapa{height:52vh;min-height:300px;border-radius:12px;border:1px solid var(--linha);margin-top:16px;background:#E5E3DF}
+.leaflet-control-layers{font:600 15px Barlow,sans-serif;border-radius:10px}
+.seguir{position:absolute;right:10px;bottom:10px;z-index:500;min-height:44px;padding:0 14px;border-radius:22px;border:0;background:#fff;color:#141C24;font:600 15px Barlow,sans-serif;box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:pointer}
+.mapa-caixa{position:relative}
 hr{border:0;height:5px;margin:30px 0;background:repeating-linear-gradient(90deg,var(--faixa) 0 28px,transparent 28px 46px);opacity:.7}
 textarea{min-height:120px;font:13px ui-monospace,monospace}
 small{color:var(--nevoa)}
+.hist{list-style:none;margin:12px 0 0;padding:0}
+.hist li{border-bottom:1px solid var(--linha)}
+.hist button{width:100%;min-height:52px;display:flex;justify-content:space-between;align-items:center;gap:10px;background:none;border:0;color:var(--branco);font:16px Barlow,sans-serif;text-align:left;padding:8px 2px;cursor:pointer}
+.hist button b{color:var(--faixa);font:700 20px "Barlow Condensed",sans-serif;white-space:nowrap}
 </style>
 </head>
 <body>
 <main>
   <h1>Gravar rota da bag</h1>
-  <p>Aperte em começar quando ligar a tela da bag e em encerrar quando desligar. No fim, envie a rota pelo WhatsApp.</p>
+  <p>Aperte em começar quando ligar a tela da bag. O caminho aparece no mapa e os km vão somando.</p>
 
   <label for="bag">Qual bag você está usando?</label>
   <input id="bag" placeholder="Ex.: BAG-01" autocomplete="off">
@@ -47,9 +59,16 @@ small{color:var(--nevoa)}
   <button class="btn" id="acao">Começar a rodar</button>
 
   <div class="painel">
-    <div class="linha"><span>Tempo</span><b id="tempo">0:00</b></div>
-    <div class="linha"><span>Distância</span><b id="dist">0,0 km</b></div>
-    <small id="estado">Parado.</small>
+    <div><b id="dist">0,0 km</b><span>nesta rota</span></div>
+    <div><b id="tempo">0:00</b><span>tempo rodando</span></div>
+    <div><b id="kmHoje">0,0 km</b><span>hoje</span></div>
+    <div><b id="kmMes">0,0 km</b><span>neste mês</span></div>
+  </div>
+  <small id="estado">Parado.</small>
+
+  <div class="mapa-caixa">
+    <div id="mapa" role="region" aria-label="Mapa com o rastro da rota"></div>
+    <button class="seguir" id="seguir" hidden>Seguir minha posição</button>
   </div>
 
   <button class="btn sec" id="enviar" hidden>Enviar rota pelo WhatsApp</button>
@@ -58,72 +77,139 @@ small{color:var(--nevoa)}
 
   <hr>
 
-  <h1>Já gravou em outro app?</h1>
+  <h2>Minhas rotas</h2>
+  <p id="semHist">Nenhuma rota gravada neste celular ainda.</p>
+  <ul class="hist" id="hist"></ul>
+
+  <hr>
+
+  <h2>Já gravou em outro app?</h2>
   <p>Se usou um app de GPS (como GPS Logger ou Geo Tracker), exporte o arquivo .gpx e escolha aqui.</p>
   <input type="file" id="gpx" accept=".gpx,application/gpx+xml,text/xml">
 
   <p style="margin-top:24px"><small>Importante: no navegador, o GPS só grava com a tela do celular ligada e esta página aberta. Para gravar com o celular no bolso, use o app de GPS e importe o .gpx.</small></p>
 </main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const CHAVE="rotamidia-gravacao";
-let g=JSON.parse(localStorage.getItem(CHAVE)||"null"), watch=null, trava=null, relogio=null;
+const CHAVE="rotamidia-gravacao", CHAVE_HIST="rotamidia-historico";
+const ler=(k,padrao)=>{try{return JSON.parse(localStorage.getItem(k))??padrao}catch(e){return padrao}};
+const gravar=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+let g=ler(CHAVE,null), hist=ler(CHAVE_HIST,[]), watch=null, trava=null, relogio=null, seguir=true;
 const $=id=>document.getElementById(id);
 try{ $("bag").value=localStorage.getItem("rotamidia-bag")||""; }catch(e){}
 
 function dist(a,b){const R=6371,r=Math.PI/180,x=Math.sin((b[0]-a[0])*r/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin((b[1]-a[1])*r/2)**2;return 2*R*Math.asin(Math.sqrt(x))}
 function total(p){let t=0;for(let i=1;i<p.length;i++)t+=dist(p[i-1],p[i]);return t}
 const hhmm=d=>new Date(d).toTimeString().slice(0,5);
-const salvar=()=>{try{localStorage.setItem(CHAVE,JSON.stringify(g))}catch(e){}};
+const diaLocal=d=>{const x=new Date(d);return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0")};
+const kmTxt=k=>k.toFixed(1).replace(".",",")+" km";
+const salvar=()=>gravar(CHAVE,g);
+
+/* ---------- mapa ---------- */
+const mapa=L.map("mapa",{zoomControl:true}).setView([-21.7946,-48.1758],14);
+const ruas=L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(mapa);
+const satelite=L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{maxZoom:19,attribution:"Imagens © Esri"});
+L.control.layers({"Ruas":ruas,"Satélite":satelite},null,{collapsed:true}).addTo(mapa);
+const sombra=L.polyline([],{color:"#141C24",weight:10,opacity:.5}).addTo(mapa);
+const rastro=L.polyline([],{color:"#F5C518",weight:6}).addTo(mapa);
+const inicioM=L.circleMarker([0,0],{radius:7,color:"#fff",weight:2,fillColor:"#2EAD5B",fillOpacity:1});
+const aqui=L.circleMarker([0,0],{radius:9,color:"#fff",weight:3,fillColor:"#1E88E5",fillOpacity:1});
+mapa.on("dragstart",()=>{ if(watch!==null){ seguir=false; $("seguir").hidden=false; } });
+$("seguir").onclick=()=>{ seguir=true; $("seguir").hidden=true; const u=g?.pontos.at(-1); if(u) mapa.setView(u,Math.max(mapa.getZoom(),16)); };
+
+function desenhar(pontos,enquadrar){
+  sombra.setLatLngs(pontos); rastro.setLatLngs(pontos);
+  if(pontos.length){ inicioM.setLatLng(pontos[0]).addTo(mapa); aqui.setLatLng(pontos.at(-1)).addTo(mapa); }
+  else { inicioM.remove(); aqui.remove(); }
+  if(enquadrar && pontos.length>1) mapa.fitBounds(pontos,{padding:[24,24]});
+}
+
+/* ---------- totais e histórico ---------- */
+function totais(){
+  const hoje=diaLocal(Date.now()), mes=hoje.slice(0,7);
+  let kh=0, km=0;
+  hist.forEach(r=>{ if(r.dia===hoje) kh+=r.km; if(r.dia.slice(0,7)===mes) km+=r.km; });
+  if(g && !g.fim){ const k=total(g.pontos); if(diaLocal(g.inicio)===hoje) kh+=k; if(diaLocal(g.inicio).slice(0,7)===mes) km+=k; }
+  $("kmHoje").textContent=kmTxt(kh); $("kmMes").textContent=kmTxt(km);
+}
+function listar(){
+  $("semHist").hidden=hist.length>0;
+  $("hist").innerHTML="";
+  hist.slice().reverse().slice(0,30).forEach(r=>{
+    const li=document.createElement("li"), b=document.createElement("button");
+    b.innerHTML=`<span>${r.dia.split("-").reverse().join("/")} · ${r.inicio}–${r.fim} · ${r.bag.replace(/[<>&]/g,"")}</span><b>${kmTxt(r.km)}</b>`;
+    b.onclick=()=>{ desenhar(r.pontos,true); mostrar(r); scrollTo({top:$("mapa").offsetTop-20,behavior:"smooth"}); };
+    li.appendChild(b); $("hist").appendChild(li);
+  });
+  totais();
+}
+function guardarNoHistorico(){
+  const r={bag:g.bag,dia:diaLocal(g.inicio),inicio:hhmm(g.inicio),fim:hhmm(g.fim),km:+total(g.pontos).toFixed(1),pontos:reduzir(g.pontos)};
+  hist.push(r); if(hist.length>200) hist=hist.slice(-200);
+  gravar(CHAVE_HIST,hist); listar(); return r;
+}
 
 function atualizar(){
   if(!g) return;
   const s=Math.floor(((g.fim||Date.now())-g.inicio)/1000);
   $("tempo").textContent=Math.floor(s/3600)+":"+String(Math.floor(s/60)%60).padStart(2,"0");
-  $("dist").textContent=total(g.pontos).toFixed(1).replace(".",",")+" km";
+  $("dist").textContent=kmTxt(total(g.pontos));
+  totais();
 }
 
-async function comecar(){
+/* ---------- gravação ---------- */
+function comecar(){
   const bag=$("bag").value.trim().toUpperCase();
   if(!bag){ $("bag").focus(); $("estado").textContent="Escreva o número da bag."; return; }
   try{localStorage.setItem("rotamidia-bag",bag)}catch(e){}
-  if(!g||g.fim) g={bag,inicio:Date.now(),pontos:[]};
-  salvar(); ligarGPS();
+  g={bag,inicio:Date.now(),pontos:[]};
+  ["saida","saidaRotulo","enviar"].forEach(i=>$(i).hidden=true);
+  salvar(); desenhar([],false); ligarGPS();
 }
 async function ligarGPS(){
   $("acao").textContent="Encerrar rota"; $("acao").classList.add("pare");
   $("estado").textContent="Procurando sinal de GPS…";
+  seguir=true; desenhar(g.pontos,false);
   try{ trava=await navigator.wakeLock?.request("screen"); }catch(e){}
   watch=navigator.geolocation.watchPosition(pos=>{
     const p=[+pos.coords.latitude.toFixed(5),+pos.coords.longitude.toFixed(5)];
+    aqui.setLatLng(p).addTo(mapa);
+    if(seguir) mapa.setView(p,Math.max(mapa.getZoom(),16));
+    if(pos.coords.accuracy>80){ $("estado").textContent="Sinal de GPS fraco, esperando melhorar…"; return; }
     const ult=g.pontos.at(-1);
-    if(pos.coords.accuracy>80) return;
-    if(!ult||dist(ult,p)>0.04){ g.pontos.push(p); salvar(); }
-    $("estado").textContent="Gravando · "+g.pontos.length+" pontos · última posição "+hhmm(Date.now());
+    if(!ult||dist(ult,p)>0.02){ g.pontos.push(p); salvar(); desenhar(g.pontos,false); }
+    $("estado").textContent="Gravando · última posição às "+hhmm(Date.now());
     atualizar();
   },err=>{$("estado").textContent="Sem GPS: "+(err.code===1?"permita a localização para este site.":err.message)},
-  {enableHighAccuracy:true,maximumAge:10000});
+  {enableHighAccuracy:true,maximumAge:5000});
   relogio=setInterval(atualizar,15000); atualizar();
 }
 function encerrar(){
-  navigator.geolocation.clearWatch(watch); clearInterval(relogio); trava?.release?.();
-  g.fim=Date.now(); salvar(); atualizar();
+  navigator.geolocation.clearWatch(watch); watch=null; clearInterval(relogio); trava?.release?.();
+  g.fim=Date.now(); salvar(); atualizar(); $("seguir").hidden=true;
   $("acao").textContent="Começar nova rota"; $("acao").classList.remove("pare");
-  $("estado").textContent="Rota encerrada.";
-  mostrar(g.bag,g.inicio,g.fim,g.pontos);
+  if(g.pontos.length<2){
+    $("estado").textContent="Rota encerrada sem caminho gravado (o GPS não pegou sinal). Nada foi guardado.";
+    g=null; gravar(CHAVE,null); desenhar([],false); return;
+  }
+  $("estado").textContent="Rota encerrada e guardada em Minhas rotas.";
+  const r=guardarNoHistorico(); desenhar(g.pontos,true); mostrar(r);
 }
 function reduzir(p,max=400){ if(p.length<=max) return p; const s=p.length/max; return Array.from({length:max},(_,i)=>p[Math.floor(i*s)]).concat([p.at(-1)]); }
-function mostrar(bag,ini,fim,pontos){
-  const rota={bag,data:new Date(ini).toISOString().slice(0,10),inicio:hhmm(ini),fim:hhmm(fim),km:+total(pontos).toFixed(1),pontos:reduzir(pontos)};
-  const txt="ROTA MÍDIA – "+bag+" – "+rota.data+" "+rota.inicio+"-"+rota.fim+" – "+rota.km+" km\n"+JSON.stringify(rota);
+function mostrar(r){
+  const rota={bag:r.bag,data:r.dia,inicio:r.inicio,fim:r.fim,km:r.km,pontos:r.pontos};
+  const txt="ROTA MÍDIA – "+r.bag+" – "+r.dia.split("-").reverse().join("/")+" "+r.inicio+"-"+r.fim+" – "+String(r.km).replace(".",",")+" km\n"+JSON.stringify(rota);
   $("saida").value=txt; ["saida","saidaRotulo","enviar"].forEach(i=>$(i).hidden=false);
   $("enviar").onclick=()=>{
     if(navigator.share) navigator.share({text:txt}).catch(()=>{});
     else open("https://wa.me/?text="+encodeURIComponent(txt));
   };
 }
-$("acao").onclick=()=> watch!==null && !g.fim ? encerrar() : comecar();
+$("acao").onclick=()=> watch!==null ? encerrar() : comecar();
+
+listar();
 if(g && !g.fim){ $("bag").value=g.bag; ligarGPS(); }
-else if(g && g.fim){ atualizar(); mostrar(g.bag,g.inicio,g.fim,g.pontos); }
+else if(g && g.fim){ atualizar(); desenhar(g.pontos,true); }
 
 $("gpx").onchange=async e=>{
   const f=e.target.files[0]; if(!f) return;
@@ -132,9 +218,12 @@ $("gpx").onchange=async e=>{
   if(!pts.length){ alert("Esse arquivo não tem pontos de rota."); return; }
   const pontos=pts.map(n=>[+(+n.getAttribute("lat")).toFixed(5),+(+n.getAttribute("lon")).toFixed(5)]);
   const tempo=n=>n.querySelector("time")?.textContent;
-  const ini=Date.parse(tempo(pts[0])||Date.now()), fim=Date.parse(tempo(pts.at(-1))||Date.now());
+  const ini=Date.parse(tempo(pts[0])||"")||Date.now(), fim=Date.parse(tempo(pts.at(-1))||"")||Date.now();
   const bag=($("bag").value.trim()||"BAG-?").toUpperCase();
-  g={bag,inicio:ini,fim,pontos}; salvar(); atualizar(); mostrar(bag,ini,fim,pontos);
+  if(watch!==null) encerrar();
+  g={bag,inicio:ini,fim,pontos}; salvar(); atualizar();
+  const r=guardarNoHistorico(); desenhar(pontos,true); mostrar(r);
+  $("estado").textContent="Arquivo importado e guardado em Minhas rotas.";
 };
 </script>
 <script>
