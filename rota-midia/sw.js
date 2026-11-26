@@ -1,6 +1,6 @@
 // Guarda as páginas no celular para o app abrir mesmo sem internet.
-const VERSAO = "rota-midia-v2";
-const ARQUIVOS = ["./", "index.html", "equipe.html", "registrar.html", "simulador.html",
+const VERSAO = "rota-midia-cliente-v3";
+const ARQUIVOS = ["./", "index.html", "rotas.json",
   "manifest.webmanifest", "icone-192.png", "icone-512.png", "apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
