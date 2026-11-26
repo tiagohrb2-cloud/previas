@@ -7,7 +7,7 @@ Bag de 80 L com tela de 15,6", 10 anúncios de até 28 s, R$ 250/mês por anúnc
 | Opção | Custo | Como funciona | Para quê |
 |---|---|---|---|
 | **Site da Rota Mídia** (esta pasta, no GitHub Pages) | R$ 0 | Mapa com as rotas, km, horas e exibições estimadas. Link por cliente: `.../rota-midia/?cliente=Nome` | Relatório mensal e prova de venda |
-| **Página de gravar rota** (`registrar.html`) | R$ 0 | O motoboy aperta "Começar" / "Encerrar" e manda a rota pelo WhatsApp | Rotas do dia a dia |
+| **App do motoboy** (`rota-midia-motoboy/`) | R$ 0 | O motoboy aperta "Começar" / "Encerrar" e manda a rota pelo WhatsApp | Rotas do dia a dia |
 | **App GPS Logger (Android) ou Geo Tracker** | R$ 0 | Grava no bolso, com a tela desligada; exporta .gpx, que entra pela mesma página | Quando o celular não fica com a tela ligada |
 | **Compartilhar localização no Google Maps / WhatsApp** | R$ 0 | Localização ao vivo por algumas horas | Para um cliente grande ver ao vivo em uma reunião |
 | **Foto e vídeo da bag na rua** | R$ 0 | 1 vídeo curto por semana com a tela e o anúncio aparecendo, com data e local | A prova que o cliente mais acredita; também vira post no Instagram |
@@ -64,7 +64,7 @@ Conclusões:
 ## 3. Plano de ação
 
 **Semana 1 – prova**
-1. Publicar o site (já está nesta pasta) e testar o `registrar.html` com cada motoboy.
+1. Publicar o site (já está nesta pasta) e instalar o app do motoboy (`rota-midia-motoboy/`) no celular de cada um.
 2. Combinar com os motoboys: gravar a rota todo dia que a tela estiver ligada (pode entrar como condição dos R$ 450).
 3. Gravar 1 vídeo da bag rodando por motoboy, com o anúncio aparecendo.
 

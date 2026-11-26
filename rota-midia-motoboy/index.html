@@ -8,9 +8,9 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="RM Equipe">
+<meta name="apple-mobile-web-app-title" content="RM Motoboy">
 
-<title>Rota Mídia – gravar rota</title>
+<title>Rota Mídia Motoboy</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
@@ -45,6 +45,8 @@ small{color:var(--nevoa)}
 .ajuda{margin-top:12px;padding:14px 16px;border-radius:12px;background:#3A2A12;border:1px solid #6B4B12;color:#FFE08A;font-size:16px}
 .ajuda ol{margin:8px 0;padding-left:20px}
 .ajuda li{margin-bottom:4px}
+.ajuda.instalar{margin-top:30px;background:var(--asfalto-2);border-color:var(--linha);color:var(--branco)}
+.ajuda.instalar ol{color:var(--nevoa)}
 .hist{list-style:none;margin:12px 0 0;padding:0}
 .hist li{border-bottom:1px solid var(--linha)}
 .hist button{width:100%;min-height:52px;display:flex;justify-content:space-between;align-items:center;gap:10px;background:none;border:0;color:var(--branco);font:16px Barlow,sans-serif;text-align:left;padding:8px 2px;cursor:pointer}
@@ -99,6 +101,15 @@ small{color:var(--nevoa)}
   <h2>Já gravou em outro app?</h2>
   <p>Se usou um app de GPS (como GPS Logger ou Geo Tracker), exporte o arquivo .gpx e escolha aqui.</p>
   <input type="file" id="gpx" accept=".gpx,application/gpx+xml,text/xml">
+
+  <div class="ajuda instalar" id="caixaInstalar">
+    <b>Deixe este app na tela do celular</b>
+    <button class="btn" id="btnInstalar" hidden>Instalar app</button>
+    <ol id="passosInstalar">
+      <li>No Chrome, toque nos três pontinhos ⋮ no canto de cima.</li>
+      <li>Toque em <b>Instalar app</b> ou <b>Adicionar à tela inicial</b>.</li>
+    </ol>
+  </div>
 
   <p style="margin-top:24px"><small>Importante: no navegador, o GPS só grava com a tela do celular ligada e esta página aberta. Para gravar com o celular no bolso, use o app de GPS e importe o .gpx.</small></p>
 </main>
@@ -244,11 +255,12 @@ $("gpx").onchange=async e=>{
 </script>
 <script>
 if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
-if(matchMedia("(display-mode: standalone)").matches || navigator.standalone){
-  const a=document.createElement("a"); a.href="./"; a.textContent="‹ Início";
-  a.style.cssText="position:fixed;left:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:1000;min-height:44px;display:flex;align-items:center;padding:0 16px;border-radius:22px;background:#1E2A35;border:1px solid #2E3D4B;color:#F4F6F8;font:600 16px Barlow,sans-serif;text-decoration:none";
-  document.body.appendChild(a); document.body.style.paddingBottom="72px";
-}
+if(matchMedia("(display-mode: standalone)").matches || navigator.standalone) document.getElementById("caixaInstalar").hidden=true;
+if(/iphone|ipad|ipod/i.test(navigator.userAgent)) document.getElementById("passosInstalar").innerHTML="<li>Abra no <b>Safari</b> e toque no botão de compartilhar.</li><li>Toque em <b>Adicionar à Tela de Início</b>.</li>";
+let pedidoInstalar;
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();pedidoInstalar=e;document.getElementById("btnInstalar").hidden=false;document.getElementById("passosInstalar").hidden=true;});
+document.getElementById("btnInstalar").onclick=async()=>{if(!pedidoInstalar)return;pedidoInstalar.prompt();await pedidoInstalar.userChoice;pedidoInstalar=null;document.getElementById("btnInstalar").hidden=true;};
+addEventListener("appinstalled",()=>document.getElementById("caixaInstalar").hidden=true);
 </script>
 </body>
 </html>
