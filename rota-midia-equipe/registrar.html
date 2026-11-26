@@ -8,7 +8,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Rota Mídia">
+<meta name="apple-mobile-web-app-title" content="RM Equipe">
 
 <title>Rota Mídia – gravar rota</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
@@ -42,6 +42,9 @@ select,input,textarea{width:100%;min-height:48px;border-radius:10px;border:1px s
 hr{border:0;height:5px;margin:30px 0;background:repeating-linear-gradient(90deg,var(--faixa) 0 28px,transparent 28px 46px);opacity:.7}
 textarea{min-height:120px;font:13px ui-monospace,monospace}
 small{color:var(--nevoa)}
+.ajuda{margin-top:12px;padding:14px 16px;border-radius:12px;background:#3A2A12;border:1px solid #6B4B12;color:#FFE08A;font-size:16px}
+.ajuda ol{margin:8px 0;padding-left:20px}
+.ajuda li{margin-bottom:4px}
 .hist{list-style:none;margin:12px 0 0;padding:0}
 .hist li{border-bottom:1px solid var(--linha)}
 .hist button{width:100%;min-height:52px;display:flex;justify-content:space-between;align-items:center;gap:10px;background:none;border:0;color:var(--branco);font:16px Barlow,sans-serif;text-align:left;padding:8px 2px;cursor:pointer}
@@ -65,6 +68,16 @@ small{color:var(--nevoa)}
     <div><b id="kmMes">0,0 km</b><span>neste mês</span></div>
   </div>
   <small id="estado">Parado.</small>
+  <div class="ajuda" id="ajudaGps" hidden>
+    <b>Para liberar o GPS:</b>
+    <ol>
+      <li>Feche os balões flutuantes de outros apps (arraste até o X embaixo da tela).</li>
+      <li>Aperte <b>Encerrar rota</b> e depois <b>Começar a rodar</b> de novo.</li>
+      <li>Quando o celular perguntar, toque em <b>Permitir</b>.</li>
+      <li>Se não perguntar: toque no cadeado ao lado do endereço, em <b>Permissões</b> e libere a <b>Localização</b>.</li>
+    </ol>
+    Depois de liberar uma vez, os balões podem voltar.
+  </div>
 
   <div class="mapa-caixa">
     <div id="mapa" role="region" aria-label="Mapa com o rastro da rota"></div>
@@ -162,7 +175,7 @@ function comecar(){
   const bag=$("bag").value.trim().toUpperCase();
   if(!bag){ $("bag").focus(); $("estado").textContent="Escreva o número da bag."; return; }
   try{localStorage.setItem("rotamidia-bag",bag)}catch(e){}
-  g={bag,inicio:Date.now(),pontos:[]};
+  g={bag,inicio:Date.now(),pontos:[]}; $("ajudaGps").hidden=true;
   ["saida","saidaRotulo","enviar"].forEach(i=>$(i).hidden=true);
   salvar(); desenhar([],false); ligarGPS();
 }
@@ -180,7 +193,10 @@ async function ligarGPS(){
     if(!ult||dist(ult,p)>0.02){ g.pontos.push(p); salvar(); desenhar(g.pontos,false); }
     $("estado").textContent="Gravando · última posição às "+hhmm(Date.now());
     atualizar();
-  },err=>{$("estado").textContent="Sem GPS: "+(err.code===1?"permita a localização para este site.":err.message)},
+  },err=>{
+    if(err.code===1){ $("ajudaGps").hidden=false; $("estado").textContent="O celular não liberou a localização."; }
+    else $("estado").textContent="Sem GPS: "+err.message;
+  },
   {enableHighAccuracy:true,maximumAge:5000});
   relogio=setInterval(atualizar,15000); atualizar();
 }
@@ -229,7 +245,7 @@ $("gpx").onchange=async e=>{
 <script>
 if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
 if(matchMedia("(display-mode: standalone)").matches || navigator.standalone){
-  const a=document.createElement("a"); a.href="equipe.html"; a.textContent="‹ Início";
+  const a=document.createElement("a"); a.href="./"; a.textContent="‹ Início";
   a.style.cssText="position:fixed;left:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:1000;min-height:44px;display:flex;align-items:center;padding:0 16px;border-radius:22px;background:#1E2A35;border:1px solid #2E3D4B;color:#F4F6F8;font:600 16px Barlow,sans-serif;text-decoration:none";
   document.body.appendChild(a); document.body.style.paddingBottom="72px";
 }

@@ -1,12 +1,12 @@
 {
   "name": "Rota Mídia",
   "short_name": "Rota Mídia",
-  "description": "Rotas das bags, gravação de rota e simulador da Rota Mídia.",
+  "description": "Veja por onde as bags da Rota Mídia rodaram com a sua marca.",
   "lang": "pt-BR",
-  "start_url": "./equipe.html",
+  "id": "./",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#141C24",
   "theme_color": "#141C24",
   "icons": [
